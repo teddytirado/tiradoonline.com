@@ -1,0 +1,12 @@
+
+		<div style="float:left;padding:30px">
+			<a href="/contacts/contacts.asp?Template=View&Action=Create"><img src="/images/icons/company_off.gif" title="" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;">Add new Contact</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/contacts/contacts.asp?Template=View"><img src="/images/icons/resume_off.gif" title="" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Contacts</div>
+		</div>	
+	
+	

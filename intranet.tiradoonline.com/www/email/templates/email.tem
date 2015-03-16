@@ -1,0 +1,115 @@
+<%
+	Action = Trim(Request("Action"))
+	ContactID = Trim(Request("ContactID"))
+	EmailErrorMessage = Trim(Request("EmailErrorMessage"))
+	SCRIPT_NAME = SCRIPT_NAME
+	Subject = Trim(Request("Subject")) 
+	SubmitButton = Trim(Request("SubmitButton"))
+	BodyText = Trim(Request("BodyText"))
+	
+	If SubmitButton = "Cancel" Then Response.Redirect SCRIPT_NAME & "?Template=" & Template
+
+	If Request.ServerVariables("REQUEST_METHOD") = "POST" Then
+		If SubmitButton = "Send" Then
+			sql = "INSERT INTO Emails (Email, UserID, Subject, BodyText) VALUES ('" & ContactID & "', " & Session("UserID") & ", '" & Subject & "', '" & BodyText & "')"
+			Response.Write "<font color=white>" & sql
+			oConn.Execute sql
+		End If
+	End If
+	
+%>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+	<td align=center colspan=2 bgcolor="#ffffff"><font face="Arial,Verdana" size=2 color="#ffffff"><b>&nbsp;<!-- Contacts -->&nbsp;</td>
+</tr>
+<tr>
+	<td bgcolor="#ffffff" valign=top>&nbsp;&nbsp;</td>
+	<td bgcolor="#ffffff" valign=top>
+		<%
+			sql = "sp_Emails_Contacts_get " & Session("UserID")
+			Set ors = oConn.Execute(sql)
+			
+			Redim ContactsArray(0)
+			Redim ContactsValueArray(0)
+			ContactsValueArray(0) = "SELECT A CONTACT"
+			ContactsArray(0) = ""
+			x = 1
+			Do Until ors.EOF
+				ReDim PRESERVE ContactsValueArray(x)
+				ReDim PRESERVE ContactsArray(x)
+				ContactsValueArray(x) = ors("FullName")
+				ContactsArray(x) = ors("Email1")
+				x = x + 1
+				ors.MoveNext
+			Loop
+			ors.Close
+			Set ors = Nothing
+		%>
+		<script language="JavaScript">
+		<!--
+			var option_removed = false;
+			function Populate_data()
+			{
+				if(document.EmailForm.ContactID.selectedIndex != 0)
+				{
+					document.all.SubmitButton.style.visibility = "visible";
+					document.all.TR_ContactEmail.style.display = "inline";
+					document.all.TR_ContactSubject.style.display = "inline";
+					document.all.TR_ContactMessage.style.display = "inline";
+					document.all.TR_ContactBodyText.style.display = "inline";
+					if (!option_removed)
+					{
+						document.all.ContactEmail.innerHTML = "<font face='Verdana' size=2 color='#000066'><b>" + ContactEmail[document.EmailForm.ContactID.selectedIndex];
+						document.EmailForm.ContactID.options.remove(0);
+						option_removed = true;
+					}
+					else
+						document.all.ContactEmail.innerHTML = "<font face='Verdana' size=2 color='#000066'><b>" + ContactEmail[document.EmailForm.ContactID.selectedIndex + 1];
+				}
+			}
+					
+			var ContactName = new Array();
+			var ContactEmail = new Array();
+			<% For x = 0 To UBound(ContactsArray) %>
+			ContactName[<%= x %>] = "<%= ContactsValueArray(x) %>";
+			ContactEmail[<%= x %>] = "<%= ContactsArray(x) %>";
+			<% Next %>
+		//-->
+		</script>
+		<table>
+		<tr>
+			<td colspan=2><font face="Verdana" size=2 color="#ff0000"><b>&nbsp;<%= EmailErrorMessage %>&nbsp;</b></font></td>
+		</tr>
+		<tr>
+			<td><font face="Verdana" size=2>Name</td>
+			<td>
+				<select name="ContactID" onChange="Populate_data()" class="EmailElement">
+				<% For x = 0 To UBound(ContactsArray) %>
+					<option value="<%= ContactsArray(x) %>"><%= ContactsValueArray(x) %></option>
+				<% Next %>
+				</select>
+			</td>
+		</tr>
+		<tr id="TR_ContactEmail" style="display:none;">
+			<td><font face="Verdana" size=2>Email</td>
+			<td><div id="ContactEmail" style="position:relative;background:white;visibility:visible;">&nbsp;</div></td>
+		</tr>
+		<tr id="TR_ContactSubject" style="display:none;">
+			<td><font face="Verdana" size=2>Subject</td>
+			<td><input type="text" name="Subject" value="<%= Subject %>" size="45" maxlength="50" class="EmailElement"></td>
+		</tr>
+		<tr id="TR_ContactMessage" style="display:none;">
+			<td valign=top colspan=2><font face="Verdana" size=2>Message</td>
+		</tr>
+		<tr id="TR_ContactBodyText" style="display:none;">
+			<td valign=top colspan=2><textarea name="BodyText" cols="50" rows="15" class="EmailElement"><%= BodyText %></textarea></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="submit" id="SubmitButton" value="Send" class="EmailElement" style="visibility:hidden;"></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>

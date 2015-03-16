@@ -1,0 +1,249 @@
+<!-- #include virtual="/includes/functions.inc" -->
+<%
+	Title = UCase(Session("UserName"))
+	BankingDate = Trim(Request("BankingDate"))
+	If BankingDate = "" Then BankingDate = Date
+	
+	BankingID = Trim(Request("BankingID"))
+	SubBankingAccountID = Trim(Request("SubBankingAccountID"))
+	If SubBankingAccountID = "" Then SubBankingAccountID = 0
+	Comment = Trim(Request("Comment"))
+	TransactionID = Trim(Request("TransactionID"))
+	TransactionStatus = Trim(Request("TransactionStatus"))
+	TransactionText = Trim(Request("TransactionText"))
+	CreditCardErrorMessage = ""
+	Payment = Trim(Request("Payment"))
+	SubmitButton = Trim(Request("SubmitButton"))
+	PreviousPage = Trim(Request("PreviousPage"))
+	If PreviousPage = "" Then PreviousPage = Request.ServerVariables("HTTP_REFERER")
+	UserID = Trim(Request("UserID"))
+	
+	Function AddTransaction(v_transaction)
+		sql = "sp_Transactions_insert '" & SQLEncode(v_transaction) & "'"
+		WriteDebugger sql, Debugging, 0
+		Set rs = oConn.Execute(sql)
+		If NOT rs.EOF Then
+			AddTransaction = rs("TransactionID")
+			rs.Close
+		End If
+		Set rs = Nothing
+	End Function
+
+	If SubmitButton = "Save" Then
+		If ErrorCheck() Then
+			If TransactionStatus = "TEXT" Then
+				TransactionID = AddTransaction(TransactionText)
+			End If
+
+			If SubBankingAccountID = "" Then SubBankingAccountID = "null"
+			sql = ""
+			sql = sql & "UPDATE Banking SET "
+			sql = sql & "SubBankingAccountID = " & SubBankingAccountID & ", "
+			sql = sql & "BankingDate = '" & BankingDate & "', "
+			sql = sql & "TransactionID = '" & TransactionID & "', "
+			If Comment <> "" Then 
+				sql = sql & "Comment = '" & Replace(Comment, "'", "''") & "', "
+			Else
+				sql = sql & "Comment = '', "
+			End If
+			sql = sql & "Payment = " & Payment & ", "
+			sql = sql & "update_dt = getdate() "
+			sql = sql & "WHERE BankingID = " & BankingID
+			WriteDebugger sql, Debugging, 0
+			oConn.Execute sql
+			WriteDebugger sql, Debugging, 0
+			Response.Redirect Request("PreviousPage")
+		Else
+			CreditCardErrorMessage = "<font face=""Arial"" size=2 color=""#ff0000""><b>Your form could not be completed because<br />the following field(s) are invalid:</b></font><font face=""Arial"" size=2 color=""#000000""><li>Amount"
+		End If
+	ElseIf SubmitButton = "Add" Then
+		If ErrorCheck() Then
+			If TransactionStatus = "TEXT" Then
+				TransactionID = AddTransaction(TransactionText)
+			End If
+
+			If SubBankingAccountID = "" Then SubBankingAccountID = "null"
+			sql = ""
+			sql = sql & "INSERT INTO Banking "
+			sql = sql & "(BankingAccountID, SubBankingAccountID, BankingDate, TransactionID, Comment, Payment, update_dt) VALUES ("
+			sql = sql & Trim(Request("BankingAccountID")) & ", "
+			sql = sql & SubBankingAccountID & ", "
+			sql = sql & "'" & BankingDate & "', "
+			sql = sql & TransactionID & ", "
+			If Comment <> "" Then
+				sql = sql & "'" & Replace(Comment, "'", "''") & "', "
+			Else
+				sql = sql & "null, "
+			End If
+			sql = sql & Payment & ", "
+			sql = sql & "getdate()"
+			sql = sql & ")"
+			WriteDebugger sql, Debugging, 0
+			oConn.Execute sql
+			'Response.Redirect Request("PreviousPage")
+			Response.Redirect SCRIPT_NAME & "?BankingAccountID=" & Trim(Request("BankingAccountID")) & "&n=" & BankingMonth & "&CurrentYear=" & BankingYear & "&Template=View"
+		Else
+			CreditCardErrorMessage = "<font face=""Arial"" size=2 color=""#ff0000""><b>Your form could not be completed because<br />the following field(s) are invalid:</b></font><font face=""Arial"" size=2 color=""#000000""><li>Amount"
+		End If
+	ElseIf SubmitButton = "Delete" Then
+		sql = "DELETE FROM Banking WHERE BankingID = " & BankingID
+		WriteDebugger sql, Debugging, 0
+		oConn.Execute sql
+		Response.Redirect Request("PreviousPage")
+	ElseIf SubmitButton = "Cancel" Then
+		Response.Redirect Request("PreviousPage")
+	End If
+
+	If BankingID <> "" Then
+		sql = "sp_Banking_BankingID " & BankingID
+		WriteDebugger sql, Debugging, 0
+		Set Banking = oConn.Execute(sql)
+		If Banking.EOF Then
+			Response.Redirect SCRIPT_NAME
+		Else
+			BankingAccountID = Banking("BankingAccountID")
+			SubBankingAccountID = Banking("SubBankingAccountID")
+			If isNull(SubBankingAccountID) Then SubBankingAccountID = BankingAccountID
+			BankingDate = Banking("BankingDate")
+			Comment = Banking("Comment")
+			TransactionID = Banking("TransactionID")
+			Payment = Banking("Payment")
+			Banking.Close
+		End If
+		Set Banking = Nothing
+	Else
+		TransactionID = 1006
+	End If	
+
+	sql = "sp_Transactions_get " & Session("UserID")
+	WriteDebugger sql, Debugging, 0
+	Set ors = oConn.Execute(sql)
+
+	Function ErrorCheck()
+		If IsNumeric(Payment) Then
+			ErrorCheck = true
+		Else
+			ErrorCheck = false
+		End If
+	End Function
+%>
+
+<table cellspacing=0 cellpadding=2 width="100%" border=0>
+		<%
+			If Trim(Request("BankingAccountID")) <> "" Then BankingAccountID = Trim(Request("BankingAccountID"))
+			sql = "SELECT BankingAccountName FROM BankingAccount WHERE BankingAccountID = " & BankingAccountID
+			WriteDebugger sql, Debugging, 0
+			Set rs = oConn.Execute(sql)
+			BankingAccountName = rs("BankingAccountName")
+			rs.Close
+			Set rs = Nothing
+		%>
+		<tr bgcolor="#639a63">
+			<td align="center"><font face="Arial,Verdana" color="#9cd59c" size=2><b>Account:&nbsp;</font><font face="Arial,Verdana" color="#ffffff" size=2><%= BankingAccountName %></td>
+		</tr>
+<tr>
+	<td align=center><font face="Arial" size=2><b><%= Template %>&nbsp;Transaction</b></td>
+</tr>
+<tr>
+	<td bgcolor="#ffffff">
+						<table cellspacing=0 cellpadding=3 border=0 width="100%">
+						<tr>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>
+								<table cellpadding=1>
+								<% If CreditCardErrorMessage <> "" Then %>
+								<tr>
+									<td colspan=3><font face="Arial" size=2 color="#ff0000"><b><%= CreditCardErrorMessage %>&nbsp;</td>
+								</tr>
+								<% End If %>
+								<tr>
+									<td class="frm_label">Account:</td>
+									<td class="CreditCardTheme"><b><%= BankingAccountName %></b></td>
+								</tr>
+								<tr>
+										<td class="frm_label">Linked&nbsp;Account:&nbsp;&nbsp;</td>
+										<%
+												sql = "sp_BankingAccount_SubBankingAccountID_get " & Session("UserID") & ", " & BankingAccountID
+												If IsNull(SubBankingAccountID) AND Trim(SubBankingAccountID) = "" then SubBankingAccountID = 0
+												WriteDebugger sql, Debugging, 0
+												'Response.Write "SubBankingAccountID:" & SubBankingAccountID
+										%>
+									<td><%= SelectBoxNA(oConn, sql, "SubBankingAccountID", SubBankingAccountID, "BankingElement", "Linked Account") %></td>
+								</tr>
+								<tr>
+									<td class="frm_label">Date:</td>
+									<td>
+										<%= formTextBox("BankingDate", "10", 10, "CreditCardsElement", "Date", "Invalid Date") %>
+									</td>
+								</tr>
+								<tr>
+									<td class="frm_label">Transaction:</td>
+									<td>
+										<input name="TransactionStatus" type="radio" onFocus="TransactionID_focus()" value="ID" checked>&nbsp;
+										<select name="TransactionID" onFocus="TransactionID_focus()" class="Element">
+										<%
+											Do Until ors.EOF										
+										%>
+											<% If Trim(UCase(TransactionID)) = Trim(UCase(ors("TransactionID"))) Then %>
+												<option value="<%= ors("TransactionID") %>" SELECTED><%= ors("Description") %></option>
+											<% Else %>
+												<option value="<%= ors("TransactionID") %>"><%= ors("Description") %></option>
+											<% End If %>
+										<%
+												ors.MoveNext
+											Loop
+											ors.Close
+											Set ors = Nothing
+										%>
+										</select><br />
+										<input name="TransactionStatus" type="radio" onFocus="TransactionText_focus()" value="TEXT">&nbsp;
+										<input type="text" size="20" maxlength="40" name="TransactionText" onFocus="TransactionText_focus()" value="<%= TransactionText %>" class="Element"><font face="Verdana" size=2 color="#000000">&nbsp;<b>(New&nbsp;Transaction)</b>
+									</td>
+								</tr>
+								<tr>
+									<td align="right"><font face="Verdana" size=2 color="#000000"><b>&nbsp;&nbsp;Amount:&nbsp;&nbsp;</td>
+									<td><input type="text" size="8" maxlength="8" name="Payment" value="<%= Payment %>" class="Element"></td>
+								</tr>
+								<tr valign="top">
+									<td class="frm_label">Comment:&nbsp;&nbsp;</td>
+									<td>
+										<%= formTextArea("Comment", Comment, "300", "100", "CreditCardsElement", "Comment", "Invalid Comment") %>
+									</td>
+								</tr>
+								<tr>
+									<td><font face="Verdana" size=2 color="#000000">&nbsp;&nbsp;&nbsp;</td>
+									<td>
+										<%
+											SubmitButtonValue = "Save"
+											If BankingID = "" Then SubmitButtonValue = "Add"
+										%>
+										<%= Submit_Button("SubmitButton", SubmitButtonValue, "Button", "", "SubmitButtonValue") %>
+										<% If BankingID <> "" Then %>
+											&nbsp;&nbsp;<%= Submit_Button("SubmitButton", "Delete", "DeleteButton", "", "CreditCardElement") %>
+										<% End If %>
+									</td>
+								</tr>
+								</table>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						</tr>
+						</table>
+<input type="hidden" name="BankingID" value="<%= BankingID %>">
+<input type="hidden" name="BankingAccountID" value="<%= Trim(Request("BankingAccountID")) %>">
+<input type="hidden" name="PreviousPage" value="<%= PreviousPage %>">
+<input type="hidden" name="Template" value="<%= Template %>">
+				</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+<script language="JavaScript">
+	TransactionID_focus();
+</script>
+<script>
+$(function() {
+$( "#BankingDate" ).datepicker();
+});
+</script>
+</script>

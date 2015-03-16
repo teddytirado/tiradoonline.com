@@ -1,0 +1,118 @@
+<%
+	CurrentMonth = Trim(Request("CurrentMonth"))
+	If CurrentMonth = "" Then CurrentMonth = CStr(Month(Date))
+	CurrentYear = Trim(Request("CurrentYear"))
+	If CurrentYear = "" Then CurrentYear = CStr(Year(Date))
+	'Response.Write CurrentMonth & "." & CurrentYear
+	SubmitButton = Trim(Request("SubmitButton"))
+	TextAreaCols = 30
+	TextAreaRows = 3
+	
+	If SubmitButton = "Update" Then
+		For Each Item in Request.Form
+			'If Debugging Then Response.Write Item & "&nbsp;=&nbsp;<font color=""#ff0000"">" & Request.Form(Item) & "</font><br />"
+			If Instr(Item, "ReminderDate_") Then
+				ReminderArray = Split(Item, "_")
+				ReminderDate = Trim(ReminderArray(1))
+				If CInt(ReminderDate) = Day(DateSerial(CurrentYear, CurrentMonth, CInt(ReminderDate))) Then
+					'sql = "SELECT ReminderID FROM Reminders WHERE UserID = " & Session("UserID") & " AND ReminderDate = '" & CurrentMonth & "/" & ReminderDate & "/" & CurrentYear & "'"
+					sql = "sp_Reminders_get_ReminderID " & Session("UserID") & ", '" & DateSerial(CurrentYear, CurrentMonth, ReminderDate) & "'"
+					WriteDebugger sql, Debugging, 0
+					Set Reminders = oConn.Execute(sql)
+					If Reminders.EOF Then
+						sql = "sp_Reminders_insert " & Session("UserID") & ", '" & DateSerial(CurrentYear, CurrentMonth, ReminderDate) & "', '" & Replace(Request.Form(Item), "'", "''") & "'"
+						WriteDebugger sql, Debugging, 0
+						oConn.Execute sql
+					Else
+						sql = "sp_Reminders_update " & Session("UserID") & ", '" & DateSerial(CurrentYear, CurrentMonth, ReminderDate) & "', '" & Replace(Request.Form(Item), "'", "''") & "'"
+						WriteDebugger sql, Debugging, 0
+						oConn.Execute sql
+					End If
+					Reminders.Close
+					Set Reminders = Nothing
+				End If
+			End If
+		Next
+		Response.Redirect Request.ServerVariables("SCRIPT_NAME") & "?CurrentMonth=" & CurrentMonth & "&CurrentYear=" & CurrentYear
+	ElseIf SubmitButton = "Cancel" Then
+		Response.Redirect Request.ServerVariables("SCRIPT_NAME") & "?CurrentMonth=" & CurrentMonth & "&CurrentYear=" & CurrentYear
+	End If	
+			
+	sql = "sp_Reminders_UserID_ReminderDate " & Session("UserID") & ", '" & DateSerial(CurrentYear, CurrentMonth, 1) & "'"
+	WriteDebugger sql, Debugging, 0
+	Set ors = oConn.Execute(sql)
+	Redim RemindersArray(31)
+	Do Until ors.EOF
+		RemindersArray(Day(ors("ReminderDate"))) = ors("ReminderDesc")
+		ors.MoveNext
+	Loop
+	ors.Close
+	Set ors = Nothing
+%>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+	<td align=center>
+		<table cellspacing=0 cellpadding=2 width="100%" border=0>
+		<tr>
+			<td>&nbsp;&nbsp;&nbsp;</td>
+			<td><a href="<%= Request.ServerVariables("SCRIPT_NAME") %>?Template=Reminders&CurrentMonth=<%= PreviousMonth %>&CurrentYear=<%= PreviousYear %>"><img src="images/previous.gif" width=13 height=16 hspace=0 vspace=0 border=0></a></td>
+			<td align=center width="100%"><font face="Arial,Verdana" size=2><b>Reminders for <%= MonthName(CInt(CurrentMonth)) %>&nbsp;<%= CurrentYear %></b></td>
+			<td><a href="<%= Request.ServerVariables("SCRIPT_NAME") %>?Template=Reminders&CurrentMonth=<%= NextMonth %>&CurrentYear=<%= NextYear %>"><img src="images/next.gif" width=13 height=16 hspace=0 vspace=0 border=0></a></td>
+			<td>&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr bgcolor="#ffffff">
+	<td align="center">
+		<input type="submit" name="SubmitButton" value="Update" class="CalendarElement">&nbsp;&nbsp;
+		<input type="submit" name="SubmitButton" value="Cancel" class="CalendarElement">
+	</td>
+</tr>
+<tr bgcolor="#ffffff">
+	<td>
+		<table cellspacing=0 cellpadding=0 border=0>
+		<tr>
+			<td valign="top">
+				<table cellspacing=2 cellpadding=0 border=0>
+				<%
+					cols = 30
+					rows = 2
+					For x = 1 to 15
+						Response.Write "<tr>" & vbCrLF
+						Response.Write "	<td align=right><font face=""Verdana"" size=2>&nbsp;<b>" & x & "&nbsp;</td>" & vbCrLF
+						Response.Write "	<td bgcolor=""#ffffff"" align=right><textarea name=""ReminderDate_" & x & """ cols='" & cols & "' rows='" & rows & "' class=""CalendarElement"">" & RemindersArray(x) & "</textarea></td>" & vbCrLF
+						Response.Write "</tr>" & vbCrLF
+						textarea_top = textarea_top + 80
+					Next
+				%>
+				</table>
+			</td>
+			<td valign=top>
+				<table cellspacing=2 cellpadding=0 border=0>
+				<%
+					For x = x to 31
+						If x = Day(DateSerial(CurrentYear, CurrentMonth, x)) Then
+							Response.Write "<tr>" & vbCrLF
+							Response.Write "	<td align=right><font face=""Verdana"" size=2>&nbsp;<b>" & x & "&nbsp;</td>" & vbCrLF
+							Response.Write "	<td bgcolor=""#ffffff"" align=right><textarea name=""ReminderDate_" & x & """ cols='" & cols & "' rows='" & rows & "' class=""CalendarElement"">" & RemindersArray(x) & "</textarea></td>" & vbCrLF
+							Response.Write "</tr>" & vbCrLF
+						End If
+					Next
+				%>
+				</table>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr bgcolor="#ffffff">
+	<td align="center">
+		<input type="submit" name="SubmitButton" value="Update" class="CalendarElement">&nbsp;&nbsp;
+		<input type="submit" name="SubmitButton" value="Cancel" class="CalendarElement">
+	</td>
+</tr>
+</table>
+<input type="hidden" name="Template" value="<%= Template %>">
+<input type="hidden" name="CurrentMonth" value="<%= CurrentMonth %>">
+<input type="hidden" name="CurrentYear" value="<%= CurrentYear %>">

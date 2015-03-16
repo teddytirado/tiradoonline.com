@@ -1,0 +1,66 @@
+	<div style="width:75px">
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=all">ALL</a>
+		</div>	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=medicine_last_100">Last 100</a>
+		</div>	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=sugar"><img src="/images/icons/sugar_off.gif" title="Sugar Levels" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=medicine_dose"><img src="/images/icons/medicine_dose_off.gif" title="Medicine Dose" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=medicine"><img src="/images/icons/medicine_off.gif" title="Medicine" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=blood_pressure"><img src="/images/icons/blood_pressure_off.gif" title="Blood Pressure" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=heart_rate"><img src="/images/icons/heart_rate_off.gif" title="Heart Rate" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=weight"><img src="/images/icons/weight_off.gif" title="Weight" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=temperature"><img src="/images/icons/temperature_off.gif" title="Temperature" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+<!-- 	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=insulin"><img src="/images/icons/tests_off.gif" title="" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Insulin</div>
+		</div>	
+	
+ -->		
+	 	<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=tests"><img src="/images/icons/tests_off.gif" title="Tests" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+		
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=reports"><img src="/images/icons/reports_off.gif" title="Reports" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=export"><img src="/images/icons/excel_off.gif" title="Export" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=hospital"><img src="/images/icons/hospital_off.gif" title="Hospitals" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=doctor"><img src="/images/icons/doctor_off.gif" title="Doctors" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+	
+		<div style="float:left;padding-top:0px;padding-bottom:10px;padding-left:20px;">
+			<a href="/health/health.asp?Template=pharmacy"><img src="/images/icons/pharmacy_off.gif" title="Pharmacy(s)" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+		</div>	
+	
+	</div>		

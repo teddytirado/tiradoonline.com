@@ -1,0 +1,4 @@
+<form action="<%= SCRIPT_NAME %>" method="post">
+
+<input type="hidden" id="Template" name="Template" value="<%= Template %>" />
+</form>

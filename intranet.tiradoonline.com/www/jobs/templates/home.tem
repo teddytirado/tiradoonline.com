@@ -1,0 +1,26 @@
+
+		<div style="float:left;padding:30px">
+			<a href="/jobs/jobs.asp?Template="><img src="/images/icons/companies_off.gif" title="" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;">Companies</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/jobs/jobs.asp?Template=cover_letter"><img src="/images/icons/resume_cover_letter_off.gif" title="" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Cover&nbsp;Letters<br />Text&nbsp;Resumes</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/jobs/jobs.asp?Template=resume"><img src="/images/icons/resume_off.gif" title="" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Resumes</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/jobs/jobs.asp?Template=phone_call"><img src="/images/icons/phone_calls_off.gif" title="" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Phone&nbsp;Calls</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/jobs/jobs.asp?Template=interview"><img src="/images/icons/interviews_off.gif" title="" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Interviews</div>
+		</div>	
+	

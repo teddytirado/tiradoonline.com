@@ -1,0 +1,44 @@
+		<div style="float:left;padding:10px;text-align:center">
+			<a href="/administration/administration.asp?Template=reports"><img src="/images/icons/reports_off.gif" title="Reports" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Reports</div>
+		</div>	
+	
+		<div style="float:left;padding:10px;text-align:center">
+			<a href="/administration/administration.asp?Template=email_templates"><img src="/images/icons/email_templates_off.gif" title="Email Templates" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Email&nbsp;Templates</div>
+		</div>	
+	
+		<div style="float:left;padding:10px;text-align:center">
+			<a href="/administration/administration.asp?Template=profiler"><img src="/images/icons/profiler_off.gif" title="Profiler" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Profiler</div>
+		</div>	
+	
+		<div style="float:left;padding:10px;text-align:center">
+			<a href="/administration/administration.asp?Template=logs"><img src="/images/icons/logs_off.gif" title="Logs" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Logs</div>
+		</div>	
+	
+		<div style="float:left;padding:10px;text-align:center">
+			<a href="/administration/administration.asp?Template=backup"><img src="/images/icons/safe_off.gif" title="Backups" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Backups</div>
+		</div>	
+	
+		<div style="float:left;padding:10px;text-align:center">
+			<a href="/administration/administration.asp?Template=schema"><img src="/images/icons/settings_off.gif" title="Schema" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Schema</div>
+		</div>	
+	
+		<div style="float:left;padding:10px;text-align:center">
+			<a href="/administration/administration.asp?Template=sql"><img src="/images/icons/queryanalyzer_off.gif" title="SQL Editor" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">SQL&nbsp;Editor</div>
+		</div>	
+	
+		<div style="float:left;padding:10px;text-align:center">
+			<a href="/administration/administration.asp?Template=pagelogs"><img src="/images/icons/page_logs_off.gif" title="Page Logs" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Page&nbsp;Logs</div>
+		</div>	
+	
+		<div style="float:left;padding:10px;text-align:center">
+			<a href="/administration/administration.asp?Template=users"><img src="/images/icons/users_off.gif" title="Users" width="75" height="76" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Users</div>
+		</div>	

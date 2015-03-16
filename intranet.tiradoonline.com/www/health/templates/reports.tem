@@ -1,0 +1,128 @@
+<form id="HealthReports" name="HealthReports" action="<%= SCRIPT_NAME %>" method="post" id="formHealthReports" name="formHealthReports">
+<%
+	TimesTaken = Trim(Request("TimesTaken"))
+	If TimesTaken = "" Then TimesTaken = "5"
+%>
+<table>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>
+		<div class="HealthTheme"><h1 class="Header" style="padding: 5px;">Health Reports</h1></div>
+		<p>
+		<div class="ErrorMessage" id="HealthErrorMessage" name="HealthErrorMessage"><%= HealthErrorMessage %></div>
+		<div>
+			<div style="float:right">
+				<b>Last 
+				<select id="TimesTaken" name="TimesTaken" class="HealthElement">
+				<% For x = 1 To 30 %>
+					<option <% If CStr(TimesTaken) = CStr(x) Then Response.Write "SELECTED" %>><%= x %></option>
+				<% Next %>
+				</select>
+				time(s) taken.</b>
+				<%= Submit_Button("SubmitButton", "Generate Report", "Button", "", "Generate Report") %>
+			</div>
+		</div>
+		&nbsp;<br />
+		&nbsp;<br />
+		&nbsp;<br />
+		<%
+			sql = "sp_Health_Reports " & Session("UserID") & ", " & TimesTaken & ", 1"
+			WriteDebugger sql, Debugging, 0
+			Set ors = oConn.Execute(sql)
+			
+			If NOT ors.EOF Then
+				HeartRate = ors("HeartRate")
+				Sugar = ors("Sugar")
+				Temperature = ors("Temperature")
+				BloodPressureTop = ors("BloodPressureTop")
+				BloodPressureBottom = ors("BloodPressureBottom")
+				If BloodPressureTop = "" OR BloodPressureBottom = "" Then
+					BloodPressure = ""
+				Else
+					BloodPressure = BloodPressureTop & "/" & BloodPressureBottom
+				End If
+				ors.Close
+		%>
+		<table cellpadding="5" class="GridView">
+		<tr class="HealthTheme" align="center">
+			<td colspan="4">AVERAGE</td>
+		</tr>
+		<tr class="HealthTheme" align="center">
+			<td><a href="<%= SCRIPT_NAME %>?Template=heart_rate">Heart&nbsp;Rate</a></td>
+			<td><a href="<%= SCRIPT_NAME %>?Template=sugar">Sugar</a></td>
+			<td><a href="<%= SCRIPT_NAME %>?Template=temperature">Temperature</a></td>
+			<td><a href="<%= SCRIPT_NAME %>?Template=blood_pressure">Blood&nbsp;Pressure</a></td>
+		</tr>
+		<tr class="GridViewRow" align="center">
+			<td><%= HeartRate %>&nbsp;</td>
+			<td><%= SugarColor(Sugar) %>&nbsp;</td>
+			<td><%= TemperatureColor(FormatNumber(Temperature, 1)) %>&nbsp;</td>
+			<td><%= BloodPressureColor(BloodPressure, BloodPressureBottom) %>&nbsp;</td>
+		</tr>
+		</table>
+		<% Else %>
+		<div class="ErrorMessage">No Records Found.</div>
+		<% 
+			End If
+			
+			Set ors = Nothing 
+		%>
+
+
+		<p>
+		<%
+			sql = "sp_Health_Reports " & Session("UserID") & ", " & TimesTaken & ", 2"
+			WriteDebugger sql, Debugging, 0
+			Set ors = oConn.Execute(sql)
+			If NOT ors.EOF Then
+		%>
+		<table class="GridView" cellpadding="5">
+		<tr class="HealthTheme" class="GridView">
+			<td colspan="2" align="center">Medicine(s)&nbsp;Taken&nbsp;(ALL)</td>
+		</tr>
+		<%
+			Do Until ors.EOF
+				MedicineID = ors("MedicineID")
+				Medicine = ors("Medicine")
+				Total = ors("Total")
+		%>
+		<tr class="GridViewRow">
+			<td><a href="<%= SCRIPT_NAME %>?Template=medicine&MedicineID=<%= MedicineID %>"><%= Medicine %></a></td>
+			<td align="center"><%= Total %></td>
+		</tr>
+		<%
+				ors.MoveNext
+			Loop
+			ors.Close
+		%>
+		</table>
+		<%
+			Else
+		%>
+		<div class="ErrorMessage">No Records Found.</div>
+		<%
+			End If
+			Set ors = Nothing
+		%>
+	</td>
+</tr>
+</table>
+<input type="hidden" id="Template" name="Template" value="<%= Template %>" />
+</form>
+
+<script>
+	$(document).ready
+	(
+		function()
+		{
+			$('#TimesTaken').change
+			(
+				function()
+				{
+					$('#HealthReports').submit();
+				}
+			);
+		}
+	);
+</script>
+</form>

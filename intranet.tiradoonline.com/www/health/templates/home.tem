@@ -1,0 +1,78 @@
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=sugar"><img src="/images/icons/sugar_off.gif" title="Sugar Levels" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Sugar&nbsp;Levels</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=medicine_dose"><img src="/images/icons/medicine_dose_off.gif" title="Medicine Dose" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Medicine&nbsp;Dose</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=medicine"><img src="/images/icons/medicine_off.gif" title="Medicine" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Medicine</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=blood_pressure"><img src="/images/icons/blood_pressure_off.gif" title="Blood Pressure" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Blood&nbsp;Pressure</div>
+		</div>	
+
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=heart_rate"><img src="/images/icons/heart_rate_off.gif" title="Heart Rate" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Heart&nbsp;Rate</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=weight"><img src="/images/icons/weight_off.gif" title="weight" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Weight</div>
+		</div>	
+
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=temperature"><img src="/images/icons/temperature_off.gif" title="Temperature" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Temperature</div>
+		</div>	
+<!-- 	
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=insulin"><img src="/images/icons/tests_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Insulin</div>
+		</div>	
+	
+ -->		
+ 		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=tests"><img src="/images/icons/tests_off.gif" title="Tests" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Tests</div>
+		</div>	
+		
+
+				<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=reports"><img src="/images/icons/reports_off.gif" title="Reports" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Reports</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=export"><img src="/images/icons/excel_off.gif" title="Export" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Export</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=hospital"><img src="/images/icons/hospital_off.gif" title="Hospitals" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+<!-- 			<div style="float:right;padding:30px;z-index:-1" id="hosipitalNav" name="hosipitalNav">
+				<%= Button("Button", "Positions", "Button", "", "Positions", "location.href='" & SCRIPT_NAME & "?Template=hospitalposition'") %><p />
+				<%= Button("Button", "Staff", "Button", "", "Staff", "location.href='" & SCRIPT_NAME & "?Template=hospitalstaff'") %>
+			</div>
+ -->
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Hospitals</div>
+		</div>	
+	
+
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=doctor"><img src="/images/icons/doctor_off.gif" title="Doctors" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Doctors</div>
+		</div>	
+	
+		<div style="float:left;padding:30px">
+			<a href="/health/health.asp?Template=pharmacy"><img src="/images/icons/pharmacy_off.gif" title="Pharmacy(s)" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Pharmacy(s)</div>
+		</div>	
+	
