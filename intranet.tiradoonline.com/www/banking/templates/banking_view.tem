@@ -2,12 +2,37 @@
 	If SubmitButton = "Search" Then
 		checkboxBankingAccountID = Trim(Request("checkboxBankingAccountID"))
 		checkboxTransactionID = Trim(Request("checkboxTransactionID"))
+		radioDebitCredit = Trim(Request("radioDebitCredit"))
 		searchBankingAccountStartDate = Trim(Request("searchBankingAccountStartDate"))
 		searchBankingAccountEndDate = Trim(Request("searchBankingAccountEndDate"))
 		searchComment = Trim(Request("searchComment"))
+
+		'RESET COOKIES
+		Response.Cookies("checkboxBankingAccountIDCookies") = ""
+		Response.Cookies("checkboxBankingAccountIDCookies").Expires = Date - 10
+
+		Response.Cookies("radioDebitCreditCookies") = ""
+		Response.Cookies("radioDebitCreditCookies").Expires = Date - 10
+
+		Response.Cookies("checkboxTransactionIDCookies") = ""
+		Response.Cookies("checkboxTransactionIDCookies").Expires = Date - 10
+
+		Response.Cookies("searchBankingAccountStartDateCookies") = ""
+		Response.Cookies("searchBankingAccountStartDateCookies").Expires = Date - 10
+
+		Response.Cookies("searchBankingAccountEndDateCookies") = ""
+		Response.Cookies("searchBankingAccountEndDateCookies").Expires = Date - 10
+ 
+		Response.Cookies("searchCommentCookies") = ""
+		Response.Cookies("searchCommentCookies").Expires = Date - 10
+		
+
 		
 		Response.Cookies("checkboxBankingAccountIDCookies") = checkboxBankingAccountID
 		Response.Cookies("checkboxBankingAccountIDCookies").Expires = Date + 10
+
+		Response.Cookies("radioDebitCreditCookies") = radioDebitCredit
+		Response.Cookies("radioDebitCreditCookies").Expires = Date + 10
 
 		Response.Cookies("checkboxTransactionIDCookies") = checkboxTransactionID
 		Response.Cookies("checkboxTransactionIDCookies").Expires = Date + 10
@@ -25,6 +50,7 @@
 			Session("UserID") & ", " & _
 			"'" & checkboxBankingAccountID & "', " & _
 			"'" & checkboxTransactionID & "', " & _
+			"'" & radioDebitCredit & "', " & _
 			"'" & searchBankingAccountStartDate & "', " & _
 			"'" & searchBankingAccountEndDate & "', " & _
 			"'" & SQLEncode(searchComment) & "'"

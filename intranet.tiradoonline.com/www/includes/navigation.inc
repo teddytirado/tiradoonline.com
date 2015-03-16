@@ -100,9 +100,18 @@ LEFT NAVIGATION
 		<!-- BANKING -->
 		<!-- ******************************************** -->
 		<% If Session("Banking") OR Session("Administrator") Then %>
-		<div id="nav_banking" class="BankingTheme" <%= navStyle %> title="Banking">
-			<img src="/images/icons/plus_black.gif" id="bankingAccordion" name="bankingAccordion" title="" width="15" height="10" hspace="0" vspace="0" border="0">
-			<a href="/banking/banking.asp">Banking</a>
+		<div id="nav_banking" class="BankingTheme" <%= navStyle %> title="Banking">	
+			<table cellspacing=0 cellpadding=0 border=0 width="100%">
+			<tr>
+				<td>
+					<img src="/images/icons/plus_black.gif" id="bankingAccordion" name="bankingAccordion" title="" width="15" height="10" hspace="0" vspace="0" border="0">
+					<a href="/banking/banking.asp">Banking</a>
+				</td>
+				<td align="right">
+					<a href="/banking/banking.asp?Template=Search">[&nbsp;Search&nbsp;]</a>&nbsp;&nbsp;
+				</td>
+			</tr>
+			</table>
 		</div>
 
 		<div id="bankingSubMenu" name="bankingSubMenu" style="display:none">

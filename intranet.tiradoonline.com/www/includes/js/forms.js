@@ -77,6 +77,74 @@ $(document).ready(
 			}
 		);
 		
+		$('#formBankingSearch').submit(
+			function()
+			{
+				var $searchBankingAccountStartDate = $.trim($('#searchBankingAccountStartDate').val());
+				var $searchBankingAccountEndDate = $.trim($('#searchBankingAccountEndDate').val());
+				var $boolBankingAccountStartDate = false;
+				var $boolBankingAccountEndDate = false;
+
+				if($searchBankingAccountStartDate != '' || $searchBankingAccountEndDate != '')
+				{
+					if($searchBankingAccountStartDate != '')
+					{
+						if(!isDate($searchBankingAccountStartDate)) {
+							displayError($('#searchBankingAccountStartDate'));
+							$('#searchBankingAccountStartDate').focus();
+							return false;
+						}
+						else
+							$boolBankingAccountStartDate = true;
+					}
+	
+					if($searchBankingAccountEndDate != '')
+					{
+						if(!isDate($searchBankingAccountEndDate)) {
+							displayError($('#searchBankingAccountEndDate'));
+							$('#searchBankingAccountEndDate').focus();
+							return false;
+						}
+						else
+							$boolBankingAccountEndDate = true;
+					}
+					
+					if($boolBankingAccountEndDate == true && $searchBankingAccountStartDate == '')
+					{
+						displayError($('#searchBankingAccountStartDate'));
+						$('#searchBankingAccountStartDate').focus();
+						return false;
+					}
+					
+					if($boolBankingAccountStartDate == true && $searchBankingAccountEndDate == '')
+					{
+						displayError($('#searchBankingAccountEndDate'));
+						$('#searchBankingAccountEndDate').focus();
+						return false;
+					}
+					
+					if($searchBankingAccountStartDate == true && $boolBankingAccountEndDate == '')
+					{
+						displayError($('#searchBankingAccountStartDate'));
+						$('#searchBankingAccountStartDate').focus();
+						return false;
+					}
+					
+					if($boolBankingAccountStartDate == true && $boolBankingAccountEndDate == true)
+					{
+						if($searchBankingAccountEndDate < $searchBankingAccountStartDate)
+						{
+							alert('Date Range:  End Date cannont be prior to Start Date');
+							$('#searchBankingAccountStartDate').val('');
+							$('#searchBankingAccountEndDate').val('');
+							return false;
+						}
+					}
+				}				
+
+			}
+		);
+		
 		$('#formBankingTransactions').submit(
 			function() {
 				var $TransactionName = $.trim($('#TransactionName').val());
