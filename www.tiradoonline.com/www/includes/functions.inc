@@ -102,10 +102,10 @@
 
 
 	Function ValidateZipCode(v_City, v_ZipCode)
-		sql = sp_ZipCode_Validate_get " & _
+		sql = "sp_ZipCode_Validate_get " & _
 		      "'" & SQLEncode(v_City) & "', " & _
 		      "'" & SQLEncode(v_State) & "', " & _
-		      "'" & SQLEncode(v_ZipCode) & "', " & _
+		      "'" & SQLEncode(v_ZipCode) & "'"
 		Set ors = oConn.Execute(sql)
 		If ors.EOF Then
 			ValidateZipCode = false

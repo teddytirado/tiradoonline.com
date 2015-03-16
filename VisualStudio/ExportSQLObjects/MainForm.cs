@@ -85,66 +85,66 @@ namespace ExportSQLObjectsNameSpace
             tablesText = string.Empty;
             viewsText = string.Empty;
 
-            //this.ExportAllStoredProcedures(this.ExportFolderName + @"\procedures");
+            this.ExportAllStoredProcedures(this.ExportFolderName + @"\procedures");
 
-            //this.ExportAllTables(this.ExportFolderName + @"\tables");
+            this.ExportAllTables(this.ExportFolderName + @"\tables");
 
-            //this.ExportAllViews(this.ExportFolderName + @"\views");
+            this.ExportAllViews(this.ExportFolderName + @"\views");
 
-            //StreamWriter SW;
+            StreamWriter SW;
 
-            //string DirectoryPath = this.ExportFolderName + "\\procedures.sql";
-            //SW = File.CreateText(DirectoryPath);
-            //SW.WriteLine(proceduresText);
-            //SW.Close();
-            //SW = null;
-            //Application.DoEvents();
+            string DirectoryPath = this.ExportFolderName + "\\procedures.sql";
+            SW = File.CreateText(DirectoryPath);
+            SW.WriteLine(proceduresText);
+            SW.Close();
+            SW = null;
+            Application.DoEvents();
 
-            //StreamWriter SW2;
-            //DirectoryPath = this.ExportFolderName + "\\tables.sql";
-            //SW2 = File.CreateText(DirectoryPath);
-            //SW2.WriteLine(tablesText);
-            //SW2.Close();
-            //SW2 = null;
-            //Application.DoEvents();
+            StreamWriter SW2;
+            DirectoryPath = this.ExportFolderName + "\\tables.sql";
+            SW2 = File.CreateText(DirectoryPath);
+            SW2.WriteLine(tablesText);
+            SW2.Close();
+            SW2 = null;
+            Application.DoEvents();
 
-            //StreamWriter SW3;
-            //DirectoryPath = this.ExportFolderName + "\\foreign_keys.sql";
-            //SW3 = File.CreateText(DirectoryPath);
-            //try
-            //{
-            //    SW3.WriteLine(foreignkeysText);
-            //}
-            //catch (Exception ex)
-            //{
-            //    string error_message = ex.ToString(); ;
-            //}
-            //SW3.Close();
-            //SW3 = null;
-            //Application.DoEvents();
+            StreamWriter SW3;
+            DirectoryPath = this.ExportFolderName + "\\foreign_keys.sql";
+            SW3 = File.CreateText(DirectoryPath);
+            try
+            {
+                SW3.WriteLine(foreignkeysText);
+            }
+            catch (Exception ex)
+            {
+                string error_message = ex.ToString(); ;
+            }
+            SW3.Close();
+            SW3 = null;
+            Application.DoEvents();
 
-            //StreamWriter SW4;
-            //DirectoryPath = this.ExportFolderName + "\\views.sql";
-            //SW4 = File.CreateText(DirectoryPath);
-            //SW4.WriteLine(viewsText);
-            //SW4.Close();
-            //SW4 = null;
+            StreamWriter SW4;
+            DirectoryPath = this.ExportFolderName + "\\views.sql";
+            SW4 = File.CreateText(DirectoryPath);
+            SW4.WriteLine(viewsText);
+            SW4.Close();
+            SW4 = null;
 
-            //StreamWriter SW5;
-            //DirectoryPath = this.ExportFolderName + "\\schema.sql";
-            //SW5 = File.CreateText(DirectoryPath);
-            //SW5.WriteLine(tablesText + Environment.NewLine + Environment.NewLine + foreignkeysText + Environment.NewLine + viewsText + Environment.NewLine + Environment.NewLine + proceduresText);
-            //SW5.Close();
-            //SW5 = null;
+            StreamWriter SW5;
+            DirectoryPath = this.ExportFolderName + "\\schema.sql";
+            SW5 = File.CreateText(DirectoryPath);
+            SW5.WriteLine(tablesText + Environment.NewLine + Environment.NewLine + foreignkeysText + Environment.NewLine + viewsText + Environment.NewLine + Environment.NewLine + proceduresText);
+            SW5.Close();
+            SW5 = null;
 
-            ClassLibrarySQLServer objExcel = new ClassLibrarySQLServer();
-            objExcel.SQLServerName = textBox_Server.Text;
-            objExcel.SQLServerDatabaseName = textBox_Database.Text;
-            objExcel.SQLUserName = textBox_Username.Text;
-            objExcel.SQLPassword = textBox_Password.Text;
-            objExcel.OutputDirectory = folderBrowserDialog_Form.SelectedPath;
-            objExcel.ExportTablesToExcel();
-            objExcel = null;
+            //ClassLibrarySQLServer objExcel = new ClassLibrarySQLServer();
+            //objExcel.SQLServerName = textBox_Server.Text;
+            //objExcel.SQLServerDatabaseName = textBox_Database.Text;
+            //objExcel.SQLUserName = textBox_Username.Text;
+            //objExcel.SQLPassword = textBox_Password.Text;
+            //objExcel.OutputDirectory = folderBrowserDialog_Form.SelectedPath;
+            //objExcel.ExportTablesToExcel();
+            //objExcel = null;
 
             Application.DoEvents();
 

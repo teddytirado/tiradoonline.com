@@ -41,11 +41,6 @@ C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\ExportSQLObjects
 C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\bin\Debug\ExportSQLObjects.exe.config
 C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\bin\Debug\ClassLibrary.dll
 C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\bin\Debug\ClassLibrary.pdb
-C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\bin\Debug\itextsharp.dll
-C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\ResolveAssemblyReference.cache
-C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\GenerateResource-ResGen.read.1.tlog
-C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\GenerateResource.read.1.tlog
-C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\ResGen.read.1.tlog
-C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\GenerateResource-ResGen.write.1.tlog
-C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\GenerateResource.write.1.tlog
-C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\ResGen.write.1.tlog
+C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\bin\Debug\OpenPop.dll
+C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\ExportSQLObjects.csprojResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\ExportSQLObjects\obj\Debug\ExportSQLObjects.csproj.GenerateResource.Cache
