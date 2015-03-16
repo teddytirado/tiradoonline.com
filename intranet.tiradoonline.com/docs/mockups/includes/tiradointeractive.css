@@ -1,0 +1,159 @@
+BODY, TD {
+	font-family: Verdana;
+	font-size: 12px;
+}
+
+.button {
+	border: solid 2px #000000;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: rgb(23,38,168);
+	padding: 5px;
+}
+
+#ErrorMessage {
+	color: #ff0000;
+	font-weight: bold;
+}
+
+.frm_label {
+	text-align: right;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+/*
+.frm_textbox {
+	border: solid 1px;
+	width 20px;
+}
+*/
+
+.dialogLogo {
+	padding-top: 10px;
+}
+
+#dialogCreateAccount {
+	display: none;
+}
+
+#dialogCreateTransaction {
+	display: none;
+}
+
+#dialogCreateReminder {
+	display: none;
+}
+
+#dialogForgotPassword {
+	display: none;
+}
+
+#divLoading {
+	display: none;
+}
+
+#dialogLogin {
+	display: none;
+}
+
+#divSplashScreen {
+	display: none;
+}
+
+
+
+#PageHeader {
+	color: #ffffff;
+	font-size: 30px;
+	background-color: rgb(23,38,168);
+	font-weight: bold;
+	font-family: Engravers MT;
+	padding: 10px;
+	padding-left: 20px;
+	vertical-align: middle;
+	border: 2px solid #000000;
+}
+
+.Header {
+	color: #ffffff;
+	font-size: 12px;
+	background-color: rgb(23,38,168);
+	font-weight: bold;
+}
+
+.navItem {
+	cursor: hand;
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin: 10px;
+	padding: 5px;
+	background-color: rgb(23,38,168);
+}
+
+.navItem:hover {
+	cursor: hand;
+	background-color: rgb(0,102,55);
+}
+
+.negative_number {
+	color: #ff0000;
+}
+
+.positive_number {
+	color: rgb(0,176,80);
+}
+
+.subNavItem {
+	display: inherits;
+	position: absolute;
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin: 10px;
+	padding: 5px;
+	background-color: rgb(23,38,168);
+	
+}
+
+.subNavItem:hover {
+	background-color: rgb(0,102,55);
+}
+
+INPUT, SELECT {
+	border: 1px solid #000000;
+}
+
+.textBox {
+	border: 1px solid #000000;
+}
+
+.textFocus {
+	border: 1px solid rgb(36,72,136);
+}
+
+#Welcome {
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 5px;
+	float: right;
+	padding-right: 20px;
+}
+
+#widthPage {
+	width: 800px;
+}
+
+#widthTemplate {
+	padding-left: 20px;
+}
+
+
+

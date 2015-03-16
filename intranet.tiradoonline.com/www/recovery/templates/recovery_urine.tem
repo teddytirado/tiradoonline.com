@@ -1,0 +1,255 @@
+<%
+		sql = "SELECT MIN(a.RecoveryUrineDateTime) FROM RecoveryUrine a, RecoveryPrograms b WHERE a.RecoveryProgramID = " & RecoveryProgramID
+		WriteDebugger sql, Debugging, 0
+		Set ors = oConn.Execute(sql)
+		MinDate = Date
+		If NOT ors.EOF Then
+			MinDate = ors.Fields(0).Value
+			ors.Close
+		End If
+		Set ors = Nothing
+	
+		sql = "SELECT * FROM RecoveryPrograms WHERE RecoveryProgramID = " & RecoveryProgramID
+		WriteDebugger sql, Debugging, 0
+		Set ors = oConn.Execute(sql)
+		If NOT ors.EOF Then
+			RecoveryTypeID = ors("RecoveryTypeID")
+			ProgramName = ors("ProgramName")
+			ors.Close
+		End If
+		Set ors = Nothing
+
+		sql = "SELECT * FROM RecoveryTypes WHERE RecoveryTypeID = " & RecoveryTypeID
+		WriteDebugger sql, Debugging, 0
+		Set ors = oConn.Execute(sql)
+		If NOT ors.EOF Then
+			RecoveryTypeName = ors("RecoveryTypeName")
+			ors.Close
+		End If
+		Set ors = Nothing
+		
+	If SubmitButton = "Add Urine" Then
+		sql = "INSERT INTO RecoveryUrine (RecoveryProgramID, RecoveryUrineDateTime, RecoveryUrineResult, RecoveryUrineDescription) VALUES (" & _
+			RecoveryProgramID & ", " & _
+			"'" & SQLEncode(RecoveryUrineDateTime) & "', " & _
+			RecoveryUrine & ", " & _
+			"'" & SQLEncode(RecoveryUrineDescription) & "')"
+		
+		WriteDebugger sql, Debugging, 0
+		oConn.Execute(sql)
+		RecoveryErrorMessage = Server.URLEncode("Urine added.")
+		Response.Redirect SCRIPT_NAME & "?Template=recovery_programs&RecoveryTypeID=" & RecoveryTypeID & "&RecoveryErrorMessage=" & RecoveryErrorMessage
+	ElseIf SubmitButton = "Save Urine" Then
+		sql = "UPDATE RecoveryUrine SET " & _
+			"RecoveryUrineDateTime = '" & SQLEncode(RecoveryUrineDateTime) & "', " & _
+			"RecoveryUrineResult = " & RecoveryUrineResult & ",  " & _
+			"RecoveryUrineDescription = '" & SQLEncode(RecoveryUrineDescription) & "' " & _
+			"WHERE RecoveryUrineID = " & RecoveryUrineID
+		
+		WriteDebugger sql, Debugging, 0
+		oConn.Execute(sql)
+		RecoveryErrorMessage = Server.URLEncode("Urine saved.")
+		Response.Redirect SCRIPT_NAME & "?Template=recovery_programs&RecoveryTypeID=" & RecoveryTypeID & "&RecoveryErrorMessage=" & RecoveryErrorMessage
+	End If
+
+		SubmitButtonValue = "Add"
+		If RecoveryUrineDateTime = "" Then RecoveryUrineDateTime = Date
+		If RecoveryUrineID <> "" Then
+			SubmitButtonValue = "Save"
+			sql = "SELECT * FROM RecoveryUrine WHERE RecoveryUrineID = " & RecoveryUrineID
+			Set ors = oConn.Execute(sql)
+			If NOT ors.EOF Then
+				RecoveryProgramID = ors("RecoveryProgramID")
+				RecoveryUrineDateTime = ors("RecoveryUrineDateTime")
+				ors.Close
+			End If 
+			Set ors = Nothing
+		End If
+
+
+		sql = "SELECT COUNT(*) FROM RecoveryUrine WHERE RecoveryProgramID = " & RecoveryProgramID
+		Set orsTotal = oConn.Execute(sql)
+		TotalUrines = orsTotal.Fields(0).Value
+		orsTotal.Close
+		Set orsTotal = Nothing 
+	%>
+	&nbsp;
+	<form action="<%= SCRIPT_NAME %>" method="post" id="formRecoveryUrine" name="formRecoveryUrine">
+	<table border="0" cellspacing="0" cellpadding="10">
+	<tr bgcolor="<%= RECOVERY_THEME %>">
+		<td class="RecoveryTheme" colspan="2">
+			&nbsp;&nbsp;			
+			<% If RecoveryUrineID <> "" Then %>
+			&nbsp;&nbsp;&nbsp;
+			<%= Button("Button", "Add New Urine", "Button", "float:right", "Add New Urine", "location.href='" & SCRIPT_NAME & "?Template=recovery_urine&RecoveryProgramID=" & RecoveryProgramID & "&RecoveryTypeID=" & RecoveryTypeID & "'") %>&nbsp;&nbsp;&nbsp;
+			<% End If %>
+			<b><%= HTMLFormat(RecoveryTypeName) %></b>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<%= Button("Button", "Cancel", "Button", "float:right", "Cancel", "location.href='" & SCRIPT_NAME & "?Template=recovery_programs&RecoveryProgramID=" & RecoveryProgramID & "&RecoveryTypeID=" & RecoveryTypeID & "'") %>
+			&nbsp;&nbsp;&nbsp;
+		</td>
+	</tr>
+	<tr valign="top">
+		<td valign="top">
+			<table cellpadding="0" class="GridViewAlteringRows">
+			<tr>
+				<td class="RecoveryTheme">Urine&nbsp;(<%= TotalUrines %>)</td>
+			</tr>
+			<%
+				sql = "SELECT " & _
+						"RecoveryUrineID, " & _
+						"RecoveryUrineDateTime, " & _
+						"RecoveryUrineResult " & _
+					"FROM " & _
+						"RecoveryUrine " & _
+					"WHERE " & _
+						"RecoveryProgramID =  " & RecoveryProgramID & _
+					" ORDER BY " & _
+						"RecoveryUrineDateTime DESC"
+				Set ors = oConn.Execute(sql)
+				
+				If NOT ors.EOF Then 
+					JQueryDates = "" & vbCrLF
+					Counter = 1
+					StartDate = ""
+					EndDate = ""
+					Do Until ors.EOF
+						RecoveryUrineID = ors("RecoveryUrineID")
+						v_RecoveryUrineDateTime = FormatDateTime(ors("RecoveryUrineDateTime"), 2)
+						
+						If Counter = 1 Then EndDate = v_RecoveryUrineDateTime
+						StartDate = v_RecoveryUrineDateTime
+						v_RecoveryUrineResult = ors("RecoveryUrineResult")
+						JQueryDates = JQueryDates & "SelectedDates[new Date('" & v_RecoveryUrineDateTime & "')] = new Date('" & v_RecoveryUrineDateTime & "');" & vbCrLF
+			%>
+			<tr class="GridViewRow" valign="top" onclick="location.href='<%= SCRIPT_NAME %>?Template=<%= Template %>&RecoveryProgramID=<%= RecoveryProgramID %>&RecoveryTypeID=<%= RecoveryTypeID %>&RecoveryUrineID=<%= RecoveryUrineID %>&Action=Edit'">
+				<td align="right">
+					<b><%= UrineColor(HTMLFormat(v_RecoveryUrineDateTime), v_RecoveryUrineResult) %></b>
+				</td>
+			</tr>
+			<%
+						Counter = Counter + 1
+						ors.MoveNext
+					Loop
+					ors.Close
+			%>
+			<% Else %>
+			<tr>
+				<td class="ErrorMessage">No&nbsp;Urine&nbsp;found</td>
+			</tr>
+			<%
+				End If
+				Set ors = Nothing
+			%>
+			</table>
+		</td>
+		<td valign="top">
+			<table border="0" cellspacing="0" cellpadding="10">
+			<tr>
+				<td colspan="2" class="ErrorMessage">
+					<%= RecoveryErrorMessage %>&nbsp;&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					<b>Program&nbsp;Name:</b>&nbsp;
+				</td>
+				<td class="RecoveryTheme">
+					<b><%= ProgramName %></b>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					<b>Date:</b>&nbsp;
+				</td>
+				<td>
+					<%= formTextBox("RecoveryUrineDateTime", "10", RecoveryUrineDateTime, "RecoveryElement", "Urine Date", "Invalid Date") %><%= REQUIRED_ICON %>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					<b>Result:</b>&nbsp;
+				</td>
+				<td>
+					<select id="RecoveryUrineResult" name="RecoveryUrineResult" class="RecoveryElement">
+						<option value="0"<% If CStr(RecoveryUrineResult) = "0" Then Response.Write " SELECTED" %>>NEGATIVE</option>
+						<option value="1"<% If CStr(RecoveryUrineResult) = "1" Then Response.Write " SELECTED" %>>POSITIVE</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="frm_label" valign="top">Comments:</td>
+				<td>
+					<%= formTextArea("RecoveryUrineDescription", RecoveryUrineDescription, "400", "100", "RecoveryElement", "Description", "Invalid Description") %>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<%= Submit_Button("SubmitButton", SubmitButtonValue & " Urine", "Button", "", SubmitButtonValue & " Urine") %>&nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+			</tr>
+			</table>
+			
+			<p />
+			
+		</td>
+		<% If RecoveryUrineID <> "" Then %>
+		<td valign="top">
+		<style type="text/css">
+		
+
+.ui-datepicker 
+{ 
+	margin-top: 0px;
+	margin-left: 0px;
+}
+		</style>
+									
+			<div id="datepickerRecoveryUrines" name="datepickerRecoveryUrines"></div>
+
+		</td>
+		<% End If %>
+	</tr>
+	</table>
+	<input type="hidden" id="Template" name="Template" value="<%= Template %>" />
+	<input type="hidden" id="RecoveryProgramID" name="RecoveryProgramID" value="<%= RecoveryProgramID %>" />
+	<input type="hidden" id="RecoveryTypeID" name="RecoveryTypeID" value="<%= RecoveryTypeID %>" />
+	<input type="hidden" id="RecoveryUrineID" name="RecoveryUrineID" value="<%= RecoveryUrineID %>" />
+	</form>	
+	
+<script type="text/javascript">
+
+	$('#RecoveryUrineDateTime').datepicker();
+
+	var SelectedDates = {};
+	<%= JQueryDates %>
+<%
+	'Response.Write "StartDate:" & StartDate & "<br />"
+	'Response.Write "EndDate:" & EndDate & "<br />"
+	'Response.End
+	DiffMonths = DateDiff("m", StartDate, EndDate)
+%>
+	var diffMonths = <%= DiffMonths + 1 %>;
+	var endDate = '<%= EndDate %>';
+
+	$("#datepickerRecoveryUrines").datepicker({
+	    minDate: '<%= MinDate %>',
+	    numberOfMonths: diffMonths,
+		disabled: true,
+		beforeShowDay: function(date)
+		{
+	     	var Highlight = SelectedDates[date];
+	      	if (Highlight) {
+	        	return [true, "Highlighted", Highlight];
+	      	}
+	      	else {
+	         	return [true, '', ''];
+	      	}
+	   	}	
+	});
+
+	$("#datepickerRecoveryUrines").datepicker( "setDate" , "<%= MinDate %>" );	
+	$("#datepickerRecoveryUrines").datepicker( "option", "disabled", true );
+
+</script>

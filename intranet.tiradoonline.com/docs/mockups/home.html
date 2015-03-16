@@ -1,0 +1,158 @@
+<html>
+<head>
+	<title>tiradointeractive.com</title>
+	<link rel="stylesheet" type="text/css" href="includes/tiradointeractive.css" />
+	<link rel="stylesheet" type="text/css" href="includes/menu.css" />
+
+
+	<link rel="stylesheet" href="includes/themes/base/jquery.ui.all.css">
+	<script src="includes/jquery.js"></script>
+	<script language="JavaScript" type="text/javascript"  src="includes/menu.js" /></script>
+	<script src="includes/ui/jquery.ui.core.js"></script>
+	<script src="includes/ui/jquery.ui.widget.js"></script>
+
+	<script src="includes/ui/jquery.ui.accordion.js"></script>
+	<script src="includes/ui/jquery.ui.tabs.js"></script>
+
+
+	<script src="includes/external/jquery.bgiframe-2.1.2.js"></script>
+	<script src="includes/ui/jquery.ui.mouse.js"></script>
+	<script src="includes/ui/jquery.ui.button.js"></script>
+	<script src="includes/ui/jquery.ui.draggable.js"></script>
+	<script src="includes/ui/jquery.ui.position.js"></script>
+	<script src="includes/ui/jquery.ui.resizable.js"></script>
+
+	<script src="includes/ui/jquery.ui.dialog.js"></script>
+	<script src="includes/ui/jquery.effects.core.js"></script>
+
+	
+	<script>
+	$(function() {
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+		var username =  $('#username'),
+			password =  $('#password'),
+			allFields = $( [] ).add( username ).add( password ),
+			tips = $( "#ErrorMessage" );
+
+		function updateTips( t ) {
+			tips
+				.text( t )
+				.addClass( "ErrorMessage" );
+			setTimeout(function() {
+				tips.removeClass( "ui-state-highlight", 1500 );
+			}, 500 );
+		}
+		
+		$( "#dialog-form" ).dialog({
+			autoOpen: false,
+			height: 200,
+			width: 340,
+			title: "tiradointeractive Intranet Login",
+			modal: true,
+			draggable: false,
+			buttons: {
+				"Login": function() {
+					allFields.removeClass( "" );
+	
+					if ( validateLogin($('#username').val(), $('#password').val()) ) {
+						setCookie("username", $('#username').val(), 10)
+						alert("valid");
+						$( this ).dialog( "close" );
+						location.href = "home.html";
+					}
+					else {
+						tips.addClass( "ErrorMessage" );
+						
+						updateTips( "Invalid Login" );
+					}
+				},
+				Cancel: function() {
+					$('#username').val('');
+					$('#password').val('');
+					updateTips( "" );
+					$( this ).dialog( "close" );
+				}	
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+
+		/*********************/
+		/*  TEXT BOX FOCUS/BLUR EVENTS */
+		/********************/
+		$("input").focus(
+				function() {
+					$(this).addClass('textFocus');
+				}
+			);
+		$("input").blur(
+				function() {
+					$(this).removeClass('textFocus');
+				}
+		);
+		$( "#openLogin")
+			.button()
+			.click(function() {
+				$( "#dialog-form" ).dialog( "open" );
+			});
+		});
+		
+	</script>
+</head>
+
+<body>
+
+<img src="images/header/header_logo.gif" id="openLogin" border="0" />
+
+<style type="text/css">
+* { 
+	margin:0;
+    	padding:0;
+}
+</style>
+
+<div id="menu">
+	<ul class="menu">
+        		<li>
+			<a href="#" class="parent"><span>Banking</span></a>
+            			<div>
+				<ul>
+                					<li>
+						<a href="#" class="parent"><span>Accounts</span></a>
+						<div>
+							<ul>
+			                					<li>
+									<a href="#" class="parent"><span><pre><New Account></pre></span></a>
+								</li>				
+			                					<li>
+									<a href="#" class="parent"><span>Chase</span></a>
+								</li>				
+							</ul>
+						</div>
+					</li>
+                					<li><a href="#" class="parent"><span>Bill Reminders</span></a></li>
+                					<li><a href="#" class="parent"><span>Reports</span></a></li>
+				</ul>
+			</div>
+		</li>
+        		<li>
+			<a href="#"><span>Media Player</span></a>
+		</li>
+        		<li>
+			<a href="#"><span>Snippets</span></a>
+		</li>
+        		<li>
+			<a href="#"><span>Timesheets</span></a>
+		</li>
+        		<li>
+			<a href="#"><span>Welcome teddy</span></a>
+		</li>
+    	</ul>
+</div>
+
+
+</body>
+</html>

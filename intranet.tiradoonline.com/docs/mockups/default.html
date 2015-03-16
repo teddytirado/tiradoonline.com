@@ -1,0 +1,167 @@
+<html>
+<head>
+	<title>tiradointeractive.com</title>
+	<link rel="stylesheet" type="text/css" href="includes/tiradointeractive.css" />
+	<script language="JavaScript" type="text/javascript"  src="includes/cookies.js" /></script>
+	<script language="JavaScript" type="text/javascript"  src="includes/login.js" /></script>
+
+
+	<link rel="stylesheet" href="includes/themes/base/jquery.ui.all.css">
+	<script src="includes/jquery.js"></script>
+	<script src="includes/ui/jquery.ui.core.js"></script>
+	<script src="includes/ui/jquery.ui.widget.js"></script>
+
+	<script src="includes/ui/jquery.ui.accordion.js"></script>
+	<script src="includes/ui/jquery.ui.tabs.js"></script>
+
+
+	<script src="includes/external/jquery.bgiframe-2.1.2.js"></script>
+	<script src="includes/ui/jquery.ui.mouse.js"></script>
+	<script src="includes/ui/jquery.ui.button.js"></script>
+	<script src="includes/ui/jquery.ui.draggable.js"></script>
+	<script src="includes/ui/jquery.ui.position.js"></script>
+	<script src="includes/ui/jquery.ui.resizable.js"></script>
+
+	<script src="includes/ui/jquery.ui.dialog.js"></script>
+	<script src="includes/ui/jquery.effects.core.js"></script>
+
+	
+	<script>
+	$(function() {
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+		var username =  $('#username'),
+			password =  $('#password'),
+			allFields = $( [] ).add( username ).add( password ),
+			tips = $( "#ErrorMessage" );
+
+		function updateTips( t ) {
+			tips
+				.text( t )
+				.addClass( "ErrorMessage" );
+			setTimeout(function() {
+				tips.removeClass( "ui-state-highlight", 1500 );
+			}, 500 );
+		}
+		
+		$( "#dialog-form" ).dialog({
+			autoOpen: false,
+			height: 200,
+			width: 340,
+			title: "tiradointeractive Intranet Login",
+			modal: true,
+			draggable: false,
+			buttons: {
+				"Login": function() {
+					allFields.removeClass( "" );
+	
+					if ( validateLogin($('#username').val(), $('#password').val()) ) {
+						setCookie("username", $('#username').val(), 10)
+						$( this ).dialog( "close" );
+						location.href = "home.html";
+					}
+					else {
+						tips.addClass( "ErrorMessage" );
+						
+						updateTips( "Invalid Login" );
+					}
+				},
+				Cancel: function() {
+					$('#username').val('');
+					$('#password').val('');
+					updateTips( "" );
+					$( this ).dialog( "close" );
+				}	
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+
+		/*********************/
+		/*  TEXT BOX FOCUS/BLUR EVENTS */
+		/********************/
+		$("input").focus(
+				function() {
+					$(this).addClass('textFocus');
+				}
+			);
+		$("input").blur(
+				function() {
+					$(this).removeClass('textFocus');
+				}
+		);
+		$( "#openLogin")
+			.button()
+			.click(function() {
+				$( "#dialog-form" ).dialog( "open" );
+			});
+		});
+		
+	</script>
+</head>
+
+<body>
+
+<form>
+<table width="100%" height="100%">
+<tr>
+	<td align="center" valign="middle">
+		<div id="divSplashScreen">
+			<img src="images/header/header_logo.gif" id="openLogin" border="0" />
+		</div>
+		<div id="divLogin">
+
+			<div id="dialog-form">
+				<table bgcolor="#ffffff" cellspacing=3 cellpadding=3>
+				<tr>
+					<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+					<td colspan="2"><div id="ErrorMessage" /></td>
+					<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+				</tr>
+				<tr>
+					<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+					<td class="frm_label">Username:</td>
+					<td><input type="text" id="username" class="textbox"  value="" /></td>
+					<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+				</tr>
+				<tr>
+					<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+					<td class="frm_label">Password:</td>
+					<td><input type="password" id="password" class="textbox"  /></td>
+					<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+				</tr>
+				</table>
+			
+			</div>
+		
+		</div>
+
+	</td>
+</tr>
+</table>
+</form>
+	
+<script language="JavaScript">
+<!--
+	try {
+		username = getCookie("username");
+		//document.forms[0].username.value = username;
+	}
+	catch (e) { alert(e); } 
+//-->
+</script>
+	
+
+<script>
+	(function($) {
+		$('#divSplashScreen').fadeIn(2000);
+		$( "#openLogin").removeClass();
+	})
+	(jQuery);
+
+</script>
+
+</body>
+</html>	

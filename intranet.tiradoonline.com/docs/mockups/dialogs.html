@@ -1,0 +1,913 @@
+<html>
+<head>
+	<title>tiradointeractive.com</title>
+	<link rel="stylesheet" type="text/css" href="includes/tiradointeractive.css" />
+	<link rel="stylesheet" type="text/css" href="includes/banking.css" />
+
+	<link rel="stylesheet" href="includes/themes/base/jquery.ui.all.css">
+	<script src="includes/jquery.js"></script>
+	<script src="includes/ui/jquery.ui.core.js"></script>
+	<script src="includes/ui/jquery.ui.widget.js"></script>
+
+	<script src="includes/external/jquery.bgiframe-2.1.2.js"></script>
+	<script src="includes/ui/jquery.ui.mouse.js"></script>
+	<script src="includes/ui/jquery.ui.button.js"></script>
+	<script src="includes/ui/jquery.ui.draggable.js"></script>
+	<script src="includes/ui/jquery.ui.position.js"></script>
+	<script src="includes/ui/jquery.ui.resizable.js"></script>
+
+	<script src="includes/ui/jquery.ui.dialog.js"></script>
+	<script src="includes/ui/jquery.ui.datepicker.js"></script>
+	<script src="includes/ui/jquery.effects.core.js"></script>
+
+	<script src="includes/tiradointeractive.js"></script>
+
+	
+	<script>
+	$(function() {
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+		var username =  $('#username'),
+			password =  $('#password'),
+			allFields = $( [] ).add( username ).add( password ),
+			tips = $( "#ErrorMessage" );
+
+		function updateTips( t ) {
+			tips.text( t ).addClass( "ErrorMessage" );
+			setTimeout(function() {
+				tips.removeClass( "ui-state-highlight", 1500 );
+			}, 500 );
+		}
+		
+
+		//**************************
+		//LOGIN
+		//**************************
+		$( "#dialogLogin" ).dialog({
+			autoOpen: false,
+			height: 250,
+			width: 500,
+			title: "tiradointeractive Intranet Login",
+			modal: true,
+			draggable: false,
+			resizable: false,
+			buttons: {
+				"Not a User? Create Account": function() {
+					$( "#dialogCreateUserAccount" ).dialog( "open" );
+				},
+				"forgot password": function() {
+					//$( "#dialog:ui-dialog" ).dialog( "destroy" );
+					$( "#dialogForgotPassword" ).dialog( "open" );
+				}
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+		//**************************
+		// CREATE USER ACCOUNT
+		//**************************
+
+		$( "#dialogCreateUserAccount" ).dialog({
+			autoOpen: false,
+			height: 350,
+			width: 550,
+			title: "CREATE ACCOUNT",
+			modal: true,
+			draggable: false,
+			resizable: false,
+			buttons: {
+				"create account": function() {
+					allFields.removeClass( "" );
+				},
+				Cancel: function() {
+					updateTips( "" );
+					$( this ).dialog( "close" );
+				}	
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+
+
+		//**************************
+		// CREATE BANKING ACCOUNT
+		//**************************
+
+		$( "#dialogCreateBankingAccount" ).dialog({
+			autoOpen: false,
+			height: 250,
+			width: 400,
+			title: "CREATE BANKING ACCOUNT",
+			modal: true,
+			draggable: false,
+			resizable: false,
+			buttons: {
+				"create account": function() {
+					allFields.removeClass( "" );
+				},
+				Cancel: function() {
+					updateTips( "" );
+					$( this ).dialog( "close" );
+				}	
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+
+
+		//**************************
+		// CREATE TRANSACTION  TYPE
+		//**************************
+
+		$( "#dialogTransactionType" ).dialog({
+			autoOpen: false,
+			height: 250,
+			width: 400,
+			title: "CREATE TRANSACTION TYPE",
+			modal: true,
+			draggable: false,
+			resizable: false,
+			buttons: {
+				"create": function() {
+					allFields.removeClass( "" );
+				},
+				Cancel: function() {
+					updateTips( "" );
+					$( this ).dialog( "close" );
+				}	
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+
+
+		//**************************
+		// FORGOT PASSWORD
+		//**************************
+
+		$( "#dialogForgotPassword" ).dialog({
+			autoOpen: false,
+			height: 250,
+			width: 500,
+			title: "FORGOT PASSWORD",
+			modal: true,
+			draggable: false,
+			resizable: false,
+			buttons: {
+				"email": function() {
+					allFields.removeClass( "" );
+				},
+				Cancel: function() {
+					updateTips( "" );
+					$( this ).dialog( "close" );
+				}	
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+
+
+		//**************************
+		// CREATE REMINDER
+		//**************************
+
+		$( "#dialogCreateReminder" ).dialog({
+			autoOpen: false,
+			height: 350,
+			width: 530,
+			title: "CREATE REMINDER",
+			modal: true,
+			draggable: false,
+			resizable: false,
+			buttons: {
+				"CREATE REMINDER": function() {
+					allFields.removeClass( "" );
+				},
+				Cancel: function() {
+					updateTips( "" );
+					$( this ).dialog( "close" );
+				}	
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+
+		//**************************
+		// CREATE TRANSACTION
+		//**************************
+
+		$( "#dialogTransaction" ).dialog({
+			autoOpen: false,
+			height: 400,
+			width: 630,
+			title: "CREATE TRANSACTION",
+			modal: true,
+			draggable: false,
+			resizable: false,
+			buttons: {
+				"CREATE TRANSACTION": function() {
+					$transactiondate = $("#transactiondate");
+					$transactionaccountid = $("#accountid");
+					$transactionaccountname = $("#accountname");
+					$transactiontypeid = $("#transactiontypeid");
+					$transactiontypename = $("#transactiontypename");
+					$transactionamount = $("#amount");
+					$transactionmemo = $("#memo");
+
+					getTransactions($('#tableBanking TBODY'));
+					
+					allFields.removeClass( "" );
+					$( this ).dialog( "close" );
+				},
+				Cancel: function() {
+					updateTips( "" );
+					$( this ).dialog( "close" );
+				}	
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+
+
+		//**************************
+		// SEARCH TRANSACTION
+		//**************************
+
+		$( "#dialogSearchTransaction" ).dialog({
+			autoOpen: false,
+			height: 300,
+			width: 500,
+			title: "SEARCH TRANSACTION",
+			modal: true,
+			draggable: false,
+			resizable: false,
+			buttons: {
+				"search": function() {
+					allFields.removeClass( "" );
+				},
+				Cancel: function() {
+					updateTips( "" );
+					$( this ).dialog( "close" );
+				}	
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ErrorMessage" );
+			}
+		});
+
+
+		/*********************/
+		/*  TEXT BOX FOCUS/BLUR EVENTS */
+		/********************/
+		$("input").focus(
+				function() {
+					$(this).addClass('textFocus');
+				}
+			);
+		$("input").blur(
+				function() {
+					$(this).removeClass('textFocus');
+				}
+
+		);
+		$( "#openLogin")
+			.button()
+			.click(function() {
+				$( "#dialogLogin" ).dialog( "open" );
+			});
+
+		$( "#buttonLogin")
+			.button()
+			.click(function() {
+				allFields.removeClass( "" );
+
+				if ( validateLogin($('#username').val(), $('#password').val()) ) {
+					setCookie("username", $('#username').val(), 10)
+					$( this ).dialog( "close" );
+					location.href = "home.html";
+				}
+				else {
+					tips.addClass( "ErrorMessage" );
+					updateTips( "Invalid Login" );
+				}
+			});
+
+
+		$( "#buttonCreateUser")
+			.button()
+			.click(function() {
+				$( "#dialogCreateUserAccount" ).dialog( "open" );
+			});
+
+		$( "#buttonForgotPassword")
+			.button()
+			.click(function() {
+			});
+
+		$( "#buttonCreateReminder")
+			.button()
+			.click(function() {
+				$( "#dialogCreateReminder" ).dialog( "open" );
+			});
+
+		$( "#buttonCreateTransaction")
+			.button()
+			.click(function() {
+				$( "#dialogTransaction" ).dialog( "open" );
+				getTransactionTypes($( "#transactiontypeid"), "1002" );				
+				getAccounts($( "#transactionaccountid"), "1002" );				
+				getTransactions($('#tableBanking TBODY'));
+			});
+
+
+		$( "#buttonSearchTransaction")
+			.button()
+			.click(function() {
+				$( "#dialogSearchTransaction" ).dialog( "open" );
+			});
+
+		$( "#buttonCreateBankingAccount")
+			.button()
+			.click(function() {
+				$( "#dialogCreateBankingAccount" ).dialog( "open" );
+			});
+		
+
+		$( "#buttonCreateTransactionType")
+			.button()
+			.click(function() {
+				$( "#dialogTransactionType" ).dialog( "open" );
+			});
+
+		$( "#datepickercreatereminder")
+			.focus(function() {
+				$( "#datepickercreatereminder").datepicker({
+					changeMonth: true,
+					changeYear: true,
+					showButtonPanel: true,
+					buttonImage: "images/icons/calendar.gif",
+					buttonImageOnly: true,
+					showOn: "button"
+				});
+			});
+		
+		$( "#transactiondate")
+			.focus(function() {
+				$( "#transactiondate").datepicker({
+					changeMonth: true,
+					changeYear: true,
+					showButtonPanel: true,
+					buttonImage: "images/icons/calendar.gif",
+					buttonImageOnly: true,
+					showOn: "button"
+				});
+			});
+		
+		$( "#datepickersearchtransactionstartdate")
+			.focus(function() {
+				$( "#datepickersearchtransactionstartdate").datepicker({
+					changeMonth: true,
+					changeYear: true,
+					showButtonPanel: true,
+					buttonImage: "images/icons/calendar.gif",
+					buttonImageOnly: true,
+					showOn: "button"
+				});
+			});
+			
+		
+		$( "#datepickersearchtransactionenddate")
+			.focus(function() {
+				$( "#datepickersearchtransactionenddate").datepicker({
+					changeMonth: true,
+					changeYear: true,
+					showButtonPanel: true,
+					buttonImage: "images/icons/calendar.gif",
+					buttonImageOnly: true,
+					showOn: "button"
+				});
+			});
+			
+		
+		$( "#createreminderaddtransactiontype")
+			.button()
+			.click(function() {
+				$( "#dialogTransactionType" ).dialog( "open" );
+			});
+		
+		$( "#searchtransactionaddtransactiontype")
+			.button()
+			.click(function() {
+				$( "#dialogTransactionType" ).dialog( "open" );
+			});
+			
+		
+		$( "#createtransactionaddtransactiontype")
+			.button()
+			.click(function() {
+				$( "#dialogTransactionType" ).dialog( "open" );
+			});
+
+		$( "#createtransactionaddaccount")
+			.button()
+			.click(function() {
+				$( "#dialogCreateBankingAccount" ).dialog( "open" );
+			});
+
+		$( "#createreminderaddaccount")
+			.button()
+			.click(function() {
+				$( "#dialogCreateBankingAccount" ).dialog( "open" );
+			});
+
+
+		$( "#searchtransactionaddaccount")
+			.button()
+			.click(function() {
+				$( "#dialogCreateBankingAccount" ).dialog( "open" );
+			});
+
+
+		// LOAD SELECT BOXES FOR BANKING PAGE  E.G CHASE SEPTEMBER 2012
+		getAccounts($('#bankingaccountid'), "1003");
+		// LOAD TRANSACTIONS FOR BANKING PAGE 
+		getTransactions($('#tableBanking TBODY'));
+		getTransactionsDateBox($('#bankingaccountmonth'), $('#bankingaccountyear'), $('#hiddenbankingdate'))
+			
+		});
+	</script>
+</head>
+
+<body>
+
+<form>
+<table width="100%" height="100%">
+<tr>
+	<td align="center" valign="middle">
+		<div id="divSplashScreen">
+			<img src="images/header/header_logo.gif" id="openLogin" border="0" />
+		</div>
+			<input type="button" id="buttonCreateReminder" value="CREATE REMINDER" />
+			<input type="button" id="buttonCreateBankingAccount" value="Create Banking Account" />
+			<input type="button" id="buttonCreateTransaction" value="Create Transaction" />
+			<input type="button" id="buttonSearchTransaction" value="Search Transaction" />
+		<div>
+			<div id="dialogLogin">
+				<table bgcolor="#ffffff" cellspacing=0 cellpadding=0 border="0">
+				<tr valign="top">
+					<td>
+						<img src="images/logo.gif" class="dialogLogo"  border="0" style="" />
+					</td>
+					<td>		
+						&nbsp;<br />
+						<table bgcolor="#ffffff" cellspacing=3 cellpadding=3 border=0>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td colspan="2"><div id="ErrorMessage" /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Username:</td>
+							<td><input type="text" id="username" class="textbox"  value="" /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Password:</td>
+							<td><input type="password" id="password" class="textbox"  /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td colspan="2"> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td colspan="2"><input type="button" id="buttonLogin" class="textbox" value="login"  /></td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			
+			</div>
+		
+			<div id="dialogCreateUserAccount">
+				<table bgcolor="#ffffff" cellspacing=0 cellpadding=0 border="0">
+				<tr valign="top">
+					<td>
+						<img src="images/logo.gif" class="dialogLogo" border="0" style="" />
+					</td>
+					<td>
+						<table bgcolor="#ffffff" cellspacing=3 cellpadding=3>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td colspan="2"><div id="ErrorMessage"></div></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Username:</td>
+							<td><input type="text" id="username" class="textbox"  value="" /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Password:</td>
+							<td><input type="password" id="password" class="textbox"  /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Confirm&nbsp;Password:</td>
+							<td><input type="confirmpassword" id="confirmpassword" class="textbox"  /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">First&nbsp;Name:</td>
+							<td><input type="text" id="firstname" class="textbox"  /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Last&nbsp;Name:</td>
+							<td><input type="text" id="lastname" class="textbox"  /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Email:</td>
+							<td><input type="text" id="name" class="textbox"  /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Cell&nbsp;Phone:</td>
+							<td><input type="text" id="cellphone" class="textbox"  /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Cell&nbsp;Phone&nbsp;Provider:</td>
+							<td>
+								<select id="cellphoneproviderid" class="textbox">
+									<option value="1">AT & T</option>
+									<option value="1">Sprint</option>
+									<option value="1">T-Mobile</option>
+									<option value="1">Verizon</option>
+								</select>
+							</td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			</div>
+		
+			<div id="dialogForgotPassword">
+				<table bgcolor="#ffffff" cellspacing=0 cellpadding=0 border="0">
+				<tr valign="top">
+					<td>
+						<img src="images/logo.gif" class="dialogLogo"  border="0" style="" />
+					</td>
+					<td>		
+						&nbsp;<br />
+						<table bgcolor="#ffffff" cellspacing=3 cellpadding=3>
+	
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td colspan="2"><div id="ErrorMessage">Enter your email address.</div></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Email:</td>
+							<td><input type="text" id="email" class="textbox"  value="" /></td>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>				
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			
+			</div>
+		
+			<div id="dialogCreateReminder">
+				<table bgcolor="#ffffff" cellspacing=0 cellpadding=0 border="0">
+				<tr valign="top">
+					<td>
+						<img src="images/logo.gif" class="dialogLogo" border="0" style="" />
+					</td>
+					<td>
+						<table bgcolor="#ffffff" cellspacing=3 cellpadding=3 border=0>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td colspan="2"><div id="ErrorMessage"></div></td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Date:</td>
+							<td><input type="text" id="datepickercreatereminder" class="textbox"  value="" /></td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Account:</td>
+							<td>
+								<select id="CreateReminderaccount" class="textbox">
+									<option value="1">Chase</option>
+									<option value="1">Checking</option>
+									<option value="1">Best Buy</option>
+									<option value="1">Dunkin Donuts</option>
+								</select>
+								<img id="createreminderaddaccount" src="images/icons/plus.gif" />
+							</td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Transaction:</td>
+							<td>
+								<select id="transactionid" class="textbox">
+									<option value="1">Deposit</option>
+									<option value="1">Withdrawl</option>
+									<option value="1">Payment</option>
+								</select>
+								<img id="createreminderaddtransactiontype" src="images/icons/plus.gif" />
+							</td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Amount:</td>
+							<td><input type="text" id="CreateReminderamount" class="textbox"  /></td>
+						</tr>
+						<tr valign="top">
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Memo:</td>
+							<td><input type="text" id="searchtransactionmemo" class="textbox"  /></td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			</div>
+
+
+
+			<div id="dialogCreateBankingAccount">
+				<table bgcolor="#ffffff" cellspacing=0 cellpadding=0 border="0">
+				<tr valign="top">
+					<td>
+						<img src="images/logo.gif" class="dialogLogo"  border="0" style="" />
+					</td>
+					<td>		
+						&nbsp;<br />
+						<table bgcolor="#ffffff" cellspacing=3 cellpadding=3 border=0>
+						<tr>
+							<td><div id="ErrorMessage" /></td>
+						</tr>
+						<tr>
+							<td>Account:</td>
+						</tr>
+							<td><input type="text" id="createbankingaccount" class="textbox" style="width:200px" value="" /></td>
+						</tr>
+						<tr>
+							<td>Color Code:</td>
+						</tr>
+						<tr>
+							<td>
+								<select id="createbankingcolorcode" style="width:100px">
+									<option style="background-color:black">          </option>
+									<option style="background-color:red" SELECTED>          </option>
+									<option style="background-color:blue">          </option>
+									<option style="background-color:orange">          </option>
+									<option style="background-color:green">          </option>
+								</select>
+							</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			
+			</div>
+
+
+			<div id="dialogTransactionType">
+				<table bgcolor="#ffffff" cellspacing=0 cellpadding=0 border="0">
+				<tr valign="top">
+					<td>
+						<img src="images/logo.gif" class="dialogLogo"  border="0" style="" />
+					</td>
+					<td>		
+						&nbsp;<br />
+						<table bgcolor="#ffffff" cellspacing=3 cellpadding=3 border=0>
+						<tr>
+							<td><div id="ErrorMessage" /></td>
+						</tr>
+						<tr>
+							<td>Transaction Type:</td>
+						</tr>
+							<td><input type="text" id="createtransactiontype" class="textbox" style="width:200px" value="" /></td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			
+			</div>
+
+		
+			<div id="dialogTransaction">
+				<table bgcolor="#ffffff" cellspacing=0 cellpadding=0 border="0">
+				<tr valign="top">
+					<td>
+						<img src="images/logo.gif" class="dialogLogo" border="0" style="" />
+					</td>
+					<td>
+						<table bgcolor="#ffffff" cellspacing=3 cellpadding=3 border=0>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td colspan="2"><div id="ErrorMessage"></div></td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Date:</td>
+							<td><input type="text" id="transactiondate" class="textbox"  value="" /></td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Account:</td>
+							<td>
+								<select id="transactionaccountid" class="textbox"></select>
+							</td>
+						</tr>
+						<!--
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Category:</td>
+							<td>
+								<select id="transactioncategoryid" class="textbox"></select>
+								<img id="transactionaddaccount" src="images/icons/plus.gif" />
+							</td>
+						</tr>
+						-->
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Transaction:</td>
+							<td>
+								<select id="transactiontypeid" class="textbox"></select>
+								<img id="transactionaddtransactiontype" src="images/icons/plus.gif" />
+							</td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Amount:</td>
+							<td><input type="text" id="transactionamount" class="textbox"  /></td>
+						</tr>
+						<tr valign="top">
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Memo:</td>
+							<td><textarea id="transactionmemo" class="textbox" cols="30" rows="5"></textarea></td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			</div>
+
+		
+			<div id="dialogSearchTransaction">
+				<table bgcolor="#ffffff" cellspacing=0 cellpadding=0 border="0">
+				<tr valign="top">
+					<td>
+						<img src="images/logo.gif" class="dialogLogo" border="0" style="" />
+					</td>
+					<td>
+						<table bgcolor="#ffffff" cellspacing=3 cellpadding=3 border=0>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td colspan="2"><div id="ErrorMessage"></div></td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Start&nbsp;Date:</td>
+							<td><input type="text" id="datepickersearchtransactionstartdate" class="textbox"  value="" /></td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">End&nbsp;Date:</td>
+							<td><input type="text" id="datepickersearchtransactionenddate" class="textbox"  value="" /></td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Account:</td>
+							<td>
+								<select id="transactionaccountid" class="textbox">
+									<option value="1">Chase</option>
+									<option value="1">Checking</option>
+									<option value="1">Best Buy</option>
+									<option value="1">Dunkin Donuts</option>
+								</select>
+								<img id="searchtransactionaddaccount" src="images/icons/plus.gif" />
+							</td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Transaction:</td>
+							<td>
+								<select id="transactiontypeid" class="textbox"></select>
+								<img id="searchtransactionaddtransactiontype" src="images/icons/plus.gif" />
+							</td>
+						</tr>
+						<tr>
+							<td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+							<td class="frm_label">Memo:</td>
+							<td><input type="text" id="searchtransactionmemo" class="textbox"  /></td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			</div>
+
+
+
+		</div>
+
+		
+
+		<div id="divLoading">
+			<img src="images/loading.gif"/>
+		</div>
+
+		<div>
+		<table id="tableBanking" cellpadding="0" cellspacing="1" border="0" width="80%" bgcolor="#ffffff">
+		<thead>
+		<tr class="bankingTableRow_HOVER ">
+			<td colspan="4" class="textShadow" style="text-align:center;" align="center">
+				<div  style="text-align:center;">
+					<div style="float:left;">&lt;---</div>
+					<div  style="float:left;">
+						<select id="bankingaccountid" />
+						<select id="bankingaccountmonth" />
+						<select id="bankingaccountyear" />
+					</div>
+					<div  style="float:left;">---&gt;</div>
+				</div>
+			</td>
+		</tr>
+		<tr class="bankingTableRowBalance ">
+			<td align="right" colspan="3" class="textShadow">Previous Balance</td>
+			<td align="right" id="previousbalance"></td>
+		</tr>
+		<tr class="bankingTableHeader">
+			<td align="right">Date</td>
+			<!--<td>Category</td>-->
+			<td width="100%">Transaction</td>
+			<td align="right">Amount</td>
+			<td align="right">Balance</td>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="bankingTableRowBalance">
+			<td align="right" colspan="3">Balance</td>
+			<td align="right">1,000</td>
+		</tr>
+		</tbody>
+		</table>
+		</div>
+		
+	</td>
+</tr>
+</table>
+</form>
+	
+<script language="JavaScript">
+<!--
+//-->
+</script>
+	
+
+<script>
+	(function($) {
+		$('#divSplashScreen').fadeIn(2000);
+		$( "#openLogin").removeClass();
+	})
+	(jQuery);
+
+</script>
+
+</body>
+</html>	
