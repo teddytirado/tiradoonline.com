@@ -1,0 +1,23 @@
+<script language="vbscript" runat="server">
+
+Sub Application_OnStart
+
+	'***** GLOBAL VARIABLES	
+	Application("AdministratorName") = "Theodore Tirado"
+	Application("AdministratorEmail") = "developer@tiradoonline.com"
+	Application("TextMessageEmail") = "3474141284@txt.att.net"
+	
+End Sub
+
+Sub Application_OnEnd
+End Sub
+
+Sub Session_OnStart
+	Session("UserID") = 1001
+End Sub
+
+Sub Session_OnEnd
+End Sub
+
+</script>
+
