@@ -1,0 +1,14 @@
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\BankingEmailBlast.exe.config
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\BankingEmailBlast.exe
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\BankingEmailBlast.pdb
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\OpenPop.dll
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\obj\x86\Release\BankingEmailBlast.exe
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\obj\x86\Release\BankingEmailBlast.pdb
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\BankingEmailBlast.exe.manifest
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\BankingEmailBlast.application
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\obj\x86\Release\BankingEmailBlast.exe.manifest
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\obj\x86\Release\BankingEmailBlast.application
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\obj\x86\Release\ResolveAssemblyReference.cache

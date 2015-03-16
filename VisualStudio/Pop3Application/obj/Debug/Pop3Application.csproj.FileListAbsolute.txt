@@ -1,0 +1,13 @@
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Debug\Pop3Application.exe.config
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Debug\Pop3Application.exe
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Debug\Pop3Application.pdb
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Debug\Pop3Application.Form1.resources
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Debug\Pop3Application.Properties.Resources.resources
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Debug\Pop3Application.exe
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Debug\Pop3Application.pdb
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Debug\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Debug\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Debug\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Debug\Pop3Application.csprojResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Debug\Pop3Application.csproj.GenerateResource.Cache
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Debug\OpenPop.dll

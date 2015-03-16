@@ -1,0 +1,9 @@
+SCC = This is a Source Code Control file
+
+[Contacts.csproj]
+SCC_Aux_Path = "C:\Storage\www\vss"
+SCC_Project_Name = "$/tiradoonline.com/tiradoonline/Contacts", XNPBAAAA
+
+[ContactsSync.csproj]
+SCC_Aux_Path = "C:\Storage\vss"
+SCC_Project_Name = "$/Projects/tiradoonline.com/tiradoonline.com/ContactsSync", EKZBAAAA

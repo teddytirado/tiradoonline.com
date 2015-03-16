@@ -1,0 +1,10 @@
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Debug\BankingEmailBlast.exe.config
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Debug\BankingEmailBlast.exe
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Debug\BankingEmailBlast.pdb
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\obj\x86\Debug\BankingEmailBlast.exe
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\obj\x86\Debug\BankingEmailBlast.pdb
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\obj\x86\Debug\BankingEmailBlast.csprojResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Debug\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Debug\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Debug\OpenPop.dll
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Debug\ClassLibrary.pdb

@@ -1,0 +1,98 @@
+<navBar>	
+	<parent id="navbarConnection" title="Connection" loctitle="lConnection">
+		<children>
+			<child type="link" title="Connection Info" loctitle="lConnectionInfo" link="../conn/info.aspx" icon="server.gif" />
+			<child type="link" title="Server Info" loctitle="lServerInfo" link="../conn/serverinfo.aspx" icon="server2.gif" />
+			<child type="link" title="Disconnect" loctitle="lDisconnect" link="../default.aspx" target="_top" icon="disconnect.gif" />
+		</children>
+	</parent>
+
+	<parent id="navbarDatabases" title="Databases" loctitle="lDatabases">
+		<children>
+			<child type="treeview"
+					id="treeviewDatabase"
+					class="treeview" 
+					XmlFile="../xml/treeviewdatabase.xml"
+					JsId="oTreeDatabase"
+					DefaultClass="treeviewItem" 
+					DefaultTarget="content"
+			/>
+		</children>
+	</parent>
+
+	<parent id="navbarSecurity" title="Security" loctitle="lSecurity">
+		<children>
+			<child type="treeview"
+					id="treeviewSecurity"
+					class="treeview" 
+					XmlFile="../xml/treeviewsecurity.xml"
+					JsId="oTreeSecurity"
+					DefaultClass="treeviewItem" 
+					DefaultTarget="content"
+			/>
+		</children>
+	</parent>
+
+	<parent id="navbarServerObjects" title="Server Objects" loctitle="lServerObjects">
+		<children>
+			<child type="treeview"
+					id="treeviewServerObjects"
+					class="treeview" 
+					XmlFile="../xml/treeviewserverobjects.xml"
+					JsId="oTreeServerObjects"
+					DefaultClass="treeviewItem" 
+					DefaultTarget="content"
+			/>
+		</children>
+	</parent>
+
+	<parent id="navbarManagement" title="Management" loctitle="lManagement">
+		<children>
+			<child type="treeview"
+					id="treeviewManagement"
+					class="treeview" 
+					XmlFile="../xml/treeviewmanagement.xml"
+					JsId="oTreeManagement"
+					DefaultClass="treeviewItem" 
+					DefaultTarget="content"
+			/>
+			<child type="link" id="activitymonitor" title="Activity Monitor" loctitle="lActivityMonitor" icon="activity.gif"  link="../obj/activitymonitor.aspx"/>
+		</children>
+	</parent>
+
+	<parent id="navbarTools" title="Tools" loctitle="lTools">
+		<children>
+			<child type="link" id="newquery" title="New Query" loctitle="lNewQuery" link="../tools/query.aspx" icon="query.gif" />
+			<child type="link" id="generateinsertscript" title="Generate INSERT scripts" loctitle="lGenerateInsertScript" link="../tools/insertsql.aspx" icon="insertsql.gif" />
+			<child type="link" id="csvimportwizard" title="CSV import wizard" loctitle="lCsvImportWizard" link="../tools/csvimport.aspx" icon="import.gif" />
+			<child type="link" id="backupwizard" title="Backup wizard" loctitle="lBackupWizard" link="../tools/backup.aspx" icon="backup.gif" />
+			<child type="link" id="restorewizard" title="Restore wizard" loctitle="lRestoreWizard" link="../tools/restore.aspx" icon="restore.gif" />
+			<child type="link" id="backupwhwizard" title="Backup wizard (WH)" loctitle="lBackupWizardWH" link="../tools/backupwh.aspx" icon="backup.gif" />
+			<child type="link" id="restorewhwizard" title="Restore wizard (WH)" loctitle="lRestoreWizardWH" link="../tools/restorewh.aspx" icon="restore.gif" />
+			<child type="link" id="detachwizard" title="Detach wizard" loctitle="lDetachWizard" link="../tools/detach.aspx" icon="detach.gif" />
+			<child type="link" id="attachwizard" title="Attach wizard" loctitle="lAttachWizard" link="../tools/attach.aspx" icon="attach.gif" />
+			<child type="link" id="shrinkdatabase" title="Shrink Database" loctitle="lShrinkDatabase" link="../tools/shrinkdb.aspx" icon="shrinkfile.gif" />
+			<child type="link" id="changepassword" title="Change password" loctitle="lChangePassword2" link="../tools/changepwd.aspx" icon="password.gif" />
+			<child type="link" id="mylittlebackup" title="myLittleBackup" link="../tools/mylittlebackup.aspx" icon="mylittlebackup.gif" />
+		</children>
+	</parent>
+
+	<parent id="navbarPreferences" title="Preferences" loctitle="lPreferences">
+		<children>
+			<child type="link" title="Skin" loctitle="lSkin" link="../obj/preferences.aspx" />
+			<child type="link" title="Language" loctitle="lLanguage" link="../obj/preferences.aspx" />
+			<child type="link" title="Display" loctitle="lDisplay" link="../obj/preferences.aspx" />
+			<child type="link" title="Datagrid page size" loctitle="lDatagridPageSize" link="../obj/preferences.aspx" />
+		</children>
+	</parent>
+
+	<parent id="navbarHelp" title="Help" loctitle="lHelp">
+		<children>
+			<child type="link" title="Check for updates" loctitle="lCheckForUpdates" link="../nav/checkforupdates.aspx" />
+			<child type="link" title="Online forums" loctitle="lOnlineForums" link="http://forum.mylittleadmin.com" target="_blank" />
+			<child type="link" title="Technical Support" loctitle="lTechnicalSupport" link="mailto:support@mylittletools.net" />
+			<child type="link" title="About" loctitle="lAbout" link="../nav/about.aspx" />
+		</children>
+	</parent>
+
+</navBar>

@@ -1,0 +1,13 @@
+<treeView>
+	<node id="M0" text="" class="treeviewRoot">
+		<node id="M10" text="Error log" loctext="lErrorLog" icon="folder.gif">
+			<node id="M10_10" text="Current" loctext="lCurrent" icon="errorlog.gif" link="../obj/errorlog.aspx" />
+			<node id="M10_20" text="Archive #1" loctext="lArchive1" icon="errorlog.gif" link="../obj/errorlog.aspx?id=1" />
+			<node id="M10_30" text="Archive #2" loctext="lArchive2" icon="errorlog.gif" link="../obj/errorlog.aspx?id=2" />
+			<node id="M10_40" text="Archive #3" loctext="lArchive3" icon="errorlog.gif" link="../obj/errorlog.aspx?id=3" />
+			<node id="M10_50" text="Archive #4" loctext="lArchive4" icon="errorlog.gif" link="../obj/errorlog.aspx?id=4" />
+			<node id="M10_60" text="Archive #5" loctext="lArchive5" icon="errorlog.gif" link="../obj/errorlog.aspx?id=5" />
+			<node id="M10_00" text="Archive #6" loctext="lArchive6" icon="errorlog.gif" link="../obj/errorlog.aspx?id=6" />
+		</node>
+	</node>
+</treeView>

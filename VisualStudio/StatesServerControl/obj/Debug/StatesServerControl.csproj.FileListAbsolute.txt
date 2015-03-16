@@ -1,0 +1,4 @@
+C:\Storage\Projects\tiradoonline.com\StatesServerControl\bin\Debug\StatesServerControl.dll
+C:\Storage\Projects\tiradoonline.com\StatesServerControl\bin\Debug\StatesServerControl.pdb
+C:\Storage\Projects\tiradoonline.com\StatesServerControl\obj\Debug\StatesServerControl.dll
+C:\Storage\Projects\tiradoonline.com\StatesServerControl\obj\Debug\StatesServerControl.pdb

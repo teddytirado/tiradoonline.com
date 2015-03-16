@@ -1,0 +1,14 @@
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Release\SQLProfilerNameSpace.SQLProfilerMainForm.resources
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Release\SQLProfilerNameSpace.Properties.Resources.resources
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Release\SQLProfiler.exe.config
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Release\SQLProfiler.exe
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Release\SQLProfiler.pdb
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Release\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Release\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Release\OpenPop.dll
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Release\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Release\SQLProfiler.exe
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Release\SQLProfiler.pdb
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Release\GenerateResource.write.1.tlog

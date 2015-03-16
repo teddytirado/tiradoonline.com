@@ -1,0 +1,83 @@
+<profile id="default">
+	<extendedproperties display="true" create="true" modify="true" drop="true" />
+	<permissions modify="true" />
+	<schema modify="true" />
+	<systemobjects display="true" />
+	<databases create="true" rename="true" drop="true">
+		<tables display="true" create="true" modify="true" dependencies="true" open="true" rename="true" drop="true">
+			<columns display="true" create="true" modify="true" rename="true" drop="true" />
+			<keys display="true" create="true" modify="true" rename="true" drop="true" />
+			<constraints display="true" create="true" rename="true" drop="true" />
+			<triggers display="true" create="true" modify="true" dependencies="true" rename="true" drop="true" />
+			<indexes display="true" create="true" rename="true" drop="true" />
+			<statistics display="true" create="true" drop="true" />
+			<content display="true" export="true" create="true" modify="true" drop="true" filter="true" />
+		</tables>
+		<views display="true" create="true" modify="true" dependencies="true" open="true" rename="true" drop="true">
+			<columns display="true" />
+			<triggers display="true" create="true" modify="true" dependencies="true" rename="true" drop="true" />
+			<indexes display="true" create="true" rename="true" drop="true" />
+			<statistics display="true" create="true" drop="true" />
+			<content display="true" export="true" filter="true" />
+		</views>
+		<synonyms display="true" create="true" drop="true" />
+		<programmability display="true">
+			<storedprocedures display="true" create="true" modify="true" dependencies="true" rename="true" drop="true" />
+			<functions display="true" create="true" modify="true" dependencies="true" rename="true" drop="true" />
+			<databasetriggers display="true" create="true" modify="true" drop="true" />
+			<assemblies display="true" drop="true" />
+			<types display="true" create="true" dependencies="true" rename="true" drop="true" />
+			<rules display="true" create="true" dependencies="true" drop="true" />
+			<defaults display="true" create="true" dependencies="true" drop="true" />
+		</programmability>
+		<servicebroker display="true">
+			<messagetypes display="true" drop="true" />
+			<contracts display="true" drop="true" />	
+			<queues display="true" drop="true" />	
+			<services display="true" drop="true" />	
+			<routes display="true" drop="true" />	
+			<remoteservicebinding display="true" drop="true" />	
+		</servicebroker>
+		<storage display="true">
+			<fulltextcatalogs display="true" create="true" drop="true" />
+			<partitionschemes display="true" drop="true" />
+			<partitionfunctions display="true" drop="true" />
+		</storage>
+		<security display="true">
+			<users display="true" create="true" rename="true" drop="true" />
+			<roles display="true" create="true" rename="true" drop="true" />
+			<schemas display="true" create="true" drop="true" />
+			<asymmetrickeys display="true" drop="true" />
+			<certificates display="true" drop="true" />
+			<symmetrickeys display="true" drop="true" />
+		</security>
+	</databases>
+	<security>
+		<logins display="true" create="true" rename="true" drop="true" />
+		<serverroles display="true" />
+		<credentials display="true" drop="true" />
+	</security>
+	<serverobjects>
+		<backupdevices display="false" create="true" drop="true" />
+		<linkedservers display="true" drop="true" />
+		<triggers display="true" create="true" modify="true" drop="true" />
+	</serverobjects>
+	<management>
+		<errorlog display="true" />
+		<activitymonitor display="true" />
+	</management>
+	<tools>
+		<newquery display="true" />
+		<generateinsertscript display="true" />
+		<csvimportwizard display="true" />
+		<backupwizard display="true" />
+		<restorewizard display="true" />
+		<backupwhwizard display="true" />
+		<restorewhwizard display="true" />
+		<detachwizard display="true" />
+		<attachwizard display="true" />
+		<shrinkdatabase display="true" />
+		<changepassword display="true" />
+		<mylittlebackup display="true" />
+	</tools>
+</profile>

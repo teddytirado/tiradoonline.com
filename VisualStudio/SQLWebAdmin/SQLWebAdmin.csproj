@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B1AA3C91-8D79-4984-B8F2-FE0E4C40F73B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SQLWebAdmin</RootNamespace>
+    <AssemblyName>SQLWebAdmin</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="common\metaheader.ascx" />
+    <Content Include="common\mladatagrid.ascx" />
+    <Content Include="common\mlaform.ascx" />
+    <Content Include="common\mlamenu.ascx" />
+    <Content Include="common\mlaprop.ascx" />
+    <Content Include="common\mlawaitingbox.ascx" />
+    <Content Include="common\navlist.ascx" />
+    <Content Include="common\objectlist.ascx" />
+    <Content Include="common\pageheader.ascx" />
+    <Content Include="config.xml" />
+    <Content Include="conn\connoff.aspx" />
+    <Content Include="conn\expr.aspx" />
+    <Content Include="conn\info.aspx" />
+    <Content Include="conn\licoff.aspx" />
+    <Content Include="conn\notallowed.aspx" />
+    <Content Include="conn\serverinfo.aspx" />
+    <Content Include="default.aspx" />
+    <Content Include="error\404.html" />
+    <Content Include="error\index.html" />
+    <Content Include="history.txt" />
+    <Content Include="jscalendar-1.0\bugtest-hidden-selects.html" />
+    <Content Include="jscalendar-1.0\calendar-blue.css" />
+    <Content Include="jscalendar-1.0\calendar-blue2.css" />
+    <Content Include="jscalendar-1.0\calendar-brown.css" />
+    <Content Include="jscalendar-1.0\calendar-green.css" />
+    <Content Include="jscalendar-1.0\calendar-setup.js" />
+    <Content Include="jscalendar-1.0\calendar-setup_stripped.js" />
+    <Content Include="jscalendar-1.0\calendar-system.css" />
+    <Content Include="jscalendar-1.0\calendar-tas.css" />
+    <Content Include="jscalendar-1.0\calendar-win2k-1.css" />
+    <Content Include="jscalendar-1.0\calendar-win2k-2.css" />
+    <Content Include="jscalendar-1.0\calendar-win2k-cold-1.css" />
+    <Content Include="jscalendar-1.0\calendar-win2k-cold-2.css" />
+    <Content Include="jscalendar-1.0\calendar.js" />
+    <Content Include="jscalendar-1.0\calendar_stripped.js" />
+    <Content Include="jscalendar-1.0\dayinfo.html" />
+    <Content Include="jscalendar-1.0\doc\html\field-button.jpg" />
+    <Content Include="jscalendar-1.0\doc\html\reference-Z-S.css" />
+    <Content Include="jscalendar-1.0\doc\html\reference.css" />
+    <Content Include="jscalendar-1.0\doc\html\reference.html" />
+    <Content Include="jscalendar-1.0\img.gif" />
+    <Content Include="jscalendar-1.0\index.html" />
+    <Content Include="jscalendar-1.0\lang\calendar-af.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-al.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-bg.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-big5-utf8.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-big5.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-br.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-ca.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-cs-utf8.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-cs-win.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-da.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-de.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-du.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-el.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-en.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-es.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-fi.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-fr.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-he-utf8.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-hr-utf8.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-hr.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-hu.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-it.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-jp.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-ko-utf8.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-ko.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-lt-utf8.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-lt.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-lv.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-nl.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-no.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-pl-utf8.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-pl.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-pt.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-ro.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-ru.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-ru_win_.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-si.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-sk.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-sp.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-sv.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-tr.js" />
+    <Content Include="jscalendar-1.0\lang\calendar-zh.js" />
+    <Content Include="jscalendar-1.0\lang\cn_utf8.js" />
+    <Content Include="jscalendar-1.0\menuarrow.gif" />
+    <Content Include="jscalendar-1.0\menuarrow2.gif" />
+    <Content Include="jscalendar-1.0\multiple-dates.html" />
+    <Content Include="jscalendar-1.0\release-notes.html" />
+    <Content Include="jscalendar-1.0\simple-1.html" />
+    <Content Include="jscalendar-1.0\simple-2.html" />
+    <Content Include="jscalendar-1.0\simple-3.html" />
+    <Content Include="jscalendar-1.0\skins\aqua\active-bg.gif" />
+    <Content Include="jscalendar-1.0\skins\aqua\dark-bg.gif" />
+    <Content Include="jscalendar-1.0\skins\aqua\hover-bg.gif" />
+    <Content Include="jscalendar-1.0\skins\aqua\menuarrow.gif" />
+    <Content Include="jscalendar-1.0\skins\aqua\normal-bg.gif" />
+    <Content Include="jscalendar-1.0\skins\aqua\rowhover-bg.gif" />
+    <Content Include="jscalendar-1.0\skins\aqua\status-bg.gif" />
+    <Content Include="jscalendar-1.0\skins\aqua\theme.css" />
+    <Content Include="jscalendar-1.0\skins\aqua\title-bg.gif" />
+    <Content Include="jscalendar-1.0\skins\aqua\today-bg.gif" />
+    <Content Include="jscalendar-1.0\test-position.html" />
+    <Content Include="js\cell.js" />
+    <Content Include="js\codemirror-2.0\codemirror-2.0-license.txt" />
+    <Content Include="js\codemirror-2.0\lib\codemirror.css" />
+    <Content Include="js\codemirror-2.0\lib\codemirror.js" />
+    <Content Include="js\codemirror-2.0\lib\overlay.js" />
+    <Content Include="js\codemirror-2.0\mode\tsql.css" />
+    <Content Include="js\codemirror-2.0\mode\tsql.js" />
+    <Content Include="js\contentframe.js" />
+    <Content Include="js\mladg.js" />
+    <Content Include="js\mla_sql.js" />
+    <Content Include="js\mla_tab.js" />
+    <Content Include="js\mlb.js" />
+    <Content Include="js\mylittlemenu.js" />
+    <Content Include="js\mylittletree.js" />
+    <Content Include="js\navbar.js" />
+    <Content Include="js\navbarframe.js" />
+    <Content Include="js\postback.js" />
+    <Content Include="mylittleadmin.aspx" />
+    <Content Include="nav\about.aspx" />
+    <Content Include="nav\checkforupdates.aspx" />
+    <Content Include="nav\constraints.aspx" />
+    <Content Include="nav\databases.aspx" />
+    <Content Include="nav\dbobjects.aspx" />
+    <Content Include="nav\extendedstoredprocedures.aspx" />
+    <Content Include="nav\functions.aspx" />
+    <Content Include="nav\indexes.aspx" />
+    <Content Include="nav\keys.aspx" />
+    <Content Include="nav\logins.aspx" />
+    <Content Include="nav\navbar.aspx" />
+    <Content Include="nav\ncolumns.aspx" />
+    <Content Include="nav\objects.aspx" />
+    <Content Include="nav\objobjects.aspx" />
+    <Content Include="nav\parameters.aspx" />
+    <Content Include="nav\params.aspx" />
+    <Content Include="nav\programmability.aspx" />
+    <Content Include="nav\reconnect.aspx" />
+    <Content Include="nav\roles.aspx" />
+    <Content Include="nav\secobjects.aspx" />
+    <Content Include="nav\security.aspx" />
+    <Content Include="nav\servicebroker.aspx" />
+    <Content Include="nav\srvobjects.aspx" />
+    <Content Include="nav\storage.aspx" />
+    <Content Include="nav\storedprocedures.aspx" />
+    <Content Include="nav\systemextendedstoredprocedures.aspx" />
+    <Content Include="nav\systemstoredprocedures.aspx" />
+    <Content Include="nav\systemviewobjects.aspx" />
+    <Content Include="nav\tblobjects.aspx" />
+    <Content Include="nav\types.aspx" />
+    <Content Include="nav\userdefineddatatypes.aspx" />
+    <Content Include="nav\userdefinedtypes.aspx" />
+    <Content Include="nav\viewobjects.aspx" />
+    <Content Include="nav\xmlschemanamespaces.aspx" />
+    <Content Include="obj\activitymonitor.aspx" />
+    <Content Include="obj\akprop.aspx" />
+    <Content Include="obj\bdprop.aspx" />
+    <Content Include="obj\changeschema.aspx" />
+    <Content Include="obj\colprop.aspx" />
+    <Content Include="obj\columns.aspx" />
+    <Content Include="obj\content.aspx" />
+    <Content Include="obj\crprop.aspx" />
+    <Content Include="obj\ctfprop.aspx" />
+    <Content Include="obj\dbprop.aspx" />
+    <Content Include="obj\delete.aspx" />
+    <Content Include="obj\drop.aspx" />
+    <Content Include="obj\ep_delete.aspx" />
+    <Content Include="obj\ep_update.aspx" />
+    <Content Include="obj\errorlog.aspx" />
+    <Content Include="obj\errors.aspx" />
+    <Content Include="obj\extprop.aspx" />
+    <Content Include="obj\ixprop.aspx" />
+    <Content Include="obj\lsprop.aspx" />
+    <Content Include="obj\modifysqlmodule.aspx" />
+    <Content Include="obj\navlist.aspx" />
+    <Content Include="obj\newar.aspx" />
+    <Content Include="obj\newbd.aspx" />
+    <Content Include="obj\newcolumn.aspx" />
+    <Content Include="obj\newconstraint.aspx" />
+    <Content Include="obj\newdr.aspx" />
+    <Content Include="obj\newextprop.aspx" />
+    <Content Include="obj\newfkey.aspx" />
+    <Content Include="obj\newftc.aspx" />
+    <Content Include="obj\newindex.aspx" />
+    <Content Include="obj\newlo.aspx" />
+    <Content Include="obj\newsch.aspx" />
+    <Content Include="obj\newsn.aspx" />
+    <Content Include="obj\newsqlmodule.aspx" />
+    <Content Include="obj\newssd.aspx" />
+    <Content Include="obj\newstatistics.aspx" />
+    <Content Include="obj\newtable.aspx" />
+    <Content Include="obj\newud.aspx" />
+    <Content Include="obj\newuddt.aspx" />
+    <Content Include="obj\newus.aspx" />
+    <Content Include="obj\objlist.aspx" />
+    <Content Include="obj\objprop.aspx" />
+    <Content Include="obj\permission.aspx" />
+    <Content Include="obj\popmenu.aspx" />
+    <Content Include="obj\preferences.aspx" />
+    <Content Include="obj\rename.aspx" />
+    <Content Include="obj\row.aspx" />
+    <Content Include="obj\setpkey.aspx" />
+    <Content Include="obj\skprop.aspx" />
+    <Content Include="obj\srprop.aspx" />
+    <Content Include="obj\statsprop.aspx" />
+    <Content Include="obj\update.aspx" />
+    <Content Include="obj\viewdependencies.aspx" />
+    <Content Include="skin\default\css\calendar.css" />
+    <Content Include="skin\default\css\mla_sql.css" />
+    <Content Include="skin\default\css\mlb.css" />
+    <Content Include="skin\default\css\navbar.css" />
+    <Content Include="skin\default\css\treeview.css" />
+    <Content Include="skin\default\img\app\background.gif" />
+    <Content Include="skin\default\img\app\content.gif" />
+    <Content Include="skin\default\img\app\dependencies.gif" />
+    <Content Include="skin\default\img\app\drop.gif" />
+    <Content Include="skin\default\img\app\edit.gif" />
+    <Content Include="skin\default\img\app\empty.gif" />
+    <Content Include="skin\default\img\app\error.gif" />
+    <Content Include="skin\default\img\app\export.gif" />
+    <Content Include="skin\default\img\app\extendedproperties.gif" />
+    <Content Include="skin\default\img\app\filter.gif" />
+    <Content Include="skin\default\img\app\first.gif" />
+    <Content Include="skin\default\img\app\headerdlgbox.gif" />
+    <Content Include="skin\default\img\app\headerdlgbox_lite.gif" />
+    <Content Include="skin\default\img\app\intro.gif" />
+    <Content Include="skin\default\img\app\intro_lite.gif" />
+    <Content Include="skin\default\img\app\last.gif" />
+    <Content Include="skin\default\img\app\modify.gif" />
+    <Content Include="skin\default\img\app\modify2.gif" />
+    <Content Include="skin\default\img\app\modify3.gif" />
+    <Content Include="skin\default\img\app\new.gif" />
+    <Content Include="skin\default\img\app\next.gif" />
+    <Content Include="skin\default\img\app\object.gif" />
+    <Content Include="skin\default\img\app\open.gif" />
+    <Content Include="skin\default\img\app\permissions.gif" />
+    <Content Include="skin\default\img\app\pickdate.gif" />
+    <Content Include="skin\default\img\app\previous.gif" />
+    <Content Include="skin\default\img\app\properties.gif" />
+    <Content Include="skin\default\img\app\prop_red.gif" />
+    <Content Include="skin\default\img\app\refresh.gif" />
+    <Content Include="skin\default\img\app\runnable.gif" />
+    <Content Include="skin\default\img\app\script.gif" />
+    <Content Include="skin\default\img\app\scriptline.gif" />
+    <Content Include="skin\default\img\app\setpkey.gif" />
+    <Content Include="skin\default\img\app\sleeping.gif" />
+    <Content Include="skin\default\img\app\sql.gif" />
+    <Content Include="skin\default\img\app\suspended.gif" />
+    <Content Include="skin\default\img\app\synchro.gif" />
+    <Content Include="skin\default\img\app\synchro_dis.gif" />
+    <Content Include="skin\default\img\app\tab_normal.gif" />
+    <Content Include="skin\default\img\app\tab_selected.gif" />
+    <Content Include="skin\default\img\app\up.gif" />
+    <Content Include="skin\default\img\app\up_dis.gif" />
+    <Content Include="skin\default\img\app\waiting.gif" />
+    <Content Include="skin\default\img\navbar\activity.gif" />
+    <Content Include="skin\default\img\navbar\attach.gif" />
+    <Content Include="skin\default\img\navbar\backup.gif" />
+    <Content Include="skin\default\img\navbar\connection.gif" />
+    <Content Include="skin\default\img\navbar\connection_ntgroup.gif" />
+    <Content Include="skin\default\img\navbar\connection_ntuser.gif" />
+    <Content Include="skin\default\img\navbar\detach.gif" />
+    <Content Include="skin\default\img\navbar\disconnect.gif" />
+    <Content Include="skin\default\img\navbar\import.gif" />
+    <Content Include="skin\default\img\navbar\insertsql.gif" />
+    <Content Include="skin\default\img\navbar\mylittlebackup.gif" />
+    <Content Include="skin\default\img\navbar\opennavbar.gif" />
+    <Content Include="skin\default\img\navbar\password.gif" />
+    <Content Include="skin\default\img\navbar\query.gif" />
+    <Content Include="skin\default\img\navbar\reducenavbar.gif" />
+    <Content Include="skin\default\img\navbar\restore.gif" />
+    <Content Include="skin\default\img\navbar\role.gif" />
+    <Content Include="skin\default\img\navbar\server.gif" />
+    <Content Include="skin\default\img\navbar\server2.gif" />
+    <Content Include="skin\default\img\navbar\shrinkfile.gif" />
+    <Content Include="skin\default\img\navbar\srvtrigger.gif" />
+    <Content Include="skin\default\img\navbar\top_folder.gif" />
+    <Content Include="skin\default\img\navbar\top_folder_sel.gif" />
+    <Content Include="skin\default\img\navbar\vlogo.gif" />
+    <Content Include="skin\default\img\navbar\vlogo.jpg" />
+    <Content Include="skin\default\img\popmenu\vlogo.gif" />
+    <Content Include="skin\default\img\treeview\approle.gif" />
+    <Content Include="skin\default\img\treeview\assembly.gif" />
+    <Content Include="skin\default\img\treeview\asymmetrickey.gif" />
+    <Content Include="skin\default\img\treeview\background.gif" />
+    <Content Include="skin\default\img\treeview\backup.gif" />
+    <Content Include="skin\default\img\treeview\certificate.gif" />
+    <Content Include="skin\default\img\treeview\clr_sp.gif" />
+    <Content Include="skin\default\img\treeview\column.gif" />
+    <Content Include="skin\default\img\treeview\computedcolumn.gif" />
+    <Content Include="skin\default\img\treeview\constraint_check.gif" />
+    <Content Include="skin\default\img\treeview\constraint_default.gif" />
+    <Content Include="skin\default\img\treeview\contract.gif" />
+    <Content Include="skin\default\img\treeview\credential.gif" />
+    <Content Include="skin\default\img\treeview\database.gif" />
+    <Content Include="skin\default\img\treeview\dbrole.gif" />
+    <Content Include="skin\default\img\treeview\dbtrigger.gif" />
+    <Content Include="skin\default\img\treeview\default.gif" />
+    <Content Include="skin\default\img\treeview\empty.gif" />
+    <Content Include="skin\default\img\treeview\errorlog.gif" />
+    <Content Include="skin\default\img\treeview\extendedsp.gif" />
+    <Content Include="skin\default\img\treeview\fkey.gif" />
+    <Content Include="skin\default\img\treeview\folder.gif" />
+    <Content Include="skin\default\img\treeview\fulltextcatalog.gif" />
+    <Content Include="skin\default\img\treeview\function.gif" />
+    <Content Include="skin\default\img\treeview\index.gif" />
+    <Content Include="skin\default\img\treeview\index_cluster.gif" />
+    <Content Include="skin\default\img\treeview\linkedserver.gif" />
+    <Content Include="skin\default\img\treeview\lock_id.gif" />
+    <Content Include="skin\default\img\treeview\lock_obj.gif" />
+    <Content Include="skin\default\img\treeview\lock_obj2.gif" />
+    <Content Include="skin\default\img\treeview\login_ntgroup.gif" />
+    <Content Include="skin\default\img\treeview\login_user.gif" />
+    <Content Include="skin\default\img\treeview\messagetype.gif" />
+    <Content Include="skin\default\img\treeview\mlt_blank.gif" />
+    <Content Include="skin\default\img\treeview\mlt_exp.gif" />
+    <Content Include="skin\default\img\treeview\mlt_exp_last.gif" />
+    <Content Include="skin\default\img\treeview\mlt_line.gif" />
+    <Content Include="skin\default\img\treeview\mlt_loading.gif" />
+    <Content Include="skin\default\img\treeview\mlt_node.gif" />
+    <Content Include="skin\default\img\treeview\mlt_node_last.gif" />
+    <Content Include="skin\default\img\treeview\mlt_red.gif" />
+    <Content Include="skin\default\img\treeview\mlt_red_last.gif" />
+    <Content Include="skin\default\img\treeview\more.gif" />
+    <Content Include="skin\default\img\treeview\namespace.gif" />
+    <Content Include="skin\default\img\treeview\parameter.gif" />
+    <Content Include="skin\default\img\treeview\partitionfunction.gif" />
+    <Content Include="skin\default\img\treeview\partitionscheme.gif" />
+    <Content Include="skin\default\img\treeview\pkey.gif" />
+    <Content Include="skin\default\img\treeview\procinfo.gif" />
+    <Content Include="skin\default\img\treeview\queue.gif" />
+    <Content Include="skin\default\img\treeview\relation.gif" />
+    <Content Include="skin\default\img\treeview\remoteservicebinding.gif" />
+    <Content Include="skin\default\img\treeview\return_value.gif" />
+    <Content Include="skin\default\img\treeview\root.gif" />
+    <Content Include="skin\default\img\treeview\route.gif" />
+    <Content Include="skin\default\img\treeview\rule.gif" />
+    <Content Include="skin\default\img\treeview\runnable.gif" />
+    <Content Include="skin\default\img\treeview\schema.gif" />
+    <Content Include="skin\default\img\treeview\service.gif" />
+    <Content Include="skin\default\img\treeview\sleeping.gif" />
+    <Content Include="skin\default\img\treeview\snapshot.gif" />
+    <Content Include="skin\default\img\treeview\sp.gif" />
+    <Content Include="skin\default\img\treeview\srvrole.gif" />
+    <Content Include="skin\default\img\treeview\srvtrigger.gif" />
+    <Content Include="skin\default\img\treeview\statistic.gif" />
+    <Content Include="skin\default\img\treeview\symmetrickey.gif" />
+    <Content Include="skin\default\img\treeview\synonym.gif" />
+    <Content Include="skin\default\img\treeview\table.gif" />
+    <Content Include="skin\default\img\treeview\trigger.gif" />
+    <Content Include="skin\default\img\treeview\type.gif" />
+    <Content Include="skin\default\img\treeview\udf.gif" />
+    <Content Include="skin\default\img\treeview\udt.gif" />
+    <Content Include="skin\default\img\treeview\user.gif" />
+    <Content Include="skin\default\img\treeview\view.gif" />
+    <Content Include="skin\default\img\treeview\xmlschema.gif" />
+    <Content Include="sql\d.sql" />
+    <Content Include="sql\dt.sql" />
+    <Content Include="sql\fn.sql" />
+    <Content Include="sql\r.sql" />
+    <Content Include="sql\sp.sql" />
+    <Content Include="sql\str.sql" />
+    <Content Include="sql\tf.sql" />
+    <Content Include="sql\tr.sql" />
+    <Content Include="sql\v.sql" />
+    <Content Include="sql\xsc.sql" />
+    <Content Include="tools\attach.aspx" />
+    <Content Include="tools\backup.aspx" />
+    <Content Include="tools\backupwh.aspx" />
+    <Content Include="tools\changepwd.aspx" />
+    <Content Include="tools\csvimport.aspx" />
+    <Content Include="tools\detach.aspx" />
+    <Content Include="tools\insertsql.aspx" />
+    <Content Include="tools\mylittlebackup.aspx" />
+    <Content Include="tools\openfile.aspx" />
+    <Content Include="tools\query.aspx" />
+    <Content Include="tools\restore.aspx" />
+    <Content Include="tools\restorewh.aspx" />
+    <Content Include="tools\shrinkdb.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="xml\defaultheader.xml" />
+    <Content Include="xml\navbardata.xml" />
+    <Content Include="xml\profiles\default.xml" />
+    <Content Include="xml\profiles\webhosting.xml" />
+    <Content Include="xml\treeviewdatabase.xml" />
+    <Content Include="xml\treeviewmanagement.xml" />
+    <Content Include="xml\treeviewsecurity.xml" />
+    <Content Include="xml\treeviewserverobjects.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Installation Guide.pdf" />
+    <None Include="jscalendar-1.0\calendar.php" />
+    <None Include="jscalendar-1.0\ChangeLog" />
+    <None Include="jscalendar-1.0\doc\reference.pdf" />
+    <None Include="jscalendar-1.0\README" />
+    <None Include="jscalendar-1.0\test.php" />
+    <Content Include="license.config" />
+    <None Include="License.pdf" />
+    <None Include="Quick Start Guide.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52809</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

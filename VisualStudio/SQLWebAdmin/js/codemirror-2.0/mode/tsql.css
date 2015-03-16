@@ -1,0 +1,36 @@
+span.tsql-keyword {
+    color: blue;
+}
+span.tsql-var {
+    color: red;
+}
+span.tsql-comment {
+    color: #AA7700;
+}
+span.tsql-string {
+    color: green;
+}
+span.tsql-operator {
+    color: blue;
+}
+span.tsql-batchseparator {
+    color: darkgreen;
+}
+span.tsql-word {
+    color: black;
+}
+span.tsql-function {
+    color: darkorange;
+}
+span.tsql-sqlplus {
+    color: darkorange;
+}
+span.tsql-type {
+    color: purple;
+}
+span.tsql-separator {
+    color: #666666;
+}
+span.tsql-number {
+    color: darkcyan;
+}

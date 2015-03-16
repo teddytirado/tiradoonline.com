@@ -1,0 +1,13 @@
+.mlb_div {
+	z-index:1;
+	position: absolute;
+	border: 1px solid #000000;
+	padding: 0;
+	background-color: #ffffff;
+}
+
+.mlb_iframe {
+	position: absolute;
+	border: none;
+	background-color: #ffffff;
+}

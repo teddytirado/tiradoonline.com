@@ -1,0 +1,7 @@
+<treeView>
+	<node id="S0" text="" class="treeviewRoot">
+		<node id="S10" text="Logins" loctext="lLogins" icon="folder.gif" link="../obj/objlist.aspx?t=lo" dynamicLoading="true" loadingUrl="../nav/logins.aspx"/>
+		<node id="S20" text="Server Roles" loctext="lServerRoles" icon="folder.gif" link="../obj/objlist.aspx?t=sr" dynamicLoading="true" loadingUrl="../nav/secobjects.aspx?t=sr&amp;n=S20"/>
+		<node id="S30" text="Credentials" loctext="lCredentials" icon="folder.gif" link="../obj/objlist.aspx?t=cr" dynamicLoading="true" loadingUrl="../nav/secobjects.aspx?t=cr&amp;n=S30"/>
+	</node>
+</treeView>

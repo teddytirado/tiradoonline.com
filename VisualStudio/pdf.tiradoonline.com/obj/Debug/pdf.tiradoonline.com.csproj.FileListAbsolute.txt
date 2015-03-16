@@ -1,0 +1,8 @@
+C:\Storage\Projects\tiradoonline.com\pdf.tiradoonline.com\bin\pdf.tiradoonline.com.dll
+C:\Storage\Projects\tiradoonline.com\pdf.tiradoonline.com\bin\pdf.tiradoonline.com.pdb
+C:\Storage\Projects\tiradoonline.com\pdf.tiradoonline.com\bin\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\pdf.tiradoonline.com\bin\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\pdf.tiradoonline.com\bin\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\pdf.tiradoonline.com\obj\Debug\pdf.tiradoonline.com.csprojResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\pdf.tiradoonline.com\obj\Debug\pdf.tiradoonline.com.dll
+C:\Storage\Projects\tiradoonline.com\pdf.tiradoonline.com\obj\Debug\pdf.tiradoonline.com.pdb

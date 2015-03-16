@@ -1,0 +1,10 @@
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\bin\Release\UnitTestProject.dll.config
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\bin\Release\UnitTestProject.dll
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\bin\Release\UnitTestProject.pdb
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\bin\Release\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\bin\Release\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\bin\Release\OpenPop.dll
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\bin\Release\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\obj\Release\UnitTestProject.dll
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\obj\Release\UnitTestProject.pdb
+C:\Storage\Projects\tiradoonline.com\UnitTestProject\obj\Release\UnitTestProject.csprojResolveAssemblyReference.cache

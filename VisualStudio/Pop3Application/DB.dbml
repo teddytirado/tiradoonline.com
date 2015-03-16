@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="tiradoonline" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQL2K8;Initial Catalog=tiradoonline;Persist Security Info=True;User ID=tiradoonline_user" SettingsObjectName="Pop3Application.Properties.Settings" SettingsPropertyName="tiradoonlineConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.sp_POP3Email_get" Method="sp_POP3Email_get">
+    <Parameter Name="POP3EmailID" Parameter="pOP3EmailID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_POP3Email_getResult">
+      <Column Name="POP3EmailID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="POP3EmailFolderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="POP3EmailMessageID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="POP3EmailMessageDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="POP3EmailFromName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="POP3EmailFromEmail" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="POP3EmailSubject" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="POP3EmailBodyText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="create_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_POP3Email_insert" Method="sp_POP3Email_insert">
+    <Parameter Name="POP3EmailFolderID" Parameter="pOP3EmailFolderID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="POP3EmailMessageID" Parameter="pOP3EmailMessageID" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="POP3EmailMessageDateTime" Parameter="pOP3EmailMessageDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="POP3EmailFromName" Parameter="pOP3EmailFromName" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="POP3EmailFromEmail" Parameter="pOP3EmailFromEmail" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="POP3EmailSubject" Parameter="pOP3EmailSubject" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="POP3EmailBodyText" Parameter="pOP3EmailBodyText" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

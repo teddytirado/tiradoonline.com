@@ -1,0 +1,5 @@
+C:\Storage\Projects\tiradoonline.com\SQLWebAdmin\bin\SQLWebAdmin.dll
+C:\Storage\Projects\tiradoonline.com\SQLWebAdmin\bin\SQLWebAdmin.pdb
+C:\Storage\Projects\tiradoonline.com\SQLWebAdmin\obj\Debug\ResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\SQLWebAdmin\obj\Debug\SQLWebAdmin.dll
+C:\Storage\Projects\tiradoonline.com\SQLWebAdmin\obj\Debug\SQLWebAdmin.pdb

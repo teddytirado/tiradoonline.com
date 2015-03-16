@@ -1,0 +1,14 @@
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Release\Pop3Application.Form1.resources
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Release\Pop3Application.Properties.Resources.resources
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Release\Pop3Application.exe.config
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Release\Pop3Application.exe
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Release\Pop3Application.pdb
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Release\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Release\OpenPop.dll
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Release\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\Pop3Application\bin\Release\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Release\Pop3Application.exe
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Release\Pop3Application.pdb
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Release\ResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Release\GenerateResource.read.1.tlog
+C:\Storage\Projects\tiradoonline.com\Pop3Application\obj\Release\GenerateResource.write.1.tlog

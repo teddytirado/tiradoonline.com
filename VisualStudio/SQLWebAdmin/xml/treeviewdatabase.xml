@@ -1,0 +1,7 @@
+<treeView>
+	<node id="D0" text="" class="treeviewRoot">
+		<node id="D10" text="System Databases" loctext="lSystemDatabases" icon="folder.gif" link="../obj/objlist.aspx?t=sd" dynamicLoading="true" loadingUrl="../nav/databases.aspx?t=s&amp;n=D10"/>
+		<node id="D20" text="Database Snapshots" loctext="lDatabaseSnapshots" icon="folder.gif" link="../obj/objlist.aspx?t=ssd" dynamicLoading="true" loadingUrl="../nav/databases.aspx?t=ss&amp;n=D20"/>
+		<node id="D30" text="User Databases" loctext="lUserDatabases" icon="folder.gif" link="../obj/objlist.aspx?t=ud" dynamicLoading="true" loadingUrl="../nav/databases.aspx?t=u&amp;n=D30"/>
+	</node>
+</treeView>

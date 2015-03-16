@@ -1,0 +1,55 @@
+#navbarLogo {
+	background: #ffffff url(../img/navbar/vlogo.jpg) no-repeat bottom;
+	position:absolute;
+	top:0;
+	left:0;
+	width: 20px;
+	height: 100%;
+}
+
+.navbar {
+	position:absolute;
+	top:0;
+	left:20px;
+	margin-bottom: 0px;
+	width: 330px;
+	background-color: #ffffff;
+}
+
+.navbarParent {
+	font-weight: Bold;
+	cursor: pointer;
+	background:  #666699 url(../img/navbar/top_folder.gif) no-repeat 3px 3px;
+	color: #ffffff;
+	padding: 4px 0 5px 23px;
+	margin-top: 2px;
+}
+
+.navbarParentSelected {
+	font-weight: Bold;
+	color: #330066;
+	background: #ccddee url(../img/navbar/top_folder_sel.gif) no-repeat 3px 3px;
+	padding: 4px 0 5px 23px;
+	margin-top: 2px;
+}
+
+.navbarChildren {
+	padding-left: 2px;
+	margin-bottom: 2px;
+	border-left: 1px solid #ccddee;
+	overflow: auto;
+	background-color: #f6f6f6;
+	width: 327px;
+}
+
+.navbarItem {
+	margin: 0;
+	padding: 0;
+}
+
+.navbarIcon {
+	text-align: left;
+	vertical-align: middle;
+	padding: 2px 8px;
+	border: 0;
+}

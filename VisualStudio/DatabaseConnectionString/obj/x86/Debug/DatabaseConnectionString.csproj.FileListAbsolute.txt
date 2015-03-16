@@ -1,0 +1,12 @@
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Debug\DatabaseConnectionString.exe
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Debug\DatabaseConnectionString.pdb
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Debug\DatabaseConnectionStringNameSpace.Properties.Resources.resources
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Debug\DatabaseConnectionString.exe
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Debug\DatabaseConnectionString.pdb
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Debug\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Debug\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Debug\DatabaseConnectionStringNameSpace.MainForm.resources
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Debug\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Debug\GenerateResource.write.1.tlog

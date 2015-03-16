@@ -1,0 +1,16 @@
+<defaultheader>
+	<cache enable="false" />
+	<title value="myLittleAdmin for SQL Server, by myLittleTools" />
+	<description value="myLittleAdmin for SQL Server - The best web-based management tool specially designed for SQL Server" />
+	<keywords value="myLittleTools, myLittleAdmin, SQL Server, Katmai, Yukon, web-based, manager, MS SQL Web Admin" />
+	<javascriptFiles>
+		<javascriptFile filePath="../js/mla_sql.js" />
+		<javascriptFile filePath="../js/postback.js" />
+		<javascriptFile filePath="../js/codemirror-2.0/lib/codemirror.js" />
+		<javascriptFile filePath="../js/codemirror-2.0/mode/tsql.js" />
+	</javascriptFiles>
+	<cssFiles>
+		<cssFile filePath="../js/codemirror-2.0/lib/codemirror.css" />
+		<cssFile filePath="../js/codemirror-2.0/mode/tsql.css" />
+	</cssFiles>
+</defaultheader>

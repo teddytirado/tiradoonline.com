@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
+  <asmv1:assemblyIdentity name="ExportStoredProcedures.exe" version="1.0.0.5" publicKeyToken="f0a71dc5f1748721" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="database.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="ExportStoredProcedures" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="ExportStoredProcedures.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="WindowsBase" version="3.0.0.0" publicKeyToken="31bf3856ad364e35" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExportStoredProcedures.exe" size="23552">
+      <assemblyIdentity name="ExportStoredProcedures" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>D5hr2DadHFlfNojWZCQrVcHzvpU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="database.ico" size="1150">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>SADuFoc8dGiZ5ZaPIHgGodI8ryI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ExportProceduresIcon.ico" size="2238">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>pOJimXtgp4nm2rw09HS7VImduSc=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=TEDDY_LAPTOP\teddy" issuerKeyHash="08d65e03866806fd7834ad4cc713b34eba183d93" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>qkzSE4qqf8m+kOu/og1RPIwrXFA=</DigestValue></Reference></SignedInfo><SignatureValue>Bm1AYDFsbq1Jd9M1i4HogMJx5uKIUPnOHI0OpzTh0QSgbjUYuAcTVU+pa6JK9cbhAMeq8GgYumZs4a0ybTnUPLrC6WxOeaaYhIdzjJpSmHkwYTHQmXaUKzvb9UK4XX+fLb0Woip0azzTYcl60bGu2b11EDXa39fvrkPtVgrTlEQ=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>xCsD1M3igjPcWFXihrVflsMiTu0wZyky2j4hhYDKl6ZP/UQzvyqfDlmNrvqYikgimuAZwVY54IzCCgeMoWmz1lyctztpDdQ37mckCKurJpfwcS6QH6n4++rAf6VZPbxdyG1/xJGRmyHCrlmnUmGeM2b8z8mXruj6MZB9NbR1ehk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="505c2b8c3c510da2bfeb90bec97faa8a13d24caa" Description="" Url=""><as:assemblyIdentity name="ExportStoredProcedures.exe" version="1.0.0.5" publicKeyToken="f0a71dc5f1748721" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=TEDDY_LAPTOP\teddy</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>AjW9JdyLkt6vQOTfOaFjWEeUekQ=</DigestValue></Reference></SignedInfo><SignatureValue>N0fvIz75eWclIrRIFmRXUZTzsomEtOwtpX5vYAV4uesjASlb+k2rGO5hc+u+DuZc4V0cHRso6YYllpWh+KK5bq3Woirz4c2mf9aaj6LgEH+cRAFK+dj5wWjihSSzAMpKWUjJIHZPHQj6i2l6X45lfj7WrBn5yJZt+ZuonOyZC+c=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>xCsD1M3igjPcWFXihrVflsMiTu0wZyky2j4hhYDKl6ZP/UQzvyqfDlmNrvqYikgimuAZwVY54IzCCgeMoWmz1lyctztpDdQ37mckCKurJpfwcS6QH6n4++rAf6VZPbxdyG1/xJGRmyHCrlmnUmGeM2b8z8mXruj6MZB9NbR1ehk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB4TCCAUqgAwIBAgIQGMR1LZPmO7pJFjPhZiYu4TANBgkqhkiG9w0BAQUFADAvMS0wKwYDVQQDHiQAVABFAEQARABZAF8ATABBAFAAVABPAFAAXAB0AGUAZABkAHkwHhcNMTEwNjA0MTUxOTA4WhcNMTIwNjAzMjExOTA4WjAvMS0wKwYDVQQDHiQAVABFAEQARABZAF8ATABBAFAAVABPAFAAXAB0AGUAZABkAHkwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMQrA9TN4oIz3FhV4oa1X5bDIk7tMGcpMto+IYWAypemT/1EM78qnw5Zja76mIpIIprgGcFWOeCMwgoHjKFps9ZcnLc7aQ3UN+5nJAirqyaX8HEukB+p+PvqwH+lWT28Xchtf8SRkZshwq5Zp1JhnjNm/M/Jl67o+jGQfTW0dXoZAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAsow8Jl9FawUDRSx9dtLKpdwWyqJHVU8PI50y3UFnLHTVXUlDdshIedxUMETZQngeBnsqFY1BH5IIqhRLGllTZ/n33nZ0Y67+PoZiFt2jQJRNP5cbSb/2RDfSe8Rz1NU8AW5p0pVmZiYeQl99jzYcofMFBR4PimWVFBTvKJEZy70=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

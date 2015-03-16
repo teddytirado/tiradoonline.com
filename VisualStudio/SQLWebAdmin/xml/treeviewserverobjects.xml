@@ -1,0 +1,7 @@
+<treeView>
+	<node id="O0" text="" class="treeviewRoot">
+		<node id="O10" text="Backup Devices" loctext="lBackupDevices" icon="folder.gif" link="../obj/objlist.aspx?t=bd" dynamicLoading="true" loadingUrl="../nav/srvobjects.aspx?t=bd&amp;n=O10"/>
+		<node id="O20" text="Linked Servers" loctext="lLinkedServers" icon="folder.gif" link="../obj/objlist.aspx?t=ls" dynamicLoading="true" loadingUrl="../nav/srvobjects.aspx?t=ls&amp;n=O20"/>
+		<node id="O30" text="Triggers" loctext="lTriggers" icon="folder.gif" link="../obj/objlist.aspx?t=str" dynamicLoading="true" loadingUrl="../nav/srvobjects.aspx?t=str&amp;n=O30"/>
+	</node>
+</treeView>

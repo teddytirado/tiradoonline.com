@@ -1,0 +1,13 @@
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Release\DatabaseConnectionStringNameSpace.MainForm.resources
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Release\DatabaseConnectionStringNameSpace.Properties.Resources.resources
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Release\DatabaseConnectionString.exe
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Release\DatabaseConnectionString.pdb
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Release\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Release\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Release\OpenPop.dll
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\bin\Release\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Release\DatabaseConnectionString.exe
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Release\DatabaseConnectionString.pdb
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Storage\Projects\tiradoonline.com\DatabaseConnectionString\obj\x86\Release\GenerateResource.write.1.tlog

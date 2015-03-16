@@ -1,0 +1,13 @@
+SCC = This is a Source Code Control file
+
+[ExportStoredProcedures.csproj]
+SCC_Aux_Path = "D:\www\vss"
+SCC_Project_Name = "$/ExportStoredProcedures/ExportStoredProcedures/ExportStoredProcedures", CDPAAAAA
+
+[ExportSQLObjects.csproj]
+SCC_Aux_Path = "C:\Storage\vss"
+SCC_Project_Name = "$/Projects/tiradoonline.com/tiradoonline.com/ExportSQLObjects", JLZBAAAA
+
+[ExportSQLObjects.sln]
+SCC_Aux_Path = "C:\Storage\www\vss"
+SCC_Project_Name = "$/tiradoonline.com/tiradoonline.com/ExportSQLObjects", MBQBAAAA

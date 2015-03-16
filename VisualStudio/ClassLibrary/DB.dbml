@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="tiradoonline" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQL2K8;Initial Catalog=tiradoonline;Persist Security Info=True;User ID=tiradoonline_user" SettingsObjectName="ClassLibraryNameSpace.Properties.Settings" SettingsPropertyName="tiradoonlineConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.sp_Banking_BankingAccountID_BankingDate_get" Method="sp_Banking_BankingAccountID_BankingDate_get">
+    <Parameter Name="BankingAccountID" Parameter="bankingAccountID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BankingDate" Parameter="bankingDate" Type="System.DateTime" DbType="SmallDateTime" />
+    <ElementType Name="sp_Banking_BankingAccountID_BankingDate_getResult">
+      <Column Name="BankingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BankingAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubBankingAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BankingAccountName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SubAccountName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BankingDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Payment" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="BankingFile" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BankingFileName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_BankingAccount_active_get" Method="sp_BankingAccount_active_get">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Active" Parameter="active" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Administrator" Parameter="administrator" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="sp_BankingAccount_active_getResult">
+      <Column Name="BankingAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="VarChar(84)" CanBeNull="true" />
+      <Column Name="BankingAccountName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="ReceiveEmails" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_BankingAccount_ReceiveEmail_get" Method="sp_BankingAccount_ReceiveEmail_get">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_BankingAccount_ReceiveEmail_getResult">
+      <Column Name="BankingAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="VarChar(84)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BankingAccountName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="ReceiveEmails" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Logs_insert" Method="sp_Logs_insert">
+    <Parameter Name="ApplicationName" Parameter="applicationName" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="LogDesc" Parameter="logDesc" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Timesheet_TimesheetID_get" Method="sp_Timesheet_TimesheetID_get">
+    <Parameter Name="TimesheetID" Parameter="timesheetID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_Timesheet_TimesheetID_getResult">
+      <Column Name="TimesheetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TimesheetCompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TimesheetInvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TimesheetInvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TimesheetHourlyRate" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TimesheetStartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TimesheetEndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TimesheetHTML" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="create_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

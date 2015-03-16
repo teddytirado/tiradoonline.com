@@ -1,0 +1,12 @@
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Debug\SQLProfiler.exe
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Debug\SQLProfiler.pdb
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Debug\SQLProfilerNameSpace.Properties.Resources.resources
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Debug\SQLProfiler.exe
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Debug\SQLProfiler.pdb
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Debug\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Debug\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Debug\SQLProfiler.exe.config
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Debug\SQLProfilerNameSpace.SQLProfilerMainForm.resources
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\bin\Debug\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Debug\SQLProfiler.csprojResolveAssemblyReference.cache
+C:\Storage\Projects\tiradoonline.com\SQLProfiler\obj\x86\Debug\SQLProfiler.csproj.GenerateResource.Cache

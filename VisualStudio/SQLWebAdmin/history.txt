@@ -1,0 +1,152 @@
+============================
+v3.8 r0069
+============================
+2012/05/10
+ + support of SQL Server 2012
+ + minor UI enhancements
+ + ability to export in XLS 2003 format
+ + application pool improvement
+ + silent logon to myLittleBackup was not working correctly with Chrome
+ + cookies were not correctly stored in IE with high security level
+ + use of CodeMirror 2.0 to colorize T-SQL scripts (http://codemirror.net)
+ + ability to send the server address in the querystring in order to pre-fill the login form
+ + ability to send the database name in the querystring in order to pre-fill the login form
+ + Fixed - \ char were removed when opening a T-SQL file in the New Query Tool
+ + Fixed - In some very specific cases, queries were executed twice in the New Query Tool
+ + added the property "required" for the askdb option
+ 
+============================
+v3.7 r0069
+============================
+2010/06/28
+ + New Query Tool - RowCount and TextSize default values can now be defined in the config.xml
+ + Security update - Metacharacters filtering from user input
+ + Security update - Was possible to display an ASP.NET error message when a 404 error was occuring
+ + Session time-out is not limited to 20 mins anymore
+ + GUI to change object schema
+
+============================
+v3.6a r0067
+============================
+2010/03/24
+ + Restore WH Wizard: the dbowner is reset to its initial value after the restore
+
+============================
+v3.6 r0065
+============================
+2010/01/26
+ + The SP node was not correctly displayed when the db had more than 50 sps
+ + Fixed a minor bug in the table creation page
+ + Ability to type SQL Server address in the login page (Datacenter Edition Only)
+ + Maximum size is now displayed in the db property page
+
+ ============================
+v3.5a r0061
+============================
+2009/09/03
+ + Security update - Connection String Injection
+ + Fixed a minor bug in the Query tool (failed to enable constraints)
+
+============================
+v3.5 r0058
+============================
+2008/09/01
+ + Ability to define the column separator for  CSV export in the Preferences page 
+ + InitialCatalog can be specified with the Silent logon module
+ + Binary values are now displayed in the content browser
+ + New Query tool is now able to display XML, Binary, GUID types
+ + Backup and Backup Webhosting wizards now offer compression possibilities (New SQL 2008 feature)
+ + New SQL 2008 Encryption (TDE) database properties
+ + New SQL 2008 FILESTREAM feature is supported when creating a new database
+ + Silent logon now supports Windows Authentication mode
+ + Ability to filter table and view content, and to export the filtered content
+ + A webhosting profile template has been added
+ + "CSV import" wizard enhancements.
+ + A new Server Info page has been added
+ + Ability not to display system objects (through the profile file)
+ + "Generate INSERT script" tool enhancements: several options have been added, binary values are now computed.
+ + Treeview enhancement
+ + System views content can now be browsed
+ + Content grid enhancements
+ + Better display for the waiting box
+ + Support of the new SQL2008 date/time data types.
+
+============================
+v3.2 r0036
+============================
+2007/10/23
+ + Important kernel changes
+ + possibility to check for updates
+ + Several minor bugs have been fixed 
+
+============================
+v3.1g r0033
+============================
+2007/08/10
+ + Possibility to jump to a specified page while browsing the data
+ + Navigation inside the data has been improved
+ + Fixed: In some case, the databases were not all listed (only occured with v3.1f)
+ + Ability to choose between CLUSTERED and NONCLUSTERED when creating a primary key
+
+============================
+v3.1f r0031
+============================
+2007/06/22
+ + Possibility to define the default language in the config file
+ + Possibility to define the number of records per page in the Preferences
+ + Added several space properties in the database properties page
+ + Added the possibility to silent log into myLittleBackup
+ + Text areas were too small in Firefox
+ + Message window was too big with 800x600 screen resolution
+
+============================
+v3.1e r0026
+============================
+2007/05/18
++ Checks MS SQL version and possibility to redirect to MLA2000
++ Possibility to ask the intial catalog in the login page
++ An error occured when a theme was defined in the root level web.config 
+
+============================
+v3.1d r0023
+============================
+2007/01/24
++ Silent logon module has been added
++ An error was occuring on x64 server
+
+============================
+v3.1c r0021
+============================
+2006/11/28
++ in the New Query tool, no result were displayed when running a stored procedure if this stored procedure was using #temp tables
++ in the New Query tool, an error was occuring when the query was ending with the GO keyword
++ it was not possible to export in CSV, XML, XLS when myLittleAdmin was running under https
+
+============================
+v3.1b r0018
+============================
+2006/10/20
++ added the possibility to use a sysadmin connection to perform backup/restore
++ restore WH Tools: if the restore process fails, we try to set back the db user access to MULTI_USER
++ even when create was set to false in the profile.xml file, it was possible to create a new extended property
+
+============================
+v3.1 r0015
+============================
+2006/09/04:
++ Ability to set permissions for each object
++ Extended properties management
++ New Backup and Restore wizards specially developed for and with web-hosting companies
++ A Quick Start Guide is now available
++ All tools have a new Message tab. A waiting popup has also been added when needed.
++ Asymetric keys are now listed
++ Certificates are now listed
++ Inline Table Functions were not listed
++ Connection options are now defined in the config file
++ New query: an error was occuring when the query was containing the GOTO keyword
++ Several minor bugs have been fixed
+
+============================
+v3.0 r0013
+============================
+Official release

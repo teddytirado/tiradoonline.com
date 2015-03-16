@@ -1,0 +1,9 @@
+C:\Storage\Projects\tiradoonline.com\ClassLibrary\obj\Release\ClassLibrary.csproj.ResolveComReference.cache
+C:\Storage\Projects\tiradoonline.com\ClassLibrary\bin\Release\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\ClassLibrary\bin\Release\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\ClassLibrary\bin\Release\Aspose.Pdf.Kit.dll
+C:\Storage\Projects\tiradoonline.com\ClassLibrary\bin\Release\itextsharp.dll
+C:\Storage\Projects\tiradoonline.com\ClassLibrary\bin\Release\OpenPop.dll
+C:\Storage\Projects\tiradoonline.com\ClassLibrary\obj\Release\ClassLibrary.dll
+C:\Storage\Projects\tiradoonline.com\ClassLibrary\obj\Release\ClassLibrary.pdb
+C:\Storage\Projects\tiradoonline.com\ClassLibrary\obj\Release\ClassLibrary.csprojResolveAssemblyReference.cache

@@ -1,0 +1,4 @@
+C:\Storage\Projects\tiradoonline.com\SqlCLRDatabaseProject\bin\Debug\SqlCLRDatabaseProject.dll
+C:\Storage\Projects\tiradoonline.com\SqlCLRDatabaseProject\bin\Debug\SqlCLRDatabaseProject.pdb
+C:\Storage\Projects\tiradoonline.com\SqlCLRDatabaseProject\obj\Debug\SqlCLRDatabaseProject.dll
+C:\Storage\Projects\tiradoonline.com\SqlCLRDatabaseProject\obj\Debug\SqlCLRDatabaseProject.pdb

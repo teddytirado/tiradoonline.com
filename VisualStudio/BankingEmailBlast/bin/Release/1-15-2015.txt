@@ -1,0 +1,105 @@
+Date:
+-------------------------------
+1/15/2015 8:48:03 PM
+
+Application:
+-------------------------------
+BankingEmailBlast
+
+Log File:
+-------------------------------
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\1-15-2015.txt
+
+Error:
+-------------------------------
+BankingEmailBlast ran successfully.
+
+-----------------------------------------------------------------------------
+
+
+
+Date:
+-------------------------------
+1/15/2015 5:55:44 PM
+
+Application:
+-------------------------------
+BankingEmailBlast
+
+Log File:
+-------------------------------
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\1-15-2015.txt
+
+Error:
+-------------------------------
+BankingEmailBlast ran successfully.
+
+-----------------------------------------------------------------------------
+
+
+
+Date:
+-------------------------------
+1/15/2015 5:44:13 PM
+
+Application:
+-------------------------------
+BankingEmailBlast
+
+Log File:
+-------------------------------
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\1-15-2015.txt
+
+Error:
+-------------------------------
+BankingEmailBlast ran successfully.
+
+-----------------------------------------------------------------------------
+
+
+
+Date:
+-------------------------------
+1/15/2015 5:43:15 PM
+
+Application:
+-------------------------------
+BankingEmailBlast
+
+Log File:
+-------------------------------
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\1-15-2015.txt
+
+Error:
+-------------------------------
+BankingEmailBlast ran successfully.
+
+-----------------------------------------------------------------------------
+
+
+
+Date:
+-------------------------------
+1/15/2015 5:15:22 PM
+
+Application:
+-------------------------------
+BankingEmailBlast
+
+Log File:
+-------------------------------
+C:\Storage\Projects\tiradoonline.com\BankingEmailBlast\bin\Release\1-15-2015.txt
+
+Error:
+-------------------------------
+BankingEmailBlast ran successfully.
+
+-----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
