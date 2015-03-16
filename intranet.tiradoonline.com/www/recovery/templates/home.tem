@@ -1,15 +1,15 @@
 		<div style="float:left;padding:30px;text-align:center">
-			<a href="/recovery/recovery.asp?Template=recovery_programs&RecoveryTypeID=1001"><img src="/images/icons/users_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<a href="/recovery/recovery.asp?Template=recovery_programs&RecoveryTypeID=1001"><img src="/images/icons/rehabs_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
 			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Outpatient Programs</div>
 		</div>	
 
 		<div style="float:left;padding:30px">
-			<a href="/recovery/recovery.asp?Template=recovery_programs&RecoveryTypeID=1002"><img src="/images/icons/users_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<a href="/recovery/recovery.asp?Template=recovery_programs&RecoveryTypeID=1002"><img src="/images/icons/rehabs_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
 			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Inpatient Programs</div>
 		</div>	
 
 		<div style="float:left;padding:30px;text-align:center">
-			<a href="/recovery/recovery.asp?Template=AA&RecoveryTypeID=3"><img src="/images/icons/users_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<a href="/recovery/recovery.asp?Template=AA&RecoveryTypeID=3"><img src="/images/icons/AA_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
 			<div style="width:116px;text-align:center;color:#000000;z-index:3;">A&nbsp;A</div>
 		</div>	
 	
