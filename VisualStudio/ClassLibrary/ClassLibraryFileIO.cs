@@ -11,6 +11,23 @@ namespace ClassLibraryNameSpace
 {
     public class ClassLibraryFileIO
     {
+        public bool CreateDirectoryFromFileName(string stringFileName)
+        {
+            string vDirectory = Path.GetDirectoryName(stringFileName);
+            try
+            {
+               if (!Directory.Exists(vDirectory))
+                   Directory.CreateDirectory(vDirectory);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ClassLibraryLogs.Log("ClassLibraryNameSpace:ClassLibraryFileIO:CreateDirectoryFromFileName()", vDirectory, ex.ToString());
+                return false;
+            }
+        }
+
         public static string ReadFile(string stringFileName)
         {
             String stringBodyText = string.Empty;

@@ -12,40 +12,23 @@ namespace ClassLibraryNameSpace
 {
     public class ClassLibraryPDF
     {
-        private DBDataContext db = new DBDataContext();
-
-        //public void GeneratePDF(string templateFile)
-        //{
-        //    try
-        //    {
-        //        string pdfFileName = templateFile.Replace(".html", ".pdf");
-        //        ClassLibraryFileIO objFileIO = new ClassLibraryFileIO();
-        //        string invoiceContents = ClassLibraryFileIO.ReadFile(templateFile);
-
-        //        FileStream fs = new FileStream(pdfFileName, FileMode.Create);
-                
-        //        Document doc = new Document();
-        //        PdfWriter writer = PdfWriter.GetInstance(doc, fs);
-        //        doc.Open();
-        //        doc.Add(new Paragraph(invoiceContents));
-
-        //        doc.Close();
-        //        fs.Close();
-
-        //        doc = null;
-        //        fs = null;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        string s = e.ToString();
-        //    }
-        //}
-
-        public void GeneratePDF(int TimesheetID)
+        public void GeneratePDF(string PDF_FileName, string HTML)
         {
             try
             {
-                
+
+                FileStream fs = new FileStream(PDF_FileName, FileMode.Create);
+
+                Document doc = new Document();
+                PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                doc.Open();
+                doc.Add(new Paragraph(HTML));
+
+                doc.Close();
+                fs.Close();
+
+                doc = null;
+                fs = null;                
             }
             catch (Exception e)
             {

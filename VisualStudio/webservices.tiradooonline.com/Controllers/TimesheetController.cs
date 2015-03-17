@@ -13,9 +13,10 @@ namespace MVC3WebApplication.Controllers
         //
         // GET: /Timesheet/
 
-        public ActionResult Index(string TimesheetID)
+        public ActionResult Index(string TimesheetID, string redirectURL)
         {
             ClassLibraryPDF objPDF = new ClassLibraryPDF();
+
             objPDF.GeneratePDF(Convert.ToInt32(TimesheetID));
             return View();
         }

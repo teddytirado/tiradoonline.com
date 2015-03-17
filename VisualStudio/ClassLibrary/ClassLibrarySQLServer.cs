@@ -227,8 +227,8 @@ namespace ClassLibraryNameSpace
             objStringBuilder.AppendLine("		BEGIN");
             objStringBuilder.AppendLine("");
             objStringBuilder.AppendLine("			SELECT ");
-            objStringBuilder.AppendLine("				PrimaryKey = (SELECT '(PK)' FROM #PRIMARY_KEYS WHERE TableName = tables.TableName AND ColumnName = tables.ColumnName),");
-            objStringBuilder.AppendLine("				ForeignKey = (SELECT '(FK) ' + ForeignKeyTableName + '(' + ForeignKeyColumnName + ')' FROM #FOREIGN_KEYS WHERE TableName = tables.TableName AND ColumnName = tables.ColumnName),");
+            objStringBuilder.AppendLine("				PrimaryKey = (SELECT TOP 1 '(PK)' FROM #PRIMARY_KEYS WHERE TableName = tables.TableName AND ColumnName = tables.ColumnName),");
+            objStringBuilder.AppendLine("				ForeignKey = (SELECT TOP 1 '(FK) ' + ForeignKeyTableName + '(' + ForeignKeyColumnName + ')' FROM #FOREIGN_KEYS WHERE TableName = tables.TableName AND ColumnName = tables.ColumnName),");
             objStringBuilder.AppendLine("				TableName = tables.TableName,");
             objStringBuilder.AppendLine("				ColumnName = tables.ColumnName, ");
             objStringBuilder.AppendLine("				DataType, ");
@@ -248,8 +248,8 @@ namespace ClassLibraryNameSpace
             objStringBuilder.AppendLine("					ELSE");
             objStringBuilder.AppendLine("			         		'NOT NULL'");
             objStringBuilder.AppendLine("					END,");
-            objStringBuilder.AppendLine("				DefaultValue = (SELECT DefaultValue FROM #DEFAULTS WHERE TableName = tables.TableName AND ColumnName = tables.ColumnName),");
-            objStringBuilder.AppendLine("				Indexed  = (SELECT 'YES' FROM #INDEXES WHERE TableName = tables.TableName AND ColumnName = tables.ColumnName)");
+            objStringBuilder.AppendLine("				DefaultValue = (SELECT TOP 1 DefaultValue FROM #DEFAULTS WHERE TableName = tables.TableName AND ColumnName = tables.ColumnName),");
+            objStringBuilder.AppendLine("				Indexed  = (SELECT TOP 1 'YES' FROM #INDEXES WHERE TableName = tables.TableName AND ColumnName = tables.ColumnName)");
             objStringBuilder.AppendLine("			FROM ");
             objStringBuilder.AppendLine("				#Tables tables");
             objStringBuilder.AppendLine("			WHERE ");

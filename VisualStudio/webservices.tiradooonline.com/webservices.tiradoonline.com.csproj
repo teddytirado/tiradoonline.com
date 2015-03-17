@@ -100,7 +100,6 @@
   <ItemGroup>
     <Compile Include="Controllers\BankingController.cs" />
     <Compile Include="Controllers\TimesheetController.cs" />
-    <Compile Include="DBContext__ClassLibraryNameSpace_.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -370,7 +370,7 @@
 			If SubmitButton <> "Search" AND SubmitButton <> "last_created_transactions" AND SubmitButton <> "last_updated_transactions" Then
 		%>
  							<td align="center">
-								<%= Button("Filter Button", "Filter", "Button", "", "", "location.href='" & SCRIPT_NAME & "?Template=Search'") %>&nbsp;&nbsp;
+								<%= Button("SearchButton", "Search", "Button", "", "", "location.href='" & SCRIPT_NAME & "?Template=Search'") %>&nbsp;&nbsp;
 							</td>	
  							<td align="right">
  									<%= Button("Button", "Add Transaction", "Button", "", "Add Transaction", "location='" & SCRIPT_NAME & "?BankingAccountID=" & Trim(Request("BankingAccountID")) & "&CurrentDate=" & CurrentDate & "&Template=Add'") %>
