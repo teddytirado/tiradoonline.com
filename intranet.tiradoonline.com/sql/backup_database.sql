@@ -5,8 +5,8 @@ DECLARE @BACKUP_DEVICE_PATH				VARCHAR(1000);
 /*
 ***** CHANGE THESE VARIABLES ********
 */
-SET @DATABASE_NAME		= 'tiradoonline';
-SET @BACKUP_DEVICE_PATH		= 'C:\Storage\www\tiradoonline.com\intranet.tiradoonline.com\database\Backups';
+SET @DATABASE_NAME		= 'PuppyhoodCMS';
+SET @BACKUP_DEVICE_PATH		= 'C:\Projects\purina-puppyhood\database\PuppyhoodCMS\Backups';
 
 
 

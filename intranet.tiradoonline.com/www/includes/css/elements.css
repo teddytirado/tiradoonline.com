@@ -12,6 +12,10 @@
 	font-weight : bold;
 }
 
+.BankingElement td A { 
+	font-size: 14px;
+}
+
 .BankingSubElement {
 	background: <%= BANKING_SUB_THEME %>;
 	color : white;

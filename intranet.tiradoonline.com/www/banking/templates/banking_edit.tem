@@ -84,9 +84,9 @@
 									<td class="frm_Label">Account:&nbsp;&nbsp;</td>
 									<td class="BankingSubElement">
 										<table width="100%">
-										<tr class="BankingSubElement">
+										<tr class="BankingElement">
 											<td>
-												<%= BankingAccountName %>&nbsp;-&nbsp;$<%= FormatNumber(TotalBanking, 2) %>
+												<a href="<%= SCRIPT_NAME %>?BankingAccountID=<%= BankingAccountID %>&CurrentDate=&Template=View"><%= BankingAccountName %></a>&nbsp;-&nbsp;$<%= FormatNumber(TotalBanking, 2) %>
 											</td>
 											<td align="right">
 												<%= Button("Button", "Edit Banking Transactions", "Button", "", "Edit Banking Transactions", "location.href='" & SCRIPT_NAME & "?CurrentDate=" & CurrentDate & "&BankingAccountID=" & BankingAccountID & "&Template=View'") %>&nbsp;&nbsp;
