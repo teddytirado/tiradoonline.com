@@ -4,7 +4,7 @@ Sub Application_OnStart
 
 	'***** GLOBAL VARIABLES	
 	Application("AdministratorName") = "Theodore Tirado"
-	Application("AdministratorEmail") = "developer@tiradoonline.com"
+	Application("AdministratorEmail") = "intranet@tiradoonline.com"
 	Application("TextMessageEmail") = "3474141284@txt.att.net"
 	
 End Sub

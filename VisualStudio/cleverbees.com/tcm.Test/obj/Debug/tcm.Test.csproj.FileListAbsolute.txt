@@ -1,0 +1,12 @@
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\tcm.Test.dll
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\tcm.Test.pdb
+C:\Storage\www\cleverbees.com\tcm.Test\obj\Debug\tcm.Test.csprojResolveAssemblyReference.cache
+C:\Storage\www\cleverbees.com\tcm.Test\obj\Debug\tcm.Test.dll
+C:\Storage\www\cleverbees.com\tcm.Test\obj\Debug\tcm.Test.pdb
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\tcm.dll
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\System.Web.Mvc.dll
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\System.Web.Optimization.dll
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\WebGrease.dll
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\Antlr3.Runtime.dll
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\tcm.pdb
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\System.Web.Mvc.xml

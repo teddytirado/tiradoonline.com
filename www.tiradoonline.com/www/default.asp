@@ -8,6 +8,7 @@
 	If Template = "" Then Template = "coverletter.asp"
 	'Session.Abandon
 	
+	
 	'If Session("SessionID") = "" Then
 		
 		SessionID = Session.SessionID
