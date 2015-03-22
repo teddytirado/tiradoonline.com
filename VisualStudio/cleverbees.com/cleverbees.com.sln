@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcmWeb", "tcm\tcmWeb.csproj", "{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcm.Test", "tcm.Test\tcm.Test.csproj", "{9C20C57C-9E7F-4FF7-9DDF-C3B0D8D97C82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcmWeb", "tcm.Web\tcmWeb.csproj", "{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9C20C57C-9E7F-4FF7-9DDF-C3B0D8D97C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9C20C57C-9E7F-4FF7-9DDF-C3B0D8D97C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C20C57C-9E7F-4FF7-9DDF-C3B0D8D97C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C20C57C-9E7F-4FF7-9DDF-C3B0D8D97C82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F9F6B2E-71A3-4987-A668-59B7E9F1827B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

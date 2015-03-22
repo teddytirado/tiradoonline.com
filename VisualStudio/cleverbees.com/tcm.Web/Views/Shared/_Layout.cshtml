@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Cleverbees - Member Upload</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="~/Scripts/themes/base/jquery-ui.css" rel="stylesheet">
+        <script src="~/Scripts/jquery.js"></script>
+        <script src="~/Scripts/ui/jquery-ui.js"></script>
+        <script src="~/Scripts/ui/jquery.contextmenu.js"></script>
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+
+        <style type="text/css">
+
+            .ErrorMessage
+            {
+                color: red;
+                font-weight: bold;
+            }
+
+        </style>
+    </head>
+    <body>
+        
+
+        @RenderBody()
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

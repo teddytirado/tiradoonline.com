@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("tcm.Web")]
+[assembly: AssemblyTitle("tcm")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("tcm.Web")]
+[assembly: AssemblyProduct("tcm")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e91d453a-c75d-4bf1-964a-4b913b590fa0")]
+[assembly: Guid("c45c4b18-8e60-4ac7-89ec-6ab336e25775")]
 
 // Version information for an assembly consists of the following four values:
 //

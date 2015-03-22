@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\tcm\tcmWeb.csproj">
+    <ProjectReference Include="..\tcm.Web\tcmWeb.csproj">
       <Project>{3f9f6b2e-71a3-4987-a668-59b7e9f1827b}</Project>
       <Name>tcmWeb</Name>
     </ProjectReference>
