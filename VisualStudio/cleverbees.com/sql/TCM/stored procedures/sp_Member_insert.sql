@@ -1,15 +1,10 @@
-IF EXISTS (SELECT 1 FROM SYSOBJECTS WHERE OBJECT('ID') = 'sp_Member_insert')
+IF EXISTS (SELECT 1 FROM SYSOBJECTS WHERE ID = OBJECT_ID('sp_Member_insert'))
 	DROP PROCEDURE sp_Member_insert;
 GO
 
 CREATE PROCEDURE sp_Member_insert
-	@UserID uniqueidentifier;
-	@SchoolID uniqueidentifier;
-	@CreateDate datetime,
-	@CreateUserId uniqueidentifier,
-	@UpdateDate datetime,
-	@UpdateUserId uniqueidentifier,
-	@UserId uniqueidentifier,
+	@UserID uniqueidentifier,
+	@SchoolID uniqueidentifier,
 	@FirstName varchar(20),
 	@LastName varchar(20),
 	@Address1 varchar(50),
@@ -19,13 +14,14 @@ CREATE PROCEDURE sp_Member_insert
 	@Phone1 varchar(50),
 	@Cell varchar(50),
 	@Cell2 varchar(50),
-	@IsActive bit,
-	@Dob date NULL,
-	@FamilyCode varchar(50) NULL
+	@Dob datetime,
+	@FamilyCode varchar(50)
 
 AS
+
+	--SET @UserID = NEWID();
+
 	DECLARE @MemberID 	UNIQUEIDENTIFIER;
-	SET @MemberID = NEWID();
 
 	DECLARE @CurrentDate 	DATETIME;
 	SET @CurrentDate = GETDATE();
@@ -40,22 +36,12 @@ AS
 		FirstName = @FirstName
 		AND LastName = @LastName
 		AND Dob = @Dob;
-	);
 
 
-	IF @MemberID IS NULL;
-	(
-		SELECT 
-			1
-		FROM
-			Member
-		WHERE
-			FirstName = @FirstName
-			AND LastName = @LastName
-			AND Dob = @Dob
-	)
+	IF @MemberID IS NULL
 		BEGIN			
 			BEGIN TRANSACTION transMemberInsert
+			SET @MemberID = NEWID();
 
 
 			-- *** DELETE Members from School_StudentMember 
@@ -105,7 +91,7 @@ AS
 				@Phone1,
 				@Cell,
 				@Cell2,
-				@IsActive,
+				1,
 				@Dob,
 				@FamilyCode
 			);
@@ -143,10 +129,23 @@ AS
 	ELSE
 		BEGIN
 			UPDATE Member SET
+				UpdateDate = @CurrentDate,
+				UpdateUserId = @UserID,
+				UserId = @UserID,
+				Address1 = @Address1,
+				City = @City,
+				State = @State,
+				Zip = @Zip,
+				Phone1 = @Phone1,
+				Cell = @Cell,
+				Cell2 = @Cell2,
+				FamilyCode = @FamilyCode
 			WHERE
 				Id = @MemberID;
 		END
+
+	SELECT MemberID = @MemberID;
 GO
 
 
-EXEC sp_Member_insert ''
+--EXEC sp_Member_insert ''

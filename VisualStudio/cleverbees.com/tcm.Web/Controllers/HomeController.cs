@@ -25,7 +25,7 @@ namespace tcm.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadFile(HttpPostedFileBase fileToUpload)
+        public ActionResult UploadFile(HttpPostedFileBase fileToUpload, string SchoolID, string UserID)
         {
             Members.KillExcel();
 
@@ -70,6 +70,31 @@ namespace tcm.Controllers
 
                         ViewBag.Message = "File uploaded successfully";
                     }
+                }
+            }
+
+            if (listMembersModel != null)
+            {
+                DBDataContext db = new DBDataContext();
+
+                foreach (var item in listMembersModel)
+                {
+                    db.sp_Member_insert
+                        (
+                            new Guid(UserID),
+                            new Guid(SchoolID),
+                            item.FirstName,
+                            item.LastName,
+                            item.Address,
+                            item.City,
+                            item.State,
+                            item.Zip,
+                            item.HomeNumber,
+                            item.MotherCell,
+                            item.DadCell,
+                            Convert.ToDateTime(item.DOB),
+                            item.Code
+                        );
                 }
             }
             return View("Index", listMembersModel);

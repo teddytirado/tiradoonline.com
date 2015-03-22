@@ -33,6 +33,15 @@ namespace tcm.App_Data
     partial void InsertMember(Member instance);
     partial void UpdateMember(Member instance);
     partial void DeleteMember(Member instance);
+    partial void InsertSchool(School instance);
+    partial void UpdateSchool(School instance);
+    partial void DeleteSchool(School instance);
+    partial void InsertSchool_StudentMember(School_StudentMember instance);
+    partial void UpdateSchool_StudentMember(School_StudentMember instance);
+    partial void DeleteSchool_StudentMember(School_StudentMember instance);
+    partial void InsertMember_School(Member_School instance);
+    partial void UpdateMember_School(Member_School instance);
+    partial void DeleteMember_School(Member_School instance);
     #endregion
 		
 		public DBDataContext() : 
@@ -71,6 +80,37 @@ namespace tcm.App_Data
 			{
 				return this.GetTable<Member>();
 			}
+		}
+		
+		public System.Data.Linq.Table<School> Schools
+		{
+			get
+			{
+				return this.GetTable<School>();
+			}
+		}
+		
+		public System.Data.Linq.Table<School_StudentMember> School_StudentMembers
+		{
+			get
+			{
+				return this.GetTable<School_StudentMember>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Member_School> Member_Schools
+		{
+			get
+			{
+				return this.GetTable<Member_School>();
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_Member_insert")]
+		public ISingleResult<sp_Member_insertResult> sp_Member_insert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="UniqueIdentifier")] System.Nullable<System.Guid> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SchoolID", DbType="UniqueIdentifier")] System.Nullable<System.Guid> schoolID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FirstName", DbType="VarChar(20)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastName", DbType="VarChar(20)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address1", DbType="VarChar(50)")] string address1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="City", DbType="VarChar(50)")] string city, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="State", DbType="Char(2)")] string state, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Zip", DbType="VarChar(12)")] string zip, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone1", DbType="VarChar(50)")] string phone1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cell", DbType="VarChar(50)")] string cell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cell2", DbType="VarChar(50)")] string cell2, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Dob", DbType="DateTime")] System.Nullable<System.DateTime> dob, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FamilyCode", DbType="VarChar(50)")] string familyCode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, schoolID, firstName, lastName, address1, city, state, zip, phone1, cell, cell2, dob, familyCode);
+			return ((ISingleResult<sp_Member_insertResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -164,6 +204,10 @@ namespace tcm.App_Data
 		
 		private string _FamilyCode;
 		
+		private EntitySet<School_StudentMember> _School_StudentMembers;
+		
+		private EntitySet<Member_School> _Member_Schools;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -256,6 +300,8 @@ namespace tcm.App_Data
 		
 		public Member()
 		{
+			this._School_StudentMembers = new EntitySet<School_StudentMember>(new Action<School_StudentMember>(this.attach_School_StudentMembers), new Action<School_StudentMember>(this.detach_School_StudentMembers));
+			this._Member_Schools = new EntitySet<Member_School>(new Action<Member_School>(this.attach_Member_Schools), new Action<Member_School>(this.detach_Member_Schools));
 			OnCreated();
 		}
 		
@@ -1099,6 +1145,32 @@ namespace tcm.App_Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_School_StudentMember", Storage="_School_StudentMembers", ThisKey="Id", OtherKey="StudentMemberId")]
+		public EntitySet<School_StudentMember> School_StudentMembers
+		{
+			get
+			{
+				return this._School_StudentMembers;
+			}
+			set
+			{
+				this._School_StudentMembers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Member_School", Storage="_Member_Schools", ThisKey="Id", OtherKey="MemberId")]
+		public EntitySet<Member_School> Member_Schools
+		{
+			get
+			{
+				return this._Member_Schools;
+			}
+			set
+			{
+				this._Member_Schools.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1116,6 +1188,534 @@ namespace tcm.App_Data
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_School_StudentMembers(School_StudentMember entity)
+		{
+			this.SendPropertyChanging();
+			entity.Member = this;
+		}
+		
+		private void detach_School_StudentMembers(School_StudentMember entity)
+		{
+			this.SendPropertyChanging();
+			entity.Member = null;
+		}
+		
+		private void attach_Member_Schools(Member_School entity)
+		{
+			this.SendPropertyChanging();
+			entity.Member = this;
+		}
+		
+		private void detach_Member_Schools(Member_School entity)
+		{
+			this.SendPropertyChanging();
+			entity.Member = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.School")]
+	public partial class School : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _SchoolName;
+		
+		private EntitySet<School_StudentMember> _School_StudentMembers;
+		
+		private EntitySet<Member_School> _Member_Schools;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnSchoolNameChanging(string value);
+    partial void OnSchoolNameChanged();
+    #endregion
+		
+		public School()
+		{
+			this._School_StudentMembers = new EntitySet<School_StudentMember>(new Action<School_StudentMember>(this.attach_School_StudentMembers), new Action<School_StudentMember>(this.detach_School_StudentMembers));
+			this._Member_Schools = new EntitySet<Member_School>(new Action<Member_School>(this.attach_Member_Schools), new Action<Member_School>(this.detach_Member_Schools));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchoolName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string SchoolName
+		{
+			get
+			{
+				return this._SchoolName;
+			}
+			set
+			{
+				if ((this._SchoolName != value))
+				{
+					this.OnSchoolNameChanging(value);
+					this.SendPropertyChanging();
+					this._SchoolName = value;
+					this.SendPropertyChanged("SchoolName");
+					this.OnSchoolNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="School_School_StudentMember", Storage="_School_StudentMembers", ThisKey="Id", OtherKey="SchoolId")]
+		public EntitySet<School_StudentMember> School_StudentMembers
+		{
+			get
+			{
+				return this._School_StudentMembers;
+			}
+			set
+			{
+				this._School_StudentMembers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="School_Member_School", Storage="_Member_Schools", ThisKey="Id", OtherKey="SchoolId")]
+		public EntitySet<Member_School> Member_Schools
+		{
+			get
+			{
+				return this._Member_Schools;
+			}
+			set
+			{
+				this._Member_Schools.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_School_StudentMembers(School_StudentMember entity)
+		{
+			this.SendPropertyChanging();
+			entity.School = this;
+		}
+		
+		private void detach_School_StudentMembers(School_StudentMember entity)
+		{
+			this.SendPropertyChanging();
+			entity.School = null;
+		}
+		
+		private void attach_Member_Schools(Member_School entity)
+		{
+			this.SendPropertyChanging();
+			entity.School = this;
+		}
+		
+		private void detach_Member_Schools(Member_School entity)
+		{
+			this.SendPropertyChanging();
+			entity.School = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.School_StudentMember")]
+	public partial class School_StudentMember : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _SchoolId;
+		
+		private System.Guid _StudentMemberId;
+		
+		private EntityRef<Member> _Member;
+		
+		private EntityRef<School> _School;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSchoolIdChanging(System.Guid value);
+    partial void OnSchoolIdChanged();
+    partial void OnStudentMemberIdChanging(System.Guid value);
+    partial void OnStudentMemberIdChanged();
+    #endregion
+		
+		public School_StudentMember()
+		{
+			this._Member = default(EntityRef<Member>);
+			this._School = default(EntityRef<School>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchoolId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid SchoolId
+		{
+			get
+			{
+				return this._SchoolId;
+			}
+			set
+			{
+				if ((this._SchoolId != value))
+				{
+					if (this._School.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSchoolIdChanging(value);
+					this.SendPropertyChanging();
+					this._SchoolId = value;
+					this.SendPropertyChanged("SchoolId");
+					this.OnSchoolIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentMemberId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid StudentMemberId
+		{
+			get
+			{
+				return this._StudentMemberId;
+			}
+			set
+			{
+				if ((this._StudentMemberId != value))
+				{
+					if (this._Member.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnStudentMemberIdChanging(value);
+					this.SendPropertyChanging();
+					this._StudentMemberId = value;
+					this.SendPropertyChanged("StudentMemberId");
+					this.OnStudentMemberIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_School_StudentMember", Storage="_Member", ThisKey="StudentMemberId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Member Member
+		{
+			get
+			{
+				return this._Member.Entity;
+			}
+			set
+			{
+				Member previousValue = this._Member.Entity;
+				if (((previousValue != value) 
+							|| (this._Member.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Member.Entity = null;
+						previousValue.School_StudentMembers.Remove(this);
+					}
+					this._Member.Entity = value;
+					if ((value != null))
+					{
+						value.School_StudentMembers.Add(this);
+						this._StudentMemberId = value.Id;
+					}
+					else
+					{
+						this._StudentMemberId = default(System.Guid);
+					}
+					this.SendPropertyChanged("Member");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="School_School_StudentMember", Storage="_School", ThisKey="SchoolId", OtherKey="Id", IsForeignKey=true)]
+		public School School
+		{
+			get
+			{
+				return this._School.Entity;
+			}
+			set
+			{
+				School previousValue = this._School.Entity;
+				if (((previousValue != value) 
+							|| (this._School.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._School.Entity = null;
+						previousValue.School_StudentMembers.Remove(this);
+					}
+					this._School.Entity = value;
+					if ((value != null))
+					{
+						value.School_StudentMembers.Add(this);
+						this._SchoolId = value.Id;
+					}
+					else
+					{
+						this._SchoolId = default(System.Guid);
+					}
+					this.SendPropertyChanged("School");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Member_School")]
+	public partial class Member_School : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _MemberId;
+		
+		private System.Guid _SchoolId;
+		
+		private EntityRef<Member> _Member;
+		
+		private EntityRef<School> _School;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMemberIdChanging(System.Guid value);
+    partial void OnMemberIdChanged();
+    partial void OnSchoolIdChanging(System.Guid value);
+    partial void OnSchoolIdChanged();
+    #endregion
+		
+		public Member_School()
+		{
+			this._Member = default(EntityRef<Member>);
+			this._School = default(EntityRef<School>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MemberId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid MemberId
+		{
+			get
+			{
+				return this._MemberId;
+			}
+			set
+			{
+				if ((this._MemberId != value))
+				{
+					if (this._Member.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMemberIdChanging(value);
+					this.SendPropertyChanging();
+					this._MemberId = value;
+					this.SendPropertyChanged("MemberId");
+					this.OnMemberIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchoolId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid SchoolId
+		{
+			get
+			{
+				return this._SchoolId;
+			}
+			set
+			{
+				if ((this._SchoolId != value))
+				{
+					if (this._School.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSchoolIdChanging(value);
+					this.SendPropertyChanging();
+					this._SchoolId = value;
+					this.SendPropertyChanged("SchoolId");
+					this.OnSchoolIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Member_School", Storage="_Member", ThisKey="MemberId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Member Member
+		{
+			get
+			{
+				return this._Member.Entity;
+			}
+			set
+			{
+				Member previousValue = this._Member.Entity;
+				if (((previousValue != value) 
+							|| (this._Member.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Member.Entity = null;
+						previousValue.Member_Schools.Remove(this);
+					}
+					this._Member.Entity = value;
+					if ((value != null))
+					{
+						value.Member_Schools.Add(this);
+						this._MemberId = value.Id;
+					}
+					else
+					{
+						this._MemberId = default(System.Guid);
+					}
+					this.SendPropertyChanged("Member");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="School_Member_School", Storage="_School", ThisKey="SchoolId", OtherKey="Id", IsForeignKey=true)]
+		public School School
+		{
+			get
+			{
+				return this._School.Entity;
+			}
+			set
+			{
+				School previousValue = this._School.Entity;
+				if (((previousValue != value) 
+							|| (this._School.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._School.Entity = null;
+						previousValue.Member_Schools.Remove(this);
+					}
+					this._School.Entity = value;
+					if ((value != null))
+					{
+						value.Member_Schools.Add(this);
+						this._SchoolId = value.Id;
+					}
+					else
+					{
+						this._SchoolId = default(System.Guid);
+					}
+					this.SendPropertyChanged("School");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	public partial class sp_Member_insertResult
+	{
+		
+		private System.Nullable<System.Guid> _MemberID;
+		
+		public sp_Member_insertResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MemberID", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> MemberID
+		{
+			get
+			{
+				return this._MemberID;
+			}
+			set
+			{
+				if ((this._MemberID != value))
+				{
+					this._MemberID = value;
+				}
 			}
 		}
 	}

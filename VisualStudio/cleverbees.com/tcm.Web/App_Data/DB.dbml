@@ -44,6 +44,50 @@
       <Column Name="CustomField1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CustomField2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FamilyCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Member_School_StudentMember" Member="School_StudentMembers" ThisKey="Id" OtherKey="StudentMemberId" Type="School_StudentMember" />
+      <Association Name="Member_Member_School" Member="Member_Schools" ThisKey="Id" OtherKey="MemberId" Type="Member_School" />
     </Type>
   </Table>
+  <Table Name="dbo.School" Member="Schools">
+    <Type Name="School">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SchoolName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="School_School_StudentMember" Member="School_StudentMembers" ThisKey="Id" OtherKey="SchoolId" Type="School_StudentMember" />
+      <Association Name="School_Member_School" Member="Member_Schools" ThisKey="Id" OtherKey="SchoolId" Type="Member_School" />
+    </Type>
+  </Table>
+  <Table Name="dbo.School_StudentMember" Member="School_StudentMembers">
+    <Type Name="School_StudentMember">
+      <Column Name="SchoolId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StudentMemberId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Member_School_StudentMember" Member="Member" ThisKey="StudentMemberId" OtherKey="Id" Type="Member" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="School_School_StudentMember" Member="School" ThisKey="SchoolId" OtherKey="Id" Type="School" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Member_School" Member="Member_Schools">
+    <Type Name="Member_School">
+      <Column Name="MemberId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SchoolId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Member_Member_School" Member="Member" ThisKey="MemberId" OtherKey="Id" Type="Member" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="School_Member_School" Member="School" ThisKey="SchoolId" OtherKey="Id" Type="School" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_Member_insert" Method="sp_Member_insert">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="SchoolID" Parameter="schoolID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Address1" Parameter="address1" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="State" Parameter="state" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="Zip" Parameter="zip" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="Phone1" Parameter="phone1" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Cell" Parameter="cell" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Cell2" Parameter="cell2" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Dob" Parameter="dob" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FamilyCode" Parameter="familyCode" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="sp_Member_insertResult">
+      <Column Name="MemberID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

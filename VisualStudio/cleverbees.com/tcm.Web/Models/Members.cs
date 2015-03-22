@@ -38,6 +38,7 @@ namespace tcm.Models
 
         private static Hashtable myHashtable = new Hashtable();
         private static string processName = @"EXCEL";
+        private static DBDataContext db = new DBDataContext();
 
         public static List<MembersModel> ImportExcel(string excelFileName)
         {
@@ -186,14 +187,51 @@ namespace tcm.Models
             AllProcesses = null;
         }
 
-        public static IQueryable<Member> GetMembersTable()
+        public static IQueryable<Member> Get_Members_Table()
         {
-            DBDataContext db = new DBDataContext();
             var ors = (from members in db.Members
                        select members);
 
             return ors;
         }
-        
+
+        public static IQueryable<School> Get_Schools_Table()
+        {
+            var ors = (from Schools in db.Schools
+                       select Schools);
+
+            return ors;
+        }
+
+        public static IQueryable<School_StudentMember> Get_School_StudentMember_Table()
+        {
+            var ors = (from members in db.School_StudentMembers
+                       select members);
+
+            return ors;
+        }
+
+        public static IQueryable<Member_School> Get_Member_School_Table()
+        {
+            var ors = (from members in db.Member_Schools
+                       select members);
+
+            return ors;
+        }
+
+
+        public static bool Add_Members(MembersModel modelMembers)
+        {
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = ex.ToString();
+            }
+
+            return true;
+
+        }
     }
 }

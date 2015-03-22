@@ -2,7 +2,11 @@
 @using tcm.App_Data
 
 @{
-    IQueryable<Member> listMembers = tcm.Models.Members.GetMembersTable();
+    IQueryable<Member> listMembers = tcm.Models.Members.Get_Members_Table();
+    IQueryable<School> listSchools = tcm.Models.Members.Get_Schools_Table();
+    IQueryable<School_StudentMember> listSchool_StudentMembers = tcm.Models.Members.Get_School_StudentMember_Table();
+    IQueryable<Member_School> listMembers_Schools = tcm.Models.Members.Get_Member_School_Table();
+    Guid UserID = Guid.NewGuid();
 }
     @ViewBag.Message
     <p />
@@ -16,7 +20,7 @@
         
             <ol>
                 <li>
-                    SchoolID: @Html.TextBox("SchoolID", "")
+                    SchoolID: @Html.TextBox("SchoolID", "F2044BE8-635A-4D88-A968-12027BD1CE19")
                 </li>
                 <li class="lifile">
                     <input type="file" id="fileToUpload" name="fileToUpload" />
@@ -26,7 +30,7 @@
 
             <input type="submit" id="btnSubmit" value="Upload" />
     
-    
+            @Html.Hidden("UserID", UserID)
     }
 
     <p />
@@ -34,7 +38,10 @@
     <div id="tabs">
         <ul>
             <li><a href="#tabs-1" title="UPLOADED EXCEL FILE">UPLOADED&nbsp;EXCEL&nbsp;FILE</a></li>
-            <li><a href="#tabs-2" title="MEMBERS DATABASE TABLE">MEMBERS&nbsp;DATABASE&nbsp;TABLE</a></li>
+            <li><a href="#tabs-2" title="MEMBERS DATABASE TABLE">MEMBER&nbsp;TABLE&nbsp;(@listMembers.Count())</a></li>
+            <li><a href="#tabs-3" title="SCHOOLS DATABASE TABLE">SCHOOL&nbsp;TABLE&nbsp;(@listSchools.Count())</a></li>
+            <li><a href="#tabs-4" title="SCHOOL_STUDENTMEMBER DATABASE TABLE">SCHOOL_STUDENTMEMBER&nbsp;TABLE&nbsp;(@listSchool_StudentMembers.Count())</a></li>
+            <li><a href="#tabs-5" title="MEMBER_SCHOOL TABLE">MEMBER_SCHOOL&nbsp;TABLE&nbsp;(@listMembers_Schools.Count())</a></li>
         </ul>
 
         <!--
@@ -42,8 +49,7 @@
         UPLOADED EXCEL FILE
         **********************************
         -->
-        <div id="tabs-1" name="tabs-1">
-        <p>
+        <div id="tabs-1">
             <h1>Uploaded Excel File</h1>
         @if (Model != null)
         {
@@ -101,13 +107,16 @@
         {
             <div class="ErrorMessage">No Excel file uploaded.</div>
         }
-        </p>
         </div>
 
 
-        <div id="tabs-2" name="tabs-2">
-        <p>
-            <h1>Members Database Table</h1>
+        <!--
+        **********************************
+        MEMBER DATABASE TABLE
+        **********************************
+        -->
+        <div id="tabs-2">
+            <h1>Member Database Table</h1>
             
             @if (listMembers.Count<Member>() > 0)
             {
@@ -155,7 +164,108 @@
             {
                 <div class="ErrorMessage">No database records found.</div>
             }
-        </p>
+        </div>
+
+
+        <!--
+        **********************************
+        SCHOOL DATABASE TABLE
+        **********************************
+        -->
+        <div id="tabs-3">
+            <h1>School Database Table</h1>
+            
+            @if (listSchools.Count<School>() > 0)
+            {
+                int x = 1;
+                <table border="1">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>School</td>
+                    <td>SchoolName</td>
+                </tr>
+                @foreach (var item in listSchools)
+                {
+                <tr>
+                    <td>@x.ToString()</td>
+                    <td>@item.Id.ToString()</td>
+                    <td>@item.SchoolName.ToString()</td>
+                </tr>
+                    x++;
+                }
+                </table>
+            }
+            else
+            {
+                <div class="ErrorMessage">No database records found.</div>
+            }
+        </div>
+
+        <!--
+        **********************************
+        SCHOOL_STUDENTMEMBER DATABASE TABLE
+        **********************************
+        -->
+        <div id="tabs-4">
+            <h1>School_StudentMember Database Table</h1>
+            
+            @if (listSchool_StudentMembers.Count<School_StudentMember>() > 0)
+            {
+                int x = 1;
+                <table border="1">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>SchoolId</td>
+                    <td>StudentMemberId</td>
+                </tr>
+                @foreach (var item in listSchool_StudentMembers)
+                {
+                <tr>
+                    <td>@x.ToString()</td>
+                    <td>@item.StudentMemberId.ToString()</td>
+                </tr>
+                    x++;
+                }
+                </table>
+            }
+            else
+            {
+                <div class="ErrorMessage">No database records found.</div>
+            }
+        </div>
+
+        <!--
+        **********************************
+        SCHOOL_STUDENTMEMBER DATABASE TABLE
+        **********************************
+        -->
+        <div id="tabs-5">
+            <h1>Member_School Database Table</h1>
+            
+            @if (listMembers_Schools.Count<Member_School>() > 0)
+            {
+                int x = 1;
+                <table border="1">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>MemberId</td>
+                    <td>SchoolId</td>
+                </tr>
+                @foreach (var item in listMembers_Schools)
+                {
+                <tr>
+                    <td>@x.ToString()</td>
+                    <td>@item.MemberId.ToString()</td>
+                    <td>@item.SchoolId.ToString()</td>
+                </tr>
+                    x++;
+                }
+                </table>
+            }
+            else
+            {
+                <div class="ErrorMessage">No database records found.</div>
+            }
         </div>
     </div>
 
