@@ -9,6 +9,7 @@ using System.IO;
 using Microsoft.Office.Interop.Excel;
 using System.Reflection;
 using System.Diagnostics;
+using tcm.App_Data;
 
 namespace tcm.Models
 {
@@ -28,6 +29,8 @@ namespace tcm.Models
         public string DadCell { get; set; }
         public string HomeNumber { get; set; }
         public string Code { get; set; }
+
+        public List<MembersModel> listMembersTable = new List<MembersModel>();
     }
 
     public class Members
@@ -167,7 +170,7 @@ namespace tcm.Models
             }
         }
 
-        private static void KillExcel()
+        public static void KillExcel()
         {
             CheckExcellProcesses();
 
@@ -182,5 +185,15 @@ namespace tcm.Models
 
             AllProcesses = null;
         }
+
+        //public List<Members> GetMembersTable()
+        //{
+        //    DBDataContext db = new DBDataContext();
+        //    var ors = (from members in db.Members
+        //                select members).ToList();
+
+        //    return ors;
+        //}
+        
     }
 }

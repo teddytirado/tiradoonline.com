@@ -41,3 +41,4 @@ C:\Storage\www\cleverbees.com\tcm\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Storage\www\cleverbees.com\tcm\obj\Debug\tcmWeb.csproj.ResolveComReference.cache
 C:\Storage\www\cleverbees.com\tcm\obj\Debug\tcm.dll
 C:\Storage\www\cleverbees.com\tcm\obj\Debug\tcm.pdb
+C:\Storage\www\cleverbees.com\tcm\obj\Debug\tcmWeb.csprojResolveAssemblyReference.cache
