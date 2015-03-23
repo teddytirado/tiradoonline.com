@@ -14,7 +14,7 @@ namespace tcm.Controllers
     {
         public ActionResult Index()
         {
-            Members.KillExcel();
+            //Members.KillExcel();
 
             string directoryPath =  Server.MapPath("~/uploads").ToString();
             if (!Directory.Exists(directoryPath))
@@ -27,9 +27,9 @@ namespace tcm.Controllers
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase fileToUpload, string SchoolID, string UserID)
         {
-            Members.KillExcel();
+            //Members.KillExcel();
 
-            Thread.Sleep(3000);
+            //Thread.Sleep(3000);
             
             string directoryPath = Server.MapPath("~/uploads").ToString();
             string path = string.Empty;
@@ -62,7 +62,16 @@ namespace tcm.Controllers
                         //TO:DO
                         var fileName = Path.GetFileName(fileToUpload.FileName);
                         path = Path.Combine(Server.MapPath("~/uploads"), fileName);
-                        fileToUpload.SaveAs(path);
+                        try
+                        {
+                            fileToUpload.SaveAs(path);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            string errorMessage = ex.ToString();
+                        }
+                        
                         ModelState.Clear();
 
                         listMembersModel = tcm.Models.Members.ImportExcel(path);
@@ -79,22 +88,36 @@ namespace tcm.Controllers
 
                 foreach (var item in listMembersModel)
                 {
-                    db.sp_Member_insert
-                        (
-                            new Guid(UserID),
-                            new Guid(SchoolID),
-                            item.FirstName,
-                            item.LastName,
-                            item.Address,
-                            item.City,
-                            item.State,
-                            item.Zip,
-                            item.HomeNumber,
-                            item.MotherCell,
-                            item.DadCell,
-                            Convert.ToDateTime(item.DOB),
-                            item.Code
-                        );
+                    string DOB = item.DOB;
+                    if (String.IsNullOrEmpty(DOB))
+                        DOB = DateTime.Now.ToString();
+
+                    try
+                    {
+                        var ors = db.sp_Member_insert
+                            (
+                                new Guid(UserID),
+                                new Guid(SchoolID),
+                                item.FirstName,
+                                item.LastName,
+                                item.Address,
+                                item.City,
+                                item.State,
+                                item.Zip,
+                                item.HomeNumber,
+                                item.MotherCell,
+                                item.DadCell,
+                                Convert.ToDateTime(DOB),
+                                item.Code
+                            ).ToList();
+
+                        //string memberID = ors.MemberID.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        string errorMessage = ex.ToString();
+                    }
+
                 }
             }
             return View("Index", listMembersModel);

@@ -86,3 +86,5 @@ C:\Storage\www\cleverbees.com\tcm.Web\obj\Debug\tcmWeb.csprojResolveAssemblyRefe
 C:\Storage\www\cleverbees.com\tcm.Web\obj\Debug\tcmWeb.csproj.ResolveComReference.cache
 C:\Storage\www\cleverbees.com\tcm.Web\obj\Debug\tcm.dll
 C:\Storage\www\cleverbees.com\tcm.Web\obj\Debug\tcm.pdb
+C:\Storage\www\cleverbees.com\tcm.Web\bin\EPPlus.dll
+C:\Storage\www\cleverbees.com\tcm.Web\bin\EPPlus.xml

@@ -1,15 +1,34 @@
 ﻿@model List<tcm.Models.MembersModel>
+@using tcm.App_Data
 
+@{
+    int ModelCount = 0;
+
+    if(Model != null)
+    {
+        ModelCount = Model.Count;
+    }
+
+    IQueryable<Member> listMembers = tcm.Models.Members.Get_Members_Table();
+    IQueryable<School> listSchools = tcm.Models.Members.Get_Schools_Table();
+    IQueryable<School_StudentMember> listSchool_StudentMembers = tcm.Models.Members.Get_School_StudentMember_Table();
+    IQueryable<Member_School> listMembers_Schools = tcm.Models.Members.Get_Member_School_Table();
+    Guid UserID = Guid.NewGuid();
+}
     @ViewBag.Message
     <p />
 
     @using (Html.BeginForm("UploadFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
 
-        @Html.ValidationSummary();
-        
+            <div class="ErrorMessage">
+                @Html.ValidationSummary()
+            </div>
         
             <ol>
+                <li>
+                    SchoolID: @Html.TextBox("SchoolID", "F2044BE8-635A-4D88-A968-12027BD1CE19", new { size = "50" } )
+                </li>
                 <li class="lifile">
                     <input type="file" id="fileToUpload" name="fileToUpload" />
                     <span class="field-validation-error" id="spanfile"></span>
@@ -18,159 +37,363 @@
 
             <input type="submit" id="btnSubmit" value="Upload" />
     
-    
+            @Html.Hidden("UserID", UserID)
     }
 
+    <p />
 
-    @if (Model != null)
-    {
-        if (Model.Count > 0)
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1" title="UPLOADED EXCEL FILE">UPLOADED&nbsp;EXCEL&nbsp;FILE</a></li>
+            <li><a href="#tabs-2" title="MEMBERS DATABASE TABLE">MEMBER&nbsp;TABLE&nbsp;(@listMembers.Count())</a></li>
+            <li><a href="#tabs-3" title="SCHOOLS DATABASE TABLE">SCHOOL&nbsp;TABLE&nbsp;(@listSchools.Count())</a></li>
+            <li><a href="#tabs-4" title="SCHOOL_STUDENTMEMBER DATABASE TABLE">SCHOOL_STUDENTMEMBER&nbsp;TABLE&nbsp;(@listSchool_StudentMembers.Count())</a></li>
+            <li><a href="#tabs-5" title="MEMBER_SCHOOL TABLE">MEMBER_SCHOOL&nbsp;TABLE&nbsp;(@listMembers_Schools.Count())</a></li>
+        </ul>
+
+        <!--
+        **********************************
+        UPLOADED EXCEL FILE
+        **********************************
+        -->
+        <div id="tabs-1">
+            <h1>Uploaded Excel File&nbsp;(@ModelCount)</h1>
+        @if (Model != null)
         {
-            int x = 1;
-            <h1>Uploaded Excel File</h1>
-            <table border="1">
-            <tr>
-                <td>&nbsp;</td>
-                <td>LastName</td>
-                <td>FirstName</td>
-                <td>CurrentGrade</td>
-                <td>Hive</td>
-                <td>Status</td>
-                <td>DOB</td>
-                <td>Address</td>
-                <td>City</td>
-                <td>State</td>
-                <td>Zip</td>
-                <td>MotherCell</td>
-                <td>DadCell</td>
-                <td>HomeNumber</td>
-                <td>Code</td>
-            </tr>
-            @foreach(var item in Model)
+
+            if (Model.Count > 0)
             {
-            <tr>
-                <td>@x.ToString()</td>
-                <td>@item.LastName.ToString()</td>
-                <td>@item.FirstName.ToString()</td>
-                <td>@item.CurrentGrade.ToString()</td>
-                <td>@item.Hive.ToString()</td>
-                <td>@item.Status.ToString()</td>
-                <td>@item.DOB.ToString()</td>
-                <td>@item.Address.ToString()</td>
-                <td>@item.City.ToString()</td>
-                <td>@item.State.ToString()</td>
-                <td>@item.Zip.ToString()</td>
-                <td>@item.MotherCell.ToString()</td>
-                <td>@item.DadCell.ToString()</td>
-                <td>@item.HomeNumber.ToString()</td>
-                <td>@item.Code.ToString()</td>
-            </tr>
-                x++;
+                int x = 1;
+                <table border="1">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>LastName</td>
+                    <td>FirstName</td>
+                    <td>CurrentGrade</td>
+                    <td>Hive</td>
+                    <td>Status</td>
+                    <td>DOB</td>
+                    <td>Address</td>
+                    <td>City</td>
+                    <td>State</td>
+                    <td>Zip</td>
+                    <td>MotherCell</td>
+                    <td>DadCell</td>
+                    <td>HomeNumber</td>
+                    <td>Code</td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@x.ToString()</td>
+                    <td>@item.LastName.ToString()</td>
+                    <td>@item.FirstName.ToString()</td>
+                    <td>@item.CurrentGrade.ToString()</td>
+                    <td>@item.Hive.ToString()</td>
+                    <td>@item.Status.ToString()</td>
+                    <td>@item.DOB.ToString()</td>
+                    <td>@item.Address.ToString()</td>
+                    <td>@item.City.ToString()</td>
+                    <td>@item.State.ToString()</td>
+                    <td>@item.Zip.ToString()</td>
+                    <td>@item.MotherCell.ToString()</td>
+                    <td>@item.DadCell.ToString()</td>
+                    <td>@item.HomeNumber.ToString()</td>
+                    <td>@item.Code.ToString()</td>
+                </tr>
+                    x++;
+                }
+                </table>
             }
-            </table>
+            else
+            {
+                <div class="ErrorMessage">No Upload found.</div>
+            }
         }
         else
         {
-            <div>No Upload found.</div>
+            <div class="ErrorMessage">No Excel file uploaded.</div>
         }
-    }
+        </div>
 
-    <script type="text/jscript">
+
+        <!--
+        **********************************
+        MEMBER DATABASE TABLE
+        **********************************
+        -->
+        <div id="tabs-2">
+            <h1>Member Database Table</h1>
+            
+            @if (listMembers.Count<Member>() > 0)
+            {
+                int x = 1;
+                <table border="1">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>LastName</td>
+                    <td>FirstName</td>
+                    <td>CurrentGrade</td>
+                    <td>Status</td>
+                    <td>DOB</td>
+                    <td>Address</td>
+                    <td>City</td>
+                    <td>State</td>
+                    <td>Zip</td>
+                    <td>MotherCell</td>
+                    <td>DadCell</td>
+                    <td>HomeNumber</td>
+                    <td>Code</td>
+                </tr>
+                @foreach (var item in listMembers)
+                {
+                <tr>
+                    <td>@x.ToString()</td>
+                    <td>@item.LastName.ToString()</td>
+                    <td>@item.FirstName.ToString()</td>
+                    <td>@item.Grade.ToString()</td>
+                    <td>@item.Status.ToString()</td>
+                    <td>@item.Dob.ToString()</td>
+                    <td>@item.Address1.ToString()</td>
+                    <td>@item.City.ToString()</td>
+                    <td>@item.State.ToString()</td>
+                    <td>@item.Zip.ToString()</td>
+                    <td>@item.Cell.ToString()</td>
+                    <td>@item.Cell2.ToString()</td>
+                    <td>@item.Phone1.ToString()</td>
+                    <td>@item.FamilyCode.ToString()</td>
+                </tr>
+                    x++;
+                }
+                </table>
+            }
+            else
+            {
+                <div class="ErrorMessage">No database records found.</div>
+            }
+        </div>
+
+
+        <!--
+        **********************************
+        SCHOOL DATABASE TABLE
+        **********************************
+        -->
+        <div id="tabs-3">
+            <h1>School Database Table</h1>
+            
+            @if (listSchools.Count<School>() > 0)
+            {
+                int x = 1;
+                <table border="1">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>School</td>
+                    <td>SchoolName</td>
+                </tr>
+                @foreach (var item in listSchools)
+                {
+                <tr>
+                    <td>@x.ToString()</td>
+                    <td>@item.Id.ToString()</td>
+                    <td>@item.SchoolName.ToString()</td>
+                </tr>
+                    x++;
+                }
+                </table>
+            }
+            else
+            {
+                <div class="ErrorMessage">No database records found.</div>
+            }
+        </div>
+
+        <!--
+        **********************************
+        SCHOOL_STUDENTMEMBER DATABASE TABLE
+        **********************************
+        -->
+        <div id="tabs-4">
+            <h1>School_StudentMember Database Table</h1>
+            
+            @if (listSchool_StudentMembers.Count<School_StudentMember>() > 0)
+            {
+                int x = 1;
+                <table border="1">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>SchoolId</td>
+                    <td>StudentMemberId</td>
+                </tr>
+                @foreach (var item in listSchool_StudentMembers)
+                {
+                <tr>
+                    <td>@x.ToString()</td>
+                    <td>@item.SchoolId.ToString()</td>
+                    <td>@item.StudentMemberId.ToString()</td>
+                </tr>
+                    x++;
+                }
+                </table>
+            }
+            else
+            {
+                <div class="ErrorMessage">No database records found.</div>
+            }
+        </div>
+
+        <!--
+        **********************************
+        SCHOOL_STUDENTMEMBER DATABASE TABLE
+        **********************************
+        -->
+        <div id="tabs-5">
+            <h1>Member_School Database Table</h1>
+            
+            @if (listMembers_Schools.Count<Member_School>() > 0)
+            {
+                int x = 1;
+                <table border="1">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>MemberId</td>
+                    <td>SchoolId</td>
+                </tr>
+                @foreach (var item in listMembers_Schools)
+                {
+                <tr>
+                    <td>@x.ToString()</td>
+                    <td>@item.MemberId.ToString()</td>
+                    <td>@item.SchoolId.ToString()</td>
+                </tr>
+                    x++;
+                }
+                </table>
+            }
+            else
+            {
+                <div class="ErrorMessage">No database records found.</div>
+            }
+        </div>
+    </div>
+
+
+
+<script type="text/jscript">
     //get file size
-    function GetFileSize(fileid) {
-    try
+
+
+    $("#tabs").tabs();
+
+    function GetFileSize(fileid)
     {
-    var fileSize = 0;
-    //for IE
-    if ($.browser.msie)
-    {
-    //before making an object of ActiveXObject,
-    //please make sure ActiveX is enabled in your IE browser
-    var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
-    var objFile = objFSO.getFile(filePath);
-    var fileSize = objFile.size; //size in kb
-    fileSize = fileSize / 1048576; //size in mb
-    }
-    //for FF, Safari, Opeara and Others
-    else
-    {
-    fileSize = $("#" + fileid)[0].files[0].size //size in kb
-    fileSize = fileSize / 1048576; //size in mb
-    }
-    return fileSize;
-    }
-    catch (e)
-    {
-    alert("Error is :" + e);
-    }
+        try
+        {
+            var fileSize = 0;
+            //for IE
+            if ($.browser.msie)
+            {
+                //before making an object of ActiveXObject,
+                //please make sure ActiveX is enabled in your IE browser
+                var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
+                var objFile = objFSO.getFile(filePath);
+                var fileSize = objFile.size; //size in kb
+                fileSize = fileSize / 1048576; //size in mb
+            }
+            //for FF, Safari, Opeara and Others
+            else
+            {
+                fileSize = $("#" + fileid)[0].files[0].size //size in kb
+                fileSize = fileSize / 1048576; //size in mb
+            }
+            return fileSize;
+        }
+        catch (e)
+        {
+            alert("Error is :" + e);
+        }
     }
      
     //get file path from client system
     function getNameFromPath(strFilepath)
     {
-    var objRE = new RegExp(/([^\/\\]+)$/);
-    var strName = objRE.exec(strFilepath);
-    if (strName == null)
-    {
-    return null;
-    }
-    else
-    {
-    return strName[0];
-    }
+        var objRE = new RegExp(/([^\/\\]+)$/);
+        var strName = objRE.exec(strFilepath);
+
+        if (strName == null)
+        {
+            return null;
+        }
+        else
+        {
+            return strName[0];
+        }
     }
      
-    $("#btnSubmit").live("click", function ()
-    {
-    if ($('#fileToUpload').val() == "")
-    {
-    $("#spanfile").html("Please upload file");
-    return false;
-    }
-    else
-    {
-    return checkfile();
-    }
-    });
+    $("#btnSubmit").live
+    ("click",
+        function ()
+        {
+            if ($('#fileToUpload').val() == "")
+            {
+            $("#spanfile").html("Please upload file");
+            return false;
+            }
+            else
+            {
+            return checkfile();
+            }
+        }
+    );
      
     function checkfile()
     {
-    var file = getNameFromPath($("#fileToUpload").val());
-    if (file != null)
-    {
-    var extension = file.substr((file.lastIndexOf('.') + 1));
-    // alert(extension);
-    switch (extension) {
-    case 'xslx':
-    flag = true;
-    break;
-    default:
-    flag = false;
-    }
-    }
-    if (flag == false)
-    {
-    $("#spanfile").text("You can upload an excel file with an .xlsx extension file");
-    return false;
-    }
-    else
-    {
-    var size = GetFileSize('fileToUpload');
-    if (size > 3)
-    {
-    $("#spanfile").text("You can upload file up to 3 MB");
-    return false;
-    }
-    else
-    {
-    $("#spanfile").text("");
-    }
-    }
+        var file = getNameFromPath($("#fileToUpload").val());
+        if (file != null)
+        {
+            var extension = file.substr((file.lastIndexOf('.') + 1));
+
+            //var s = prompt('Extension', extension);
+
+            if (extension == 'xlsx')
+            {
+                flag = true;
+            }
+            else
+            {
+                
+                flag = false;
+            }
+        }
+
+        if (flag == false)
+        {
+            $("#spanfile").text("Must upload an excel file with an .xlsx extension file");
+            return false;
+        }
+        else
+        {
+            var size = GetFileSize('fileToUpload');
+            if (size > 3)
+            {
+                $("#spanfile").text("You can upload file up to 3 MB");
+                return false;
+            }
+            else
+            {
+                $("#spanfile").text("");
+            }
+        }
     }
      
     $(function ()
     {
-    $("#fileToUpload").change(function () {
-    checkfile();});
+        $("#fileToUpload").change
+        (
+            function ()
+            {
+                checkfile();
+            }
+        );
     });
-    </script>
+</script>

@@ -10,3 +10,5 @@ C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\WebGrease.dll
 C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\Antlr3.Runtime.dll
 C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\tcm.pdb
 C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\System.Web.Mvc.xml
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\EPPlus.dll
+C:\Storage\www\cleverbees.com\tcm.Test\bin\Debug\EPPlus.xml
