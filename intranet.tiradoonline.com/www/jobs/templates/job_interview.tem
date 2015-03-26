@@ -111,13 +111,32 @@
 						function()
 						{
 							var $JobInterviewClientID = $('#JobInterviewClientID').val();
-							location.href = "<%= SCRIPT_NAME %>?Template=<%= Template %>&JobInterviewClientID=" + $JobInterviewClientID + "&JobCompanyID=<%= JobCompanyID %>";
-						}
+							var $JobInterviewDate = $('#JobInterviewDate').val();
+							var $JobInterviewTime = $('#JobInterviewTime').val();
+							var $JobInterviewTypeID = $('#JobInterviewTypeID').val();
+							location.href = "<%= SCRIPT_NAME %>?Template=<%= Template %>&JobInterviewClientID=" + $JobInterviewClientID + "&JobCompanyID=<%= JobCompanyID %>&JobInterviewDate=" + encodeURIComponent($JobInterviewDate) + "&JobInterviewTime=" + encodeURIComponent($JobInterviewTime) + "&JobInterviewTypeID=" + encodeURIComponent($JobInterviewTypeID) + "&PopulateAddress=1";
+							}
 					);
 			</script>
 					</td>
 				</tr>
 				<% If JobInterviewClientID <> "" Then %>
+				<%
+					PopulateAddress = Trim(Request("PopulateAddress"))
+					If PopulateAddress = "1" Then
+						sql = "SELECT TOP 1 * FROM JobCompanyAddress WHERE JobCompanyID = " & JobInterviewClientID
+						Set ors = oConn.Execute(sql)
+						If NOT ors.EOF Then
+							JobInterviewAddress1 = ors("JobCompanyAddress1")
+							JobInterviewAddress2 = ors("JobCompanyAddress2")
+							JobInterviewCity = ors("JobCompanyAddressCity")
+							JobInterviewStateID = ors("StateID")
+							JobInterviewZipCode	 = ors("JobCompanyAddressZipCode")
+							ors.Close
+						End If
+						Set ors = Nothing
+					End If
+				%>
 				<tr>
 					<td align="right"><b>Contact:</b></td>
 					<td>

@@ -19,12 +19,19 @@ AS
 		a.JobCompanyID NOT IN
 			(
 				SELECT
+					b.JobCompanyID
+				FROM
+					JobCompany b
+				WHERE
+					b.UserID = a.UserID
+					AND b.JobCompanyID <> a.JobCompanyID
+			)
+		AND a.JobCompanyID IN
+			(
+				SELECT 
 					JobCompanyID
 				FROM
-					JobCompany
-				WHERE
-					UserID = a.UserID AND
-					JobCompanyID <> a.JobCompanyID
+					JobCompanyContact
 			)
 	ORDER BY
 		a.JobCompanyName;
@@ -32,3 +39,4 @@ AS
 
 GO
 
+exec sp_JobInterview_ClientID_get 1001

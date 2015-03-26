@@ -42,6 +42,9 @@ namespace tcm.App_Data
     partial void InsertMember_School(Member_School instance);
     partial void UpdateMember_School(Member_School instance);
     partial void DeleteMember_School(Member_School instance);
+    partial void InsertMember_Log(Member_Log instance);
+    partial void UpdateMember_Log(Member_Log instance);
+    partial void DeleteMember_Log(Member_Log instance);
     #endregion
 		
 		public DBDataContext() : 
@@ -106,11 +109,25 @@ namespace tcm.App_Data
 			}
 		}
 		
+		public System.Data.Linq.Table<Member_Log> Member_Logs
+		{
+			get
+			{
+				return this.GetTable<Member_Log>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_Member_insert")]
 		public ISingleResult<sp_Member_insertResult> sp_Member_insert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="UniqueIdentifier")] System.Nullable<System.Guid> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SchoolID", DbType="UniqueIdentifier")] System.Nullable<System.Guid> schoolID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FirstName", DbType="VarChar(20)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastName", DbType="VarChar(20)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address1", DbType="VarChar(50)")] string address1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="City", DbType="VarChar(50)")] string city, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="State", DbType="Char(2)")] string state, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Zip", DbType="VarChar(12)")] string zip, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone1", DbType="VarChar(50)")] string phone1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cell", DbType="VarChar(50)")] string cell, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cell2", DbType="VarChar(50)")] string cell2, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Dob", DbType="DateTime")] System.Nullable<System.DateTime> dob, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FamilyCode", DbType="VarChar(50)")] string familyCode)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, schoolID, firstName, lastName, address1, city, state, zip, phone1, cell, cell2, dob, familyCode);
 			return ((ISingleResult<sp_Member_insertResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_Member_Logs_insert")]
+		public void sp_Member_Logs_insert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NameSpaceName", DbType="VarChar(100)")] string nameSpaceName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClassName", DbType="VarChar(100)")] string className, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MethodName", DbType="VarChar(100)")] string methodName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExceptionMessage", DbType="VarChar(MAX)")] string exceptionMessage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExceptionString", DbType="VarChar(MAX)")] string exceptionString, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Comments", DbType="VarChar(MAX)")] string comments)
+		{
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nameSpaceName, className, methodName, exceptionMessage, exceptionString, comments);
 		}
 	}
 	
@@ -1669,6 +1686,236 @@ namespace tcm.App_Data
 						this._SchoolId = default(System.Guid);
 					}
 					this.SendPropertyChanged("School");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Member_Logs")]
+	public partial class Member_Log : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Member_LogsID;
+		
+		private string _NameSpaceName;
+		
+		private string _ClassName;
+		
+		private string _MethodName;
+		
+		private string _ExceptionMessage;
+		
+		private string _ExceptionString;
+		
+		private string _Comments;
+		
+		private System.DateTime _create_dt;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMember_LogsIDChanging(int value);
+    partial void OnMember_LogsIDChanged();
+    partial void OnNameSpaceNameChanging(string value);
+    partial void OnNameSpaceNameChanged();
+    partial void OnClassNameChanging(string value);
+    partial void OnClassNameChanged();
+    partial void OnMethodNameChanging(string value);
+    partial void OnMethodNameChanged();
+    partial void OnExceptionMessageChanging(string value);
+    partial void OnExceptionMessageChanged();
+    partial void OnExceptionStringChanging(string value);
+    partial void OnExceptionStringChanged();
+    partial void OnCommentsChanging(string value);
+    partial void OnCommentsChanged();
+    partial void Oncreate_dtChanging(System.DateTime value);
+    partial void Oncreate_dtChanged();
+    #endregion
+		
+		public Member_Log()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Member_LogsID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Member_LogsID
+		{
+			get
+			{
+				return this._Member_LogsID;
+			}
+			set
+			{
+				if ((this._Member_LogsID != value))
+				{
+					this.OnMember_LogsIDChanging(value);
+					this.SendPropertyChanging();
+					this._Member_LogsID = value;
+					this.SendPropertyChanged("Member_LogsID");
+					this.OnMember_LogsIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameSpaceName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string NameSpaceName
+		{
+			get
+			{
+				return this._NameSpaceName;
+			}
+			set
+			{
+				if ((this._NameSpaceName != value))
+				{
+					this.OnNameSpaceNameChanging(value);
+					this.SendPropertyChanging();
+					this._NameSpaceName = value;
+					this.SendPropertyChanged("NameSpaceName");
+					this.OnNameSpaceNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string ClassName
+		{
+			get
+			{
+				return this._ClassName;
+			}
+			set
+			{
+				if ((this._ClassName != value))
+				{
+					this.OnClassNameChanging(value);
+					this.SendPropertyChanging();
+					this._ClassName = value;
+					this.SendPropertyChanged("ClassName");
+					this.OnClassNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MethodName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string MethodName
+		{
+			get
+			{
+				return this._MethodName;
+			}
+			set
+			{
+				if ((this._MethodName != value))
+				{
+					this.OnMethodNameChanging(value);
+					this.SendPropertyChanging();
+					this._MethodName = value;
+					this.SendPropertyChanged("MethodName");
+					this.OnMethodNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExceptionMessage", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string ExceptionMessage
+		{
+			get
+			{
+				return this._ExceptionMessage;
+			}
+			set
+			{
+				if ((this._ExceptionMessage != value))
+				{
+					this.OnExceptionMessageChanging(value);
+					this.SendPropertyChanging();
+					this._ExceptionMessage = value;
+					this.SendPropertyChanged("ExceptionMessage");
+					this.OnExceptionMessageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExceptionString", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string ExceptionString
+		{
+			get
+			{
+				return this._ExceptionString;
+			}
+			set
+			{
+				if ((this._ExceptionString != value))
+				{
+					this.OnExceptionStringChanging(value);
+					this.SendPropertyChanging();
+					this._ExceptionString = value;
+					this.SendPropertyChanged("ExceptionString");
+					this.OnExceptionStringChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comments", DbType="VarChar(MAX)")]
+		public string Comments
+		{
+			get
+			{
+				return this._Comments;
+			}
+			set
+			{
+				if ((this._Comments != value))
+				{
+					this.OnCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._Comments = value;
+					this.SendPropertyChanged("Comments");
+					this.OnCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_create_dt", DbType="DateTime NOT NULL")]
+		public System.DateTime create_dt
+		{
+			get
+			{
+				return this._create_dt;
+			}
+			set
+			{
+				if ((this._create_dt != value))
+				{
+					this.Oncreate_dtChanging(value);
+					this.SendPropertyChanging();
+					this._create_dt = value;
+					this.SendPropertyChanged("create_dt");
+					this.Oncreate_dtChanged();
 				}
 			}
 		}

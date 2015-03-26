@@ -72,6 +72,18 @@
       <Association Name="School_Member_School" Member="School" ThisKey="SchoolId" OtherKey="Id" Type="School" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Member_Logs" Member="Member_Logs">
+    <Type Name="Member_Log">
+      <Column Name="Member_LogsID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NameSpaceName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ClassName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MethodName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ExceptionMessage" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ExceptionString" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="create_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.sp_Member_insert" Method="sp_Member_insert">
     <Parameter Name="UserID" Parameter="userID" Type="System.Guid" DbType="UniqueIdentifier" />
     <Parameter Name="SchoolID" Parameter="schoolID" Type="System.Guid" DbType="UniqueIdentifier" />
@@ -89,5 +101,13 @@
     <ElementType Name="sp_Member_insertResult">
       <Column Name="MemberID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Member_Logs_insert" Method="sp_Member_Logs_insert">
+    <Parameter Name="NameSpaceName" Parameter="nameSpaceName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="ClassName" Parameter="className" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="MethodName" Parameter="methodName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="ExceptionMessage" Parameter="exceptionMessage" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ExceptionString" Parameter="exceptionString" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Comments" Parameter="comments" Type="System.String" DbType="VarChar(MAX)" />
   </Function>
 </Database>

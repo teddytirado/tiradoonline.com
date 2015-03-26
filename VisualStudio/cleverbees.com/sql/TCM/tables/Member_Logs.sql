@@ -1,0 +1,19 @@
+IF EXISTS (SELECT 1 FROM SYSOBJECTS WHERE ID = OBJECT_ID('Member_Logs'))
+	DROP TABLE Member_Logs;
+GO
+
+	CREATE TABLE Member_Logs
+	(
+		Member_LogsID			INT IDENTITY (1001, 1) NOT NULL,
+		NameSpaceName			VARCHAR(100) NOT NULL,
+		ClassName				VARCHAR(100) NOT NULL,
+		MethodName				VARCHAR(100) NOT NULL,
+		ExceptionMessage		VARCHAR(MAX) NOT NULL,
+		ExceptionString			VARCHAR(MAX) NOT NULL,
+		Comments				VARCHAR(MAX) NULL,
+		create_dt				DATETIME DEFAULT GETDATE() NOT NULL
+	);
+
+	-- CREATE Member_Logs PRIMARY KEY
+	ALTER TABLE Member_Logs ADD CONSTRAINT PK_Member_Logs_Member_LogsId PRIMARY KEY CLUSTERED (Member_LogsId);
+GO

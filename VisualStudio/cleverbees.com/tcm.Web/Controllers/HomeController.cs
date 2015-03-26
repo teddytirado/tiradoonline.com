@@ -12,14 +12,26 @@ namespace tcm.Controllers
 {
     public class HomeController : Controller
     {
+        DBDataContext db = new DBDataContext();
+
+        private string nameSpaceName = "tcm.Controllers";
+        private string className = "HomeController : Controller";
+
         public ActionResult Index()
         {
+            string directoryPath = string.Empty;
+
             //Members.KillExcel();
-
-            string directoryPath =  Server.MapPath("~/uploads").ToString();
-            if (!Directory.Exists(directoryPath))
-                Directory.CreateDirectory(directoryPath);
-
+            try
+            {
+                directoryPath = Server.MapPath("~/uploads").ToString();
+                if (!Directory.Exists(directoryPath))
+                    Directory.CreateDirectory(directoryPath);
+            }
+            catch (Exception ex)
+            {
+                Logs.Insert(nameSpaceName, className, "ActionResult Index()", ex, "try to create directory: " + directoryPath);
+            }
             
             return View();
         }
@@ -65,12 +77,12 @@ namespace tcm.Controllers
                         try
                         {
                             fileToUpload.SaveAs(path);
-
                         }
                         catch (Exception ex)
                         {
-                            string errorMessage = ex.ToString();
+                            Logs.Insert(nameSpaceName, className, "[HttpPost] ActionResult UploadFile(HttpPostedFileBase fileToUpload, string SchoolID, string UserID)", ex, "fileToUpload.SaveAs(path): " + path);
                         }
+
                         
                         ModelState.Clear();
 
@@ -115,9 +127,8 @@ namespace tcm.Controllers
                     }
                     catch (Exception ex)
                     {
-                        string errorMessage = ex.ToString();
+                        Logs.Insert(nameSpaceName, className, "[HttpPost] ActionResult UploadFile(HttpPostedFileBase fileToUpload, string SchoolID, string UserID)", ex, "Error in sp_Member_insert");
                     }
-
                 }
             }
             return View("Index", listMembersModel);

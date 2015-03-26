@@ -2,6 +2,18 @@
 @using tcm.App_Data
 
 @{
+    string UserID = string.Empty;
+    if (Session["UserID"] == null)
+    {
+        UserID = Guid.NewGuid().ToString();
+    }
+    else
+    {
+        UserID = (string)Session["UserID"];
+        
+    }
+    string SchoolID  = new Guid("F2044BE8-635A-4D88-A968-12027BD1CE19").ToString();
+    
     int ModelCount = 0;
 
     if(Model != null)
@@ -13,7 +25,7 @@
     IQueryable<School> listSchools = tcm.Models.Members.Get_Schools_Table();
     IQueryable<School_StudentMember> listSchool_StudentMembers = tcm.Models.Members.Get_School_StudentMember_Table();
     IQueryable<Member_School> listMembers_Schools = tcm.Models.Members.Get_Member_School_Table();
-    Guid UserID = Guid.NewGuid();
+    IQueryable<Member_Log> listMember_Logs = tcm.Models.Members.Get_Member_Logs_Table();
 }
     @ViewBag.Message
     <p />
@@ -24,19 +36,28 @@
             <div class="ErrorMessage">
                 @Html.ValidationSummary()
             </div>
-        
-            <ol>
-                <li>
-                    SchoolID: @Html.TextBox("SchoolID", "F2044BE8-635A-4D88-A968-12027BD1CE19", new { size = "50" } )
-                </li>
-                <li class="lifile">
-                    <input type="file" id="fileToUpload" name="fileToUpload" />
-                    <span class="field-validation-error" id="spanfile"></span>
-                </li>
-            </ol>
+            <span class="field-validation-error" id="spanfile"></span>
+            
+            <table>
+            <tr>
+                <td>UserID:</td>
+                <td>@Html.TextBox("UserID", UserID, new { size = "50" } )</td>
+            </tr>
+            <tr>
+                <td>SchoolID:</td>
+                <td>@Html.TextBox("SchoolID", SchoolID, new { size = "50" } )</td>
+            </tr>
 
-            <input type="submit" id="btnSubmit" value="Upload" />
-    
+            <tr>
+                <td></td>
+                <td><input type="file" id="fileToUpload" name="fileToUpload" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" id="btnSubmit" value="Upload" /></td>
+            </tr>
+            </table> 
+       
             @Html.Hidden("UserID", UserID)
     }
 
@@ -49,6 +70,7 @@
             <li><a href="#tabs-3" title="SCHOOLS DATABASE TABLE">SCHOOL&nbsp;TABLE&nbsp;(@listSchools.Count())</a></li>
             <li><a href="#tabs-4" title="SCHOOL_STUDENTMEMBER DATABASE TABLE">SCHOOL_STUDENTMEMBER&nbsp;TABLE&nbsp;(@listSchool_StudentMembers.Count())</a></li>
             <li><a href="#tabs-5" title="MEMBER_SCHOOL TABLE">MEMBER_SCHOOL&nbsp;TABLE&nbsp;(@listMembers_Schools.Count())</a></li>
+            <li><a href="#tabs-6" title="MEMBER_LOGS TABLE">MEMBER_LOGS&nbsp;TABLE&nbsp;(@listMember_Logs.Count())</a></li>
         </ul>
 
         <!--
@@ -265,6 +287,51 @@
                     <td>@x.ToString()</td>
                     <td>@item.MemberId.ToString()</td>
                     <td>@item.SchoolId.ToString()</td>
+                </tr>
+                    x++;
+                }
+                </table>
+            }
+            else
+            {
+                <div class="ErrorMessage">No database records found.</div>
+            }
+        </div>
+
+
+        <!--
+        **********************************
+        MEMBER_LOGS DATABASE TABLE
+        **********************************
+        -->
+        <div id="tabs-6">
+            <h1>Member_Logs Database Table</h1>
+            
+            @if (listMember_Logs.Count<Member_Log>() > 0)
+            {
+                int x = 1;
+                <table border="1">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Date</td>
+                    <td>NameSpace</td>
+                    <td>Class</td>
+                    <td>Method</td>
+                    <td>ExceptionMessage</td>
+                    <td>ExceptionString</td>
+                    <td>Comments</td>
+                </tr>
+                @foreach (var item in listMember_Logs)
+                {
+                <tr>
+                    <td>@x.ToString()</td>
+                    <td>@item.create_dt.ToString()</td>
+                    <td>@item.NameSpaceName.ToString()</td>
+                    <td>@item.ClassName.ToString()</td>
+                    <td>@item.MethodName.ToString()</td>
+                    <td>@item.ExceptionMessage.ToString()</td>
+                    <td>@item.ExceptionString.ToString()</td>
+                    <td>@item.Comments.ToString()</td>
                 </tr>
                     x++;
                 }

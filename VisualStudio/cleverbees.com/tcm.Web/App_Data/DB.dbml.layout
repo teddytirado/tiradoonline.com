@@ -54,5 +54,11 @@
         <classShapeMoniker Id="b75577dd-e7f9-4c58-a183-431420d1cce6" />
       </nodes>
     </associationConnector>
+    <classShape Id="c2176ddf-bb10-4316-8a00-3d0905447c3f" absoluteBounds="5.875, 3.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DBDataContext/Member_Log" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fc0106bd-be97-440e-a046-f3bd7c7aafc3" absoluteBounds="5.89, 3.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

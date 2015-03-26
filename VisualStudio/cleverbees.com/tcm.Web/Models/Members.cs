@@ -38,10 +38,13 @@ namespace tcm.Models
 
     public class Members
     {
+        private static DBDataContext db = new DBDataContext();
+
+        private static string nameSpaceName = "tcm.Models";
+        private static string className = "Members";
 
         private static Hashtable myHashtable = new Hashtable();
         private static string processName = @"EXCEL";
-        private static DBDataContext db = new DBDataContext();
 
         //public static List<MembersModel> ImportExcel(string excelFileName)
         //{
@@ -254,12 +257,12 @@ namespace tcm.Models
                             }
                         }
                     }
-
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine(ex.ToString());
+                    Logs.Insert(nameSpaceName, className, "ImportExcel(string excelName): " + excelFileName, ex, "");
                 }
+
                 finally
                 {
 
@@ -272,17 +275,24 @@ namespace tcm.Models
         private static void CheckExcellProcesses()
         {
             //Process[] AllProcesses = Process.GetProcesses("TEDDY_LAPTOP");
-            Process[] AllProcesses = Process.GetProcessesByName(processName);
-            int totalExcels = AllProcesses.Count();
-
-            myHashtable = new Hashtable();
-            int iCount = 0;
-
-            foreach (Process ExcelProcess in AllProcesses)
+            try
             {
-                Debug.Print(ExcelProcess.Id.ToString() + ": " + ExcelProcess.ProcessName);
-                myHashtable.Add(ExcelProcess.Id, iCount);
-                iCount = iCount + 1;
+                Process[] AllProcesses = Process.GetProcessesByName(processName);
+                int totalExcels = AllProcesses.Count();
+
+                myHashtable = new Hashtable();
+                int iCount = 0;
+
+                foreach (Process ExcelProcess in AllProcesses)
+                {
+                    Debug.Print(ExcelProcess.Id.ToString() + ": " + ExcelProcess.ProcessName);
+                    myHashtable.Add(ExcelProcess.Id, iCount);
+                    iCount = iCount + 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logs.Insert(nameSpaceName, className, "CheckExcellProcesses()", ex, "");
             }
         }
 
@@ -290,51 +300,106 @@ namespace tcm.Models
         {
             CheckExcellProcesses();
 
-            Process[] AllProcesses = Process.GetProcessesByName(processName);
-
-            // check to kill the right process
-            foreach (Process ExcelProcess in AllProcesses)
+            try
             {
-                if (myHashtable.ContainsKey(ExcelProcess.Id) == true)
-                {
-                    //ExcelProcess.Kill();
-                    //Thread.Sleep(2000);
-                }
-            }
+                Process[] AllProcesses = Process.GetProcessesByName(processName);
 
-            AllProcesses = null;
+                // check to kill the right process
+                foreach (Process ExcelProcess in AllProcesses)
+                {
+                    if (myHashtable.ContainsKey(ExcelProcess.Id) == true)
+                    {
+                        //ExcelProcess.Kill();
+                        //Thread.Sleep(2000);
+                    }
+                }
+
+                AllProcesses = null;
+            }
+            catch (Exception ex)
+            {
+                Logs.Insert(nameSpaceName, className, "KilExcel()", ex, "");
+            }
         }
 
         public static IQueryable<Member> Get_Members_Table()
         {
-            var ors = (from members in db.Members
-                       select members);
+            try
+            {
 
-            return ors;
+                var ors = (from members in db.Members
+                           select members);
+
+                return ors;
+            }
+            catch (Exception ex)
+            {
+                Logs.Insert(nameSpaceName, className, "IQueryable<Member> Get_Members_Table()", ex, "");
+                return null;
+            }
         }
 
         public static IQueryable<School> Get_Schools_Table()
         {
-            var ors = (from Schools in db.Schools
-                       select Schools);
+            try
+            {
+                var ors = (from Schools in db.Schools
+                           select Schools);
 
-            return ors;
+                return ors;
+            }
+            catch (Exception ex)
+            {
+                Logs.Insert(nameSpaceName, className, "IQueryable<School> Get_Schools_Table()", ex, "");
+                return null;
+            }
         }
 
         public static IQueryable<School_StudentMember> Get_School_StudentMember_Table()
         {
-            var ors = (from members in db.School_StudentMembers
-                       select members);
+            try
+            {
+                var ors = (from members in db.School_StudentMembers
+                           select members);
 
-            return ors;
+                return ors;
+            }
+            catch (Exception ex)
+            {
+                Logs.Insert(nameSpaceName, className, "IQueryable<School_StudentMember> Get_School_StudentMember_Table()", ex, "");
+                return null;
+            }
+
         }
 
         public static IQueryable<Member_School> Get_Member_School_Table()
         {
-            var ors = (from members in db.Member_Schools
-                       select members);
+            try
+            {
+                var ors = (from members in db.Member_Schools
+                           select members);
+                return ors;
+            }
+            catch (Exception ex)
+            {
+                Logs.Insert(nameSpaceName, className, "IQueryable<Member_School> Get_Member_School_Table()", ex, "");
+                return null;
+            }
+        }
 
-            return ors;
+        public static IQueryable<Member_Log> Get_Member_Logs_Table()
+        {
+            try
+            {
+                var ors = (from logs in db.Member_Logs
+                           select logs);
+                return ors;
+            }
+            catch (Exception ex)
+            {
+                Logs.Insert(nameSpaceName, className, "IQueryable<Logs> Get_Member_Logs_Table()", ex, "");
+                return null;
+            }
         }
 
 
@@ -342,14 +407,13 @@ namespace tcm.Models
         {
             try
             {
+                return true;
             }
             catch (Exception ex)
             {
-                string errorMessage = ex.ToString();
+                Logs.Insert(nameSpaceName, className, "bool Add_Members(MembersModel modelMembers)", ex, "");
+                return false;
             }
-
-            return true;
-
         }
     }
 }
