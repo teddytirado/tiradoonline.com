@@ -98,7 +98,7 @@
 	<% End If %>
 	<tr valign="top">
 		<td colspan="2">
-			<table cellpadding="3" cellspacing="3" border=0>
+			<table cellpadding="5" cellspacing="3" border=0>
 <%
 		ProgramCounter = 0
 		Do Until ors.EOF
@@ -128,12 +128,15 @@
 			If NOT orsRecoveryGroups.EOF  Then boolRecoveryGroups = true
 	%>
 			<tr valign="middle" class="RecoveryTheme">
-				<td><b>Name</b></td>
+				<td><b>Program&nbsp;Name</b></td>
 				<td><b>Start&nbsp;Date</b></td>
 				<td><b>End&nbsp;Date</b></td>
 				<td><b>Sober&nbsp;Date</b></td>
 				<td align="right"><b>Counselors&nbsp;(<%= TotalCounselors %>)</b></td>
 				<td>
+					<table width="100%">
+					<tr>
+						<td class="RecoveryTheme">
 					<b>Groups&nbsp;(<%= TotalGroups %>)</b>
 					
 					<% If boolRecoveryCounselors AND boolRecoveryGroups Then %>
@@ -153,10 +156,13 @@
 						df=datediff("d",dtDate1,dtDate2)
 						df_inwords=cstr(df\360) & " year(s) " & cstr((df mod 360)\30) & " month(s) " & cstr(df mod 30) & " day(s)"
 					%> 
-					<div style="float:right">
+						</td>
+						<td align="right">
 					<%= Button("Button", "Group Sessions (" & totalGroupSessions & ")", "Button", "", "View All Group Sessions", "location.href='" & SCRIPT_NAME & "?Template=recovery_group_sessions&RecoveryProgramID=" & RecoveryProgramID & "&RecoveryTypeID=" & RecoveryTypeID & "'") %>
-					</div>
 					<% End If %>
+						</td>
+					</tr>
+					</table>
 
 				</td>
 			</tr>
@@ -185,8 +191,8 @@
 					</tr>
 					</table>
 					<p />
-					<table cellpadding="5" align="center" class="GridViewAlteringRows">
-					<tr align="right">
+					<table cellpadding="5" align="left" class="GridViewAlteringRows">
+					<tr>
 						<td class="RecoveryTheme"><a href="<%= SCRIPT_NAME %>?Template=recovery_urine&RecoveryProgramID=<%= RecoveryProgramID %>"><b>Urine(s)&nbsp;(<%= TotalUrines %>)</b></a></td>
 					</tr>
 					<%
@@ -235,7 +241,7 @@
 					%>
 					</table>
 					
-					<p />
+					<p align=left />
 					<%= Button("Button", "Add Urine", "Button", "", "Add Urine", "location.href='" & SCRIPT_NAME & "?Template=recovery_urine&RecoveryProgramID=" & RecoveryProgramID & "&RecoveryTypeID=" & RecoveryTypeID & "'") %>
 				</td>
 				<td><a href="<%= anchorProgram %>"><%= start_dt %></a></td>

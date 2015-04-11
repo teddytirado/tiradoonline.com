@@ -31,8 +31,7 @@
 			"'" & SQLEncode(ProgramName) & "', " & _
 			StartDate & ", " & _
 			EndDate & ", " & _
-			SoberDate & ", " & _
-			"'" & SQLEncode(SoberDate) & "'"
+			SoberDate
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute sql
 		'Response.Write sql

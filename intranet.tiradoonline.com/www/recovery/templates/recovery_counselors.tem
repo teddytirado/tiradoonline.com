@@ -130,7 +130,7 @@
 					<b>First&nbsp;Name:</b>&nbsp;
 				</td>
 				<td>
-					<%= formTextBox("FirstName", "20", FirstName, "RecoveryElement", "First Name", "Invalid First Name") %>
+					<%= formTextBox("FirstName", "20", FirstName, "RecoveryElement", "First Name", "Invalid First Name") %><%= REQUIRED_ICON %>
 				</td>
 			</tr>
 			<tr>
@@ -138,7 +138,7 @@
 					<b>Last&nbsp;Name:</b>&nbsp;
 				</td>
 				<td>
-					<%= formTextBox("LastName", "20", LastName, "RecoveryElement", "Last Name", "Invalid Last Name") %><%= REQUIRED_ICON %>
+					<%= formTextBox("LastName", "20", LastName, "RecoveryElement", "Last Name", "Invalid Last Name") %>
 				</td>
 			</tr>
 			<tr>
