@@ -40,7 +40,6 @@
 			  Percentage & ", " & _
 			  Payments & ")"
 		WriteDebugger sql, Debugging, 0
-		'Response.End
 		oConn.Execute(sql)
 		CreditCardErrorMessage = Server.URLEncode("Credit Card '" & CreditCardName & "' added.")
 		Response.Redirect SCRIPT_NAME & "?Template=View&CreditCardErrorMessage=" & CreditCardErrorMessage

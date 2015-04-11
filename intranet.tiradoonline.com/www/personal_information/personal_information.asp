@@ -127,7 +127,6 @@
 		WriteDebugger sql, Debugging, 0
 		Response.Write sql
 		oConn.Execute sql
-		'Response.End
 		PersonalInformationErrorMessage = Server.URLEncode("Account: " & AccountName & " settings saved")
 		Response.Redirect SCRIPT_NAME & "?Letter=" & UCase(Left(AccountName, 1)) & "&Template=View&PersonalInformationErrorMessage=" & PersonalInformationErrorMessage
 	ElseIf SubmitButton = "Delete" Then

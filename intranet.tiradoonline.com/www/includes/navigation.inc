@@ -76,7 +76,16 @@ LEFT NAVIGATION
 		<!-- ******************************************** -->
 		<% If Session("PersonalInformation") OR Session("Administrator") Then %>
 		<div id="nav_personal_information" class="PersonalInformationTheme" <%= navStyle %> title="Personal Information">
-			<a href="/personal_information/personal_information.asp?Letter=ALL&Template=View">Personal&nbsp;Information</a>
+			<table cellspacing=0 cellpadding=0 border=0 width="100%">
+			<tr>
+				<td>
+					<a href="/personal_information/personal_information.asp?Letter=ALL&Template=View">Personal&nbsp;Information</a>
+				</td>
+				<td align="right">
+					<a href="/personal_information/personal_information.asp">[&nbsp;Create&nbsp;]</a>&nbsp;&nbsp;
+				</td>
+			</tr>
+			</table>			
 		</div>
 		<% End If %>
 		
@@ -198,7 +207,7 @@ LEFT NAVIGATION
 		<!-- ******************************************** -->
 		<% If Session("Recovery") OR Session("Administrator") Then %>
 		<div id="nav_recovery" class="RecoveryTheme" <%= navStyle %> title="Recovery">
-			<a href="/recovery/recovery.asp?Template=recovery_programs&RecoveryTypeID=1001">Recovery</a>
+			<a href="/recovery/recovery.asp">Recovery</a>
 		</div>
 		<% End If %>
 		

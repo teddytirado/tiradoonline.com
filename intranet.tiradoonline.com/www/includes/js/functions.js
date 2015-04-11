@@ -77,6 +77,17 @@
 		}
 	}
 
+	function EmailSnippet(snippetid) {
+		v_location = "<%= SCRIPT_NAME %>?SubmitButton=EmailSnippet&SnippetID=" + snippetid
+
+		var cc = prompt("CC:");
+		
+		if (cc != null) {
+			v_location += "&CC=" + escape(cc);
+			location.href = v_location;
+		}
+	}
+
 	function formatAMPM (num) {
 		if(parseInt(num) > 12) 
 			num = "PM";

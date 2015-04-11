@@ -10,7 +10,7 @@
 		End If
 		Set ors = Nothing
 	End If
-	
+	If NOT isDate(MinDate) OR MinDate = "" Then MinDate = Date
 	If RecoveryGroupSessionDatePickerStartDate = "" Then RecoveryGroupSessionDatePickerStartDate = FormatDateTime(MinDate, 2)
 
 	sql = "SELECT * FROM RecoveryPrograms WHERE RecoveryProgramID = " & RecoveryProgramID
@@ -32,8 +32,6 @@
 	End If
 	Set ors = Nothing
 		
-	'Response.Write "SubmitButton:" & SubmitButton
-	'Response.End
 	If SubmitButton = "Add Group" Then
 		sql = "INSERT INTO RecoveryGroups (RecoveryProgramID, RecoveryGroupName) VALUES (" & _
 			RecoveryProgramID & ", " & _
@@ -148,6 +146,12 @@
 						</td>
 					</tr>
 					</table>
+					
+					<script type="text/javascript">
+
+						$('#RecoveryGroupName').focus();
+					</script>
+
 					
 					<p />
 					

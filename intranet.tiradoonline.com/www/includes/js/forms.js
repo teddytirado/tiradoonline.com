@@ -1081,11 +1081,11 @@ $(document).ready(
 			function() {
 				var $LastName = $.trim($('#LastName').val());
 
-				if($LastName == '') {
+				/*if($LastName == '') {
 					displayError($('#LastName'));
 					$('#LastName').focus();
 					return false;
-				}
+				}*/
 			}
 		);
 
@@ -1167,6 +1167,24 @@ $(document).ready(
 			}
 		);
 
+		$('#frmRehabProgram').submit(
+			function() {
+				var $ProgramName = $.trim($('#ProgramName').val());
+				var $StartDate = $.trim($('#StartDate').val());
+
+				if($ProgramName == '') {
+					displayError($('#ProgramName'));
+					$('#ProgramName').focus();
+					return false;
+				}
+				else if(!isDate($StartDate)) {
+					displayError($('#StartDate'));
+					$('#StartDate').focus();
+					return false;
+				}
+			}
+		);
+		
 		$('#formResume').submit(
 			function() {
 				var $ResumeFileName = $.trim($('#ResumeFileName').val());

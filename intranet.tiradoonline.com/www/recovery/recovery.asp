@@ -55,6 +55,8 @@
 
 				<% If Template = "" Then %>
 				<!-- #include file="templates/home.tem" -->
+				<% ElseIf LCase(Template) = "recovery_types" Then %>
+				<!-- #include file="templates/recovery_types.tem" -->
 				<% ElseIf LCase(Template) = "recovery_programs" Then %>
 				<!-- #include file="templates/recovery_programs.tem" -->
 				<% ElseIf LCase(Template) = "recovery_counselors" Then %>

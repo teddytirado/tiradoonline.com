@@ -1,7 +1,5 @@
 <%
 	sql = "SELECT * FROM RecoveryTypes WHERE RecoveryTypeID = " & RecoveryTypeID
-	'Response.Write sql 
-	'Resposne.End
 	WriteDebugger sql, Debugging, 0
 	Set ors = oConn.Execute(sql)
 	If NOT ors.EOF Then
@@ -10,8 +8,6 @@
 	End If
 	Set ors = Nothing
 		
-	'Response.Write "SubmitButton:" & SubmitButton
-	'Response.End
 	If SubmitButton = "Add Program" Then
 		sql = "INSERT INTO RecoveryPrograms (UserID, RecoveryTypeID, ProgramName, start_dt, end_dt, sober) VALUES (" & _
 			Session("UserID") & ", " & _
@@ -102,7 +98,7 @@
 	<% End If %>
 	<tr valign="top">
 		<td colspan="2">
-			<table cellpadding="3" cellspacing="3">
+			<table cellpadding="3" cellspacing="3" border=0>
 <%
 		ProgramCounter = 0
 		Do Until ors.EOF
@@ -112,10 +108,11 @@
 			RecoveryProgramID = ors("RecoveryProgramID")
 			ProgramName = HTMLFormat(ors("ProgramName"))
 			start_dt = ors("start_dt")
+			If start_dt = "" Then start_dt = "N/A"
 			end_dt = ors("end_dt")
-			if end_dt = "" or isNull(end_dt) Then end_dt = Date
+			if end_dt = "" or isNull(end_dt) Then end_dt = "N/A"
 			sober_dt = ors("sober_dt")
-			if sober_dt = "" or isNull(sober_dt) Then sober_dt = Date
+			if sober_dt = "" or isNull(sober_dt) Then sober_dt = "N/A"
 
 			'**** COUNSELORS RECORDSET	
 			sql = "SELECT *, RecoveryCounselorGroupSessions = (SELECT COUNT(*) FROM RecoveryGroupSessions WHERE RecoveryCounselorID = RecoveryCounselors.RecoveryCounselorID) FROM RecoveryCounselors WHERE RecoveryProgramID = " & RecoveryProgramID & " ORDER BY FirstName"
@@ -150,8 +147,8 @@
 						orsGroupSessions.Close
 						Set orsGroupSessions = Nothing
 
-						TotalDays = DateDiff("d", start_dt, end_dt)
-						DaysSober = DateDiff("d", sober_dt, Date)
+						If isDate(start_dt) AND isDate(end_dt) Then TotalDays = DateDiff("d", start_dt, end_dt)
+						If isDate(sober_dt) Then DaysSober = DateDiff("d", sober_dt, Date)
 						
 						df=datediff("d",dtDate1,dtDate2)
 						df_inwords=cstr(df\360) & " year(s) " & cstr((df mod 360)\30) & " month(s) " & cstr(df mod 30) & " day(s)"
@@ -168,6 +165,9 @@
 				<td align="right">
 					<%
 						anchorProgram = SCRIPT_NAME & "?Template=recovery_programs&RecoveryProgramID=" & RecoveryProgramID & "&RecoveryTypeID=" & RecoveryTypeID & "&Action=AddEdit"
+						If isNull(TotalDays) OR TotalDays = "" Then TotalDays = 0
+						If isNull(TotalGroupSessions) OR TotalGroupSessions = "" Then TotalGroupSessions = 0
+						If isNull(DaysSober) OR DaysSober = "" Then DaysSober = 0
 					%>
 					<a href="<%= anchorProgram %>"><%= ProgramName %>&nbsp;(<%= TotalDays %>)&nbsp;day(s)</a><br />&nbsp;<br />
 					<table>
@@ -242,7 +242,7 @@
 				<td><a href="<%= anchorProgram %>"><%= end_dt %></a></td>
 				<td><a href="<%= anchorProgram %>"><%= sober_dt %></a></td>
 				<!-- COUNSELORS  -->
-				<td rowspan="2" align="right">
+				<td align="right">
 				<%
 					If NOT orsRecoveryCounselors.EOF Then
 				%>
@@ -282,7 +282,7 @@
 					<%= Button("Button", "Add Counselor", "Button", "", "Add Counselor", "location.href='" & SCRIPT_NAME & "?Template=recovery_counselors&Action=Add&RecoveryProgramID=" & RecoveryProgramID & "'") %>
 				</td>
 				<!-- GROUPS  -->
-				<td rowspan="2">
+				<td>
 				<%
 					If NOT orsRecoveryGroups.EOF Then
 				%>

@@ -155,8 +155,6 @@
 			"TimesheetStartDate = '" & SQLEncode(TimesheetStartDate) & "', " & _ 
 			"TimesheetEndDate = '" & SQLEncode(TimesheetEndDate) & "' " & _ 
 			"WHERE TimesheetID = " & TimesheetID
-		'Response.Write sql
-		'Response.End
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute sql
 		TimesheetErrorMessage = Server.URLEncode("Timesheet saved.")
@@ -169,8 +167,6 @@
 			"'" & TimesheetDetailDate & "', " & _
 			TimesheetHours & ", " & _
 			"'" & SQLEncode(TimesheetDescription) & "')"
-		'Response.Write sql
-		'Response.End
 		Response.Cookies("TimesheetDetailDate") = TimesheetDetailDate
 		Response.Cookies("TimesheetDetailDate").Expires = Date + 1
 		WriteDebugger sql, Debugging, 0
@@ -184,8 +180,6 @@
 			"TimesheetHours = " & TimesheetHours & ", " & _
 			"TimesheetDescription = '" & SQLEncode(TimesheetDescription) & "' " & _
 			"WHERE TimesheetDetailID = " & TimesheetDetailID
-		'Response.Write sql
-		'Response.End
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute sql
 		TimesheetErrorMessage = Server.URLEncode("Timesheet Entry saved.")
@@ -193,8 +187,6 @@
 		Response.Redirect RedirectString
 	ElseIf SubmitButton = "DeleteTimesheetDetail" Then
 		sql = "DELETE FROM TimesheetDetail WHERE TimesheetDetailID = " & TimesheetDetailID
-		'Response.Write sql
-		'Response.End
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute sql
 		TimesheetErrorMessage = Server.URLEncode("Timesheet Entry deleted.")

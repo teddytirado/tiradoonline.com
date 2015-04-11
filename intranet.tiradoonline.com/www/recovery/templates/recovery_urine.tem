@@ -225,9 +225,6 @@
 	var SelectedDates = {};
 	<%= JQueryDates %>
 <%
-	'Response.Write "StartDate:" & StartDate & "<br />"
-	'Response.Write "EndDate:" & EndDate & "<br />"
-	'Response.End
 	DiffMonths = DateDiff("m", StartDate, EndDate)
 %>
 	var diffMonths = <%= DiffMonths + 1 %>;

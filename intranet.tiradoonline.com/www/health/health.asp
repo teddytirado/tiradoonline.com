@@ -301,8 +301,6 @@
 			  "'" & SQLEncode(WeightLocation) & "', " & _
 			  "'" & SQLEncode(WeightComments) & "'"
 		WriteDebugger sql, Debugging, 0
-		'Response.Write sql
-		'Response.End
 		oConn.Execute(sql)
 		HealthErrorMessage = Server.URLEncode("Weight added.")
 		Response.Redirect SCRIPT_NAME & "?Template=" & Template & "&HealthErrorMessage=" & HealthErrorMessage
@@ -376,8 +374,6 @@
 			  	"'" & SQLEncode(TestComments) & "'"
 		
 		WriteDebugger sql, Debugging, 0
-		'Response.Write sql
-		'Response.End
 		oConn.Execute(sql)
 		HealthErrorMessage = Server.URLEncode("Test added.")
 		Response.Redirect SCRIPT_NAME & "?Template=" & Template & "&HealthErrorMessage=" & HealthErrorMessage
@@ -388,8 +384,6 @@
 		      "'" & SQLEncode(TestDate) & "', " & _
 		      "'" & SQLEncode(TestLocation) & "', " & _
 		      "'" & SQLEncode(TestComments) & "'"
-		'Response.Write sql
-		'Response.End
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute(sql)
 		HealthErrorMessage = Server.URLEncode("Test Type updated.")
@@ -410,8 +404,6 @@
 			  "'" & Sugar & "', " & _
 			  "'" & SQLEncode(SugarComments) & "'"
 		WriteDebugger sql, Debugging, 0
-		'Response.Write sql
-		'Response.End
 		oConn.Execute(sql)
 		HealthErrorMessage = Server.URLEncode("Sugar added.")
 		If checkboxSugar <> "1" Then Response.Redirect SCRIPT_NAME & "?Template=" & Template & "&HealthErrorMessage=" & HealthErrorMessage
@@ -579,8 +571,6 @@
 				  Amount & ", " & _
 				  "'" & SQLEncode(MedicineDoseDescription) & "'"
 			
-			'Response.Write sql
-			'Response.End
 			WriteDebugger sql, Debugging, 0
 			oConn.Execute(sql)
 			HealthErrorMessage = Server.URLEncode("Medicine Dose added.")
@@ -589,8 +579,6 @@
 			sql = "sp_MedicineDose_MedicineDosePackage_insert " & _
 					MedicineDosePackageID & ", " & _
 				  	"'" & MedicineDoseDateTime2 & "'"
-			'Response.Write sql
-			'Response.End
 			WriteDebugger sql, Debugging, 0
 			oConn.Execute sql
 			HealthErrorMessage = Server.URLEncode("Medicine Dose(s) added.")
@@ -626,8 +614,6 @@
 			  "'" & SQLEncode(PrescriptionNumber) & "', " & _
 			  UnitID & ", " & _
 			  "'" & SQLEncode(MedicineDescription) & "'"
-		'Response.Write sql
-		'Response.End
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute(sql)
 		HealthErrorMessage = Server.URLEncode("Medicine added.")
@@ -640,8 +626,6 @@
 		      "'" & SQLEncode(PrescriptionNumber) & "', " & _
 		      UnitID & ", " & _
 		      "'" & SQLEncode(MedicineDescription) & "'"
-		'Response.Write sql
-		'Response.End
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute(sql)
 		HealthErrorMessage = Server.URLEncode("Medicine updated.")
@@ -659,8 +643,6 @@
 		sql = "sp_MedicineDosePackage_insert " & _
 			  Session("UserID") & ", " & _
 			  "'" & SQLEncode(MedicineDosePackageName) & "';"
-		'Response.Write sql
-		'Response.End
 		WriteDebugger sql, Debugging, 0
 		Set ors = oConn.Execute(sql)
 		MedicineDosePackageID = ors.Fields(0).Value
@@ -721,7 +703,6 @@
 				oConn.Execute sql
 			End If
 		Next
-		'Response.End
 
 		HealthErrorMessage = Server.URLEncode("Medicine Dose Package saved.")
 		Response.Redirect SCRIPT_NAME & "?Template=" & Template & "&HealthErrorMessage=" & HealthErrorMessage
@@ -738,8 +719,6 @@
 			 MedicineID & ", " & _
 			 Trim(Request("NewAmount")) & ", " & _
 			 "'" & SQLEncode(Trim(Request("NewDescription"))) & "'"
-		'Response.Write sql
-		'Response.End
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute sql
 		HealthErrorMessage = Server.URLEncode("Medicine added to Package")
@@ -780,8 +759,6 @@
 			  "'" & SQLEncode(RefillUntilDate) & "', " & _
 			  "'" & SQLEncode(RefillDiscardDate) & "', " & _
 			  "'" & SQLEncode(RefillDescription) & "'"
-		Response.Write sql
-		Response.End
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute(sql)
 		HealthErrorMessage = Server.URLEncode("Medicine Refill added.")
@@ -801,8 +778,6 @@
 		      "'" & SQLEncode(RefillUntilDate) & "', " & _
 		      "'" & SQLEncode(RefillDiscardDate) & "', " & _
 		      "'" & SQLEncode(RefillDescription) & "'"
-		'Response.Write sql
-		'Response.End
 		WriteDebugger sql, Debugging, 0
 		oConn.Execute(sql)
 		HealthErrorMessage = Server.URLEncode("Medicine updated.")

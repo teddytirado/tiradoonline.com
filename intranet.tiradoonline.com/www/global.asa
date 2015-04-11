@@ -4,6 +4,7 @@ Sub Application_OnStart
 
 	'***** GLOBAL VARIABLES	
 	Application("AdministratorName") = "Theodoore Tirado"
+	Application("ApplicationName") = "intranet.tiradoonline.com"
 	Application("AdministratorEmail") = "intranet@tiradoonline.com"
 	Application("SendEmail") = 1
 	Application("SQLServer") = ".\SQL2K8"

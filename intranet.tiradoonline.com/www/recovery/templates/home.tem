@@ -1,5 +1,24 @@
+<%
+	sql = "sp_RecoveryTypes_get"
+	Set ors = oConn.Execute(sql)
+	Do Until ors.EOF
+		vRecoveryTypeID = ors("RecoveryTypeID")
+		vRecoveryTypeName = ors("RecoveryTypeName")
+%>
 		<div style="float:left;padding:30px;text-align:center">
-			<a href="/recovery/recovery.asp?Template=recovery_programs&RecoveryTypeID=1001"><img src="/images/icons/rehabs_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<a href="/recovery/recovery.asp?Template=recovery_types&RecoveryTypeID=<%= vRecoveryTypeID %>"><img src="/images/icons/rehabs_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
+			<div style="width:116px;text-align:center;color:#000000;z-index:3;"><%= vRecoveryTypeName %></div>
+		</div>	
+<%
+		ors.MoveNext
+	Loop
+	ors.Close
+	Set ors = Nothing
+%>
+
+<!-- 
+		<div style="float:left;padding:30px;text-align:center">
+			<a href="/recovery/recovery.asp?Template=recovery_programs"><img src="/images/icons/rehabs_off.gif" title="" width="105" height="116" hspace="0" vspace="0" border="0" class="icon"></a>
 			<div style="width:116px;text-align:center;color:#000000;z-index:3;">Outpatient Programs</div>
 		</div>	
 
@@ -13,3 +32,4 @@
 			<div style="width:116px;text-align:center;color:#000000;z-index:3;">A&nbsp;A</div>
 		</div>	
 	
+ -->

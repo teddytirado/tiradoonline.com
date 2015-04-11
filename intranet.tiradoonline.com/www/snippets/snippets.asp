@@ -23,7 +23,39 @@
 	If SubmitButton = "Cancel" Then Response.Redirect SCRIPT_NAME & "?Template=" & Template
 
 	'If Request.ServerVariables("REQUEST_METHOD") = "POST" Then
-		If SubmitButton = "CREATE" Then
+		If SubmitButton = "EMAILSNIPPET" Then
+			sql = "sp_Snippets_SnippetID_get " & SnippetID
+			Set ors = oConn.Execute(sql)
+			If NOT ors.EOF Then
+				SnippetGroupName = ors("SnippetGroupName")
+				SnippetName = ors("SnippetName")
+				Snippet = ors("Snippet")
+				ors.Close
+				
+				snippetText = ""
+				snippetText = snippetText & "<table cellpadding=10 width=500>"
+				snippetText = snippetText & "<tr valign=top><td align=right><b>Snippet&nbsp;Folder:</b></td><td>" & SnippetGroupName & "</td></tr>"
+				snippetText = snippetText & "<tr valign=top><td align=right><b>Snippet&nbsp;Name:</b></td><td>" & SnippetName & "</td></tr>"
+				snippetText = snippetText & "<tr valign=top><td align=right><b>Snippet:</b></td><td><pre>" & Snippet & "</pre></td></tr>"
+				snippetText = snippetText & "</table>"
+
+				ToEmail = Session("Email")
+				AdministratorEmail = Application("AdministratorEmail")
+				Subject = Application("ApplicationName") & " - Snippet: " & SnippetGroupName & "\" & SnippetName
+				BodyText = snippetText
+				
+        		CC = Trim(Request("CC"))
+				
+				If CC <> "" Then 
+					Response.Cookies("BankingEmailCC") = CC
+					Response.Cookies("BankingEmailCC").Expires = Date + 20
+				End If
+				SendEmail ToEmail, AdministratorEmail, CC, Subject, BodyText, 1
+				redirectURL = SCRIPT_NAME & "?SnippetID=" & SnippetID & "&SnippetsErrorMessage=" & Server.URLEncode("Snippet: (" & SnippetGroupName & "\" & SnippetName & ") emailed to " & Session("Email"))
+				Response.Redirect redirectURL
+			End If
+			Set ors = Nothing	
+		ElseIf SubmitButton = "CREATE" Then
 			sql = "SELECT SnippetID FROM Snippets WHERE SnippetGroupID = " & SnippetGroupID & " AND SnippetName = '" & SQLEncode(SnippetName) & "'"
 			WriteDebugger sql, Debugging, 0
 			Set ors = oConn.Execute(sql)
@@ -32,7 +64,6 @@
 				Set ors = Nothing
 				sql = "sp_Snippets_insert " & SnippetGroupID & ", '" & SQLEncode(SnippetName) & "', '" & SQLEncode(Snippet) & "'"
 				WriteDebugger sql, Debugging, 0
-				'Response.End				
 				Set ors = oConn.Execute(sql)
 				SnippetID = ors.Fields(0).value
 				ors.Close
@@ -63,7 +94,6 @@
 					  "WHERE SnippetID = " & SnippetID
 				WriteDebugger sql, Debugging, 0
 				oConn.Execute sql
-				'Response.End
 				Session("SnippetGroupID") = SnippetGroupID
 				SnippetsErrorMessage = "Snippet updated"
 				Response.Redirect SCRIPT_NAME & "?SnippetID=" & SnippetID & "&SnippetsErrorMessage=" & Server.URLEncode(SnippetsErrorMessage)
@@ -100,13 +130,9 @@
 				ors.Close
 				Set ors = Nothing
 				SnippetsErrorMessage = "Snippet Group Created"
-				'Response.Write SnippetsErrorMessage
-				'Response.End
 				Response.Redirect SCRIPT_NAME & "?SnippetsErrorMessage=" & Server.URLEncode(SnippetsErrorMessage) & "&SnippetGroupID=" & SnippetGroupID
 			Else
 				SnippetsErrorMessage = "Snippet Group " & SnippetGroupName & " exists."
-				'Response.Write SnippetsErrorMessage
-				'Response.End
 				Response.Redirect SCRIPT_NAME & "?SnippetsErrorMessage=" & Server.URLEncode(SnippetsErrorMessage)
 			End If
 		End If
@@ -184,7 +210,7 @@
 		<%
 			If TotalSnippetGroups > 0 Then
 			 	If Trim(Request("SnippetID")) <> "" Then 
-					sql = "sp_Snippets_SnippetID " & Trim(Request("SnippetID"))
+					sql = "sp_Snippets_SnippetID_get " & Trim(Request("SnippetID"))
 					Set ors = oConn.Execute(sql)
 					If NOT ors.EOF Then
 						v_SnippetName = ors("SnippetName")
@@ -207,8 +233,14 @@
 					If Trim(Request("SnippetID")) = "" Then SubmitButtonValue = "create"
 				%>
 				<% If Trim(Request("SnippetID")) <> "" Then %>
-					<%= Button("Button", "Delete", "DeleteButton", "float:right", "Delete", "DeleteSnippet(" & Trim(Request("SnippetID")) & ")") %>
-					&nbsp;&nbsp;&nbsp;
+					<div style="text-align:right">
+						<%= Button("Button", "Email Snippet", "Button", "clear:both;", "Email Snippet", "EmailSnippet(" & Trim(Request("SnippetID")) & ")") %>
+						&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;
+						<%= Button("Button", "Delete", "DeleteButton", "padding-bottom:10px;", "Delete", "DeleteSnippet(" & Trim(Request("SnippetID")) & ")") %>
+					</div>
 				<% End If %>
 			</td>
 		</tr>

@@ -1,8 +1,6 @@
 <%
 	Set oConn = Server.CreateObject("ADODB.Connection")
 	ConnectionString = "driver={SQL SERVER};server=" & MachineName & ";uid=tiradoonline_user;pwd=Sixpak141414;database=tiradoonline;"
-	'Response.Write "ConnectionString:" & ConnectionString
-	'Response.End
 	'On Error Resume Next
 	oConn.ConnectionTimeout = 10
 	oConn.Open ConnectionString

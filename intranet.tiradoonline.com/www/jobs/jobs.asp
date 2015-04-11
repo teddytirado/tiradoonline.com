@@ -62,7 +62,6 @@
 	JobCompanyContactSearch = Trim(Request("JobCompanyContactSearch"))
 	JobCompanySearchID = Trim(Request("JobCompanySearchID"))
 	JobQueueID = Trim(Request("JobQueueID"))
-	'Response.End
 	
 	JobCompanyID = Trim(Request("JobCompanyID"))
 	JobCompanyName = Trim(Request("JobCompanyName"))
@@ -172,7 +171,6 @@
 		For x = 0 To UBound(jobqueueArray)
 			Response.Write "<br>" & jobqueueArray(x)
 		Next
-		Response.End
 		JobsErrorMessage = Server.URLEncode("Resume '" & ResumeFileName & "' deleted.")
 		Response.Redirect SCRIPT_NAME & "?Template=" & Template & "&JobsErrorMessage=" & JobsErrorMessage
 	
@@ -314,8 +312,6 @@
 			  "JobCompanyContactNotes = '" & SQLEncode(JobCompanyContactNotes) & "' " & _
 			  "WHERE JobCompanyContactID = " & JobCompanyContactID
 		WriteDebugger sql, Debugging, 0
-		'Response.Write sql
-		'Response.End
 		oConn.Execute(sql)
 		JobsErrorMessage = Server.URLEncode("Company Contact updated.")
 		Response.Redirect SCRIPT_NAME & "?JobCompanyID="& JobCompanyID & "&JobCompanyContactID=" & JobCompanyContactID & "&Template=" & Template & "&JobsErrorMessage=" & JobsErrorMessage
@@ -364,8 +360,6 @@
 			  "JobNotes = '" & SQLEncode(JobNotes) & "' " & _
 			  "WHERE JobID = " & JobID
 		WriteDebugger sql, Debugging, 0
-		'Response.Write sql
-		'Response.End
 		oConn.Execute(sql)
 		JobsErrorMessage = Server.URLEncode("Job saved.")
 		Response.Redirect SCRIPT_NAME & "?JobID=" & JobID & "&JobCompanyID="& JobCompanyID & "&JobCompanyContactID=" & JobCompanyContactID & "&Template=" & Template & "&JobsErrorMessage=" & JobsErrorMessage
@@ -438,8 +432,6 @@
 			  "'" & SQLEncode(JobInterviewZipCode) & "', " & _
 			  "'" & SQLEncode(JobInterviewNotes) & "'"
 		WriteDebugger sql, Debugging, 0
-		'Response.Write sql
-		'Response.End
 		Set ors = oConn.Execute(sql)
 		JobInterviewID = ors.Fields(0).Value
 		ors.Close
@@ -460,8 +452,6 @@
 			  "JobInterviewNotes = '" & SQLEncode(JobInterviewNotes) & "' " & _
 			  "WHERE JobInterviewID = " & JobInterviewID
 		WriteDebugger sql, Debugging, 0
-		'Response.Write sql
-		'Response.End
 		oConn.Execute(sql)
 		JobsErrorMessage = Server.URLEncode("Job Interview saved.")
 		Response.Redirect SCRIPT_NAME & "?JobInterviewID=" & JobInterviewID & "&JobCompanyID="& JobCompanyID & "&JobCompanyContactID=" & JobCompanyContactID & "&Template=" & Template & "&JobsErrorMessage=" & JobsErrorMessage
@@ -481,8 +471,6 @@
 			  "'" & SQLEncode(JobCompanyPhoneCallDateTime) & "', " & _
 			  "'" & SQLEncode(JobCompanyPhoneCallPhoneNumber) & "', " & _
 			  "'" & SQLEncode(JobCompanyPhoneCallNotes) & "'"
-		'Response.Write sql
-		'Response.End
 		
 		WriteDebugger sql, Debugging, 0
 		Set ors = oConn.Execute(sql)
@@ -500,8 +488,6 @@
 			  "JobCompanyPhoneCallNotes = '" & SQLEncode(JobCompanyPhoneCallNotes) & "' " & _
 			  "WHERE JobCompanyPhoneCallID = " & JobCompanyPhoneCallID
 		WriteDebugger sql, Debugging, 0
-		'Response.Write sql
-		'Response.End
 		oConn.Execute(sql)
 		JobsErrorMessage = Server.URLEncode("Phone Call saved.")
 		Response.Redirect SCRIPT_NAME & "?JobCompanyPhoneCallID=" & JobCompanyPhoneCallID & "&JobCompanyID="& JobCompanyID & "&JobCompanyContactID=" & JobCompanyContactID & "&Template=" & Template & "&JobsErrorMessage=" & JobsErrorMessage

@@ -70,8 +70,6 @@
 		End If	
 	End If
 
-	'Response.Write sql
-	'Response.End
 	WriteDebugger sql, Debugging, 0 & "<p>"
 	Set ors = oConn.Execute(sql)
 
